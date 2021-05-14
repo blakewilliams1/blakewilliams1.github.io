@@ -12,13 +12,15 @@ const routes: Routes = [
   {
     path: 'qr',
     component: QRLandingPage,
-    // children: [
-    // ]
   },
-      {
-        path: 'qr/about',
-        component: AboutQrPage,
-      },
+  {
+    path: 'qr/',
+    component: QRLandingPage,
+  },
+  {
+    path: 'qr/about',
+    component: AboutQrPage,
+  },
 ];
 
 @NgModule({
