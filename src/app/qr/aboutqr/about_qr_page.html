@@ -1,0 +1,10 @@
+<div>About the QR Tattoo</div>
+
+<p>{{description}}</p>
+
+<div class="faq-container">
+    <div *ngFor="let faq of faqs">
+        <p class="question" [innerHTML]="faq.question"></p>
+        <p class="answer" [innerHTML]="faq.answer"></p>
+    </div>
+</div>
