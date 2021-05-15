@@ -14,7 +14,7 @@ const routes: Routes = [
     component: QRLandingPage,
   },
   {
-    path: 'qr/',
+    path: 'qr/.',
     component: QRLandingPage,
   },
   {
