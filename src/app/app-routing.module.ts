@@ -13,10 +13,6 @@ const routes: Routes = [
     path: 'qr',
     component: QRLandingPage,
   },
-  // {
-  //   path: 'qr/.',
-  //   component: QRLandingPage,
-  // },
   {
     path: 'qr/about',
     component: AboutQrPage,

@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'about-qr-page',
@@ -6,16 +7,22 @@ import { Component } from "@angular/core";
     styleUrls: ['./about_qr_page.scss'],
 })
 export class AboutQrPage {
+    public constructor(private titleService: Title) {
+      this.titleService.setTitle("About QR Tattoo");
+    }
+
     readonly description =
-        `This is a tattoo of a QR code that links to [REDACTED]. I 'own' this domain, and have it
-        pointed at a page on my personal website - blakewilliams.org - which is hosted on GitHub
-        Pages. Unlike a vast majority of QR codes that will direct you to some fixed URL, this
-        code is 'dynamic'. This means that I have the ability to change it's functionality as I
-        please. I do this with a custom android app that I wrote; on my phone I select from a
-        pre-set list of abilities I've written code for, then behind the scenes I call Github's
-        REST API to commit the changes to a JSON file stored on GitHub. The QR code landing page
-        reads the config file and then determines what info to show or where to redirect users to
-        from there.`;
+        `This is a tattoo of a QR code that links to qrtatt.ooo. I 'own' this domain, and have it
+        pointed at a reserved landing page on my personal website - blakewilliams.org - which is
+        hosted on GitHub Pages. Unlike a vast majority of QR codes that will direct you to some
+        fixed URL, this code is 'dynamic'. This means that I can change it's functionality as I
+        please. I created a custom android app that for this! On my phone I select from a pre-set
+        list of abilities I've written accounted for, then behind the scenes I call Github's
+        REST API to commit the changes to a JSON file stored on GitHub. For example, the landing
+        page can redirect to any other URL of my choosing, prompt a download for a VCF contact file,
+        open a chat with me on whatsapp/telegram/twitter/etc... and many more. The QR code landing
+        page reads the config file and then determines what info to show or where to redirect users
+        to from there.`;
 
 
     readonly faqs: QuestionAndAnswer[] = [
@@ -34,9 +41,27 @@ export class AboutQrPage {
             I don\'t expect lapses in URL ownership.`,
         },
         {
+            question: 'Why not just have a business card or keychain of it? Why does it need to be a tattoo?',
+            answer: `Right, it doesn't need to be a tattoo. Nothing in this project is wholly new or
+            innovative; I recognize that it's about as much effort for a user to scan my arm as it
+            is to just give the info verbally or by typing it into their phone. It's just more novel.`,
+        },
+        {
             question: 'What if GitHub stops support for their API?',
             answer: `Then I\'ll just keep the config elsewhere on the internet that
-            does allow for APIs to modify repos.`,
+            does allow for APIs to modify repos. :)`,
+        },
+        {
+            question: 'What if GitHub stops allowing users to host their personal websites with GH Pages?',
+            answer: `Then I\'ll just host my site on another platform or pay for server space. There
+            will ALWAYS be website hosting services as long as the internet continues to exist.`,
+        },
+        {
+            question: 'APIs change, sevices migrate, technology moves on changes. What if one day it stops working?',
+            answer: `Similar to the previous questions, I\'ll just update my code and serving methods.
+            Nothing is forever and yes like everything else on the internet it does occasionally
+            require some maintenance to stay running. 
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/BxV14h0kFs0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
         },
         {
             question: 'What if the tattoo blurs or fades?',
@@ -47,13 +72,15 @@ export class AboutQrPage {
             can re-sharpen the edges.`,
         },
         {
-            question: 'What if it stops working one day?',
-            answer: '<a href="https://example.com">Click me</a>',
+            question: 'What if your skin gets wrinkly as you age?',
+            answer: `Then I'll probably need to stretch it taut to get good reading, what do you
+            expect? I'm not going to NOT get a tattoo now because of how my skin's tightness may
+            or may not be in my final couple decades. For all tattoos, there's still a massive
+            amount of enjoyment people get from them even if the canvas degrades eventually.`,
         },
     ]
 
     // Tom Scott's API video embed:
-    // <iframe width="560" height="315" src="https://www.youtube.com/embed/BxV14h0kFs0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 }
 
 export interface QuestionAndAnswer {
