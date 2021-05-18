@@ -11,6 +11,7 @@ import qrConfigz from "./qr_config.json";
 //   styleUrls: ['./qr_landing_page.scss']
 })
 export class QRLandingPage {
+  showUnsupportedRedirectionMessage = false;
   readonly qrConfig: QRConfig = qrConfigz as QRConfig;
   readonly URL_PREFIX = "https://www."
   readonly FACEBOOK_URL = 'https://www.facebook.com/blake.williams.731135';
@@ -26,6 +27,7 @@ export class QRLandingPage {
     'WHATSAPP_ACCOUNT',
     'FACEBOOK_ACCOUNT',
     'PAYPAL_REQUEST',
+    'TWITTER_ACCOUNT',
     'VENMO_ACCOUNT',
     'ABOUT_TATTOO_PAGE',
     'REDIRECTION_URL',
@@ -64,11 +66,12 @@ export class QRLandingPage {
         this.router.navigate(['qr/about']);
         break;
       case 'REDIRECTION_URL':
-      default:
         const url =
         this.qrConfig.redirectUrl.startsWith(this.URL_PREFIX) ?
         this.qrConfig.redirectUrl : this.URL_PREFIX + this.qrConfig.redirectUrl;
         computedUrl = url;
+        break;
+        default: this.showUnsupportedRedirectionMessage = true;
     }
 
     if (!!computedUrl) {

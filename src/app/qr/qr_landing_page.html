@@ -1,3 +1,8 @@
+<!-- Unsupported Action Warning -->
+<p *ngIf="showUnsupportedRedirectionMessage">
+  Warning! The following action is not supported yet: {{qrConfig?.actionType}}
+</p>
+
 <!-- Emergency Info -->
 <div *ngIf="qrConfig?.actionType === 'EMERGENCY_INFO'">
     <div><b>Name:</b> Blake Williams</div>
