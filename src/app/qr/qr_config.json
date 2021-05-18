@@ -1,1 +1,1 @@
-{"actionType":"TELEGRAM_ACCOUNT","paypalRequestAmountUSD":10.0,"redirectUrl":"example.com"}
+{"actionType":"VENMO_ACCOUNT","paypalRequestAmountUSD":10.0,"redirectUrl":"example.com"}
