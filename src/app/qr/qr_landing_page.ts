@@ -59,6 +59,9 @@ export class QRLandingPage {
       case 'TWITTER_ACCOUNT':
         computedUrl = this.TWITTER_URL;
         break;
+      case 'VENMO_ACCOUNT':
+        computedUrl = this.VENMO_URL;
+        break;
       case 'PAYPAL_REQUEST':
         computedUrl = `${this.PAYPAL_URL}${this.qrConfig.paypalRequestAmountUSD}`;
         break;
