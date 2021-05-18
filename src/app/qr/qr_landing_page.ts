@@ -17,6 +17,7 @@ export class QRLandingPage {
   readonly TELEGRAM_URL = 'https://t.me/Shadowslade';
   readonly WHATSAPP_URL = 'https://wa.me/17605606898';
   readonly PAYPAL_URL = 'https://paypal.me/shadowslade/';
+  readonly TWITTER_URL = 'https://twitter.com/Shadow_slade/';
   readonly VENMO_URL = 'https://venmo.com/code?user_id=1646046040031232265';
 
   // Actions that require immediate redirection to something else.
@@ -52,6 +53,9 @@ export class QRLandingPage {
         break;
       case 'FACEBOOK_ACCOUNT':
         computedUrl = this.FACEBOOK_URL;
+        break;
+      case 'TWITTER_ACCOUNT':
+        computedUrl = this.TWITTER_URL;
         break;
       case 'PAYPAL_REQUEST':
         computedUrl = `${this.PAYPAL_URL}${this.qrConfig.paypalRequestAmountUSD}`;
@@ -96,6 +100,7 @@ type ActionType =
   | 'TELEGRAM_ACCOUNT'
   | 'WHATSAPP_ACCOUNT'
   | 'FACEBOOK_ACCOUNT'
+  | 'TWITTER_ACCOUNT'
   | 'GENERIC_FILE_DOWNLOAD'
   | 'VENMO_ACCOUNT'
   | 'PAYPAL_REQUEST'
