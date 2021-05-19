@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { isDevMode } from '@angular/core';
+import { map } from 'rxjs/operators';
 
 import qrConfigz from "./qr_config.json";
 
@@ -12,8 +14,11 @@ import qrConfigz from "./qr_config.json";
 })
 export class QRLandingPage {
   showUnsupportedRedirectionMessage = false;
-  readonly qrConfig: QRConfig = qrConfigz as QRConfig;
-  readonly URL_PREFIX = "https://www."
+  showEmergencyInfo = false;
+  readonly localQrConfig: QRConfig = qrConfigz as QRConfig;
+  readonly CONFIG_FILE_URL =
+      'https://api.github.com/repos/blakewilliams1/blakewilliams1.github.io/contents/src/app/qr/qr_config.json';
+  readonly URL_PREFIX = "https://"
   readonly FACEBOOK_URL = 'https://www.facebook.com/blake.williams.731135';
   readonly TELEGRAM_URL = 'https://t.me/Shadowslade';
   readonly WHATSAPP_URL = 'https://wa.me/17605606898';
@@ -36,17 +41,34 @@ export class QRLandingPage {
   constructor(
     private readonly router: Router,
     private readonly httpClient: HttpClient) {
-    if (this.redirectionActions.includes(this.qrConfig.actionType)) {
-      this.handleRedirection();
-    } else if (this.qrConfig.actionType === 'VCF_DOWNLOAD') {
-      // TODO: Fix this not working.
-      httpClient.get('../../vcard.vcf', { responseType: 'blob' });
+    if (isDevMode()) {
+      this.executeConfigSettings(this.localQrConfig);
+    } else {
+      httpClient.get(this.CONFIG_FILE_URL)
+        .pipe(
+          map(response => atob(((response as ConfigResponse).content))),
+          map(content => JSON.parse(content) as QRConfig),
+        )
+        .subscribe(content => {
+          this.executeConfigSettings(content);
+        });
     }
   }
 
-  handleRedirection() {
+  executeConfigSettings(qrConfig: QRConfig) {
+    if (this.redirectionActions.includes(qrConfig.actionType)) {
+      this.handleRedirection(qrConfig);
+    } else if (qrConfig.actionType === 'VCF_DOWNLOAD') {
+      // TODO: Fix this not working.
+      this.httpClient.get('../../vcard.vcf', { responseType: 'blob' });
+    } else if (qrConfig.actionType === 'EMERGENCY_INFO') {
+      this.showEmergencyInfo = true;
+    }
+  }
+
+  handleRedirection(qrConfig: QRConfig) {
     let computedUrl;
-    switch (this.qrConfig.actionType) {
+    switch (qrConfig.actionType) {
       case 'TELEGRAM_ACCOUNT':
         computedUrl = this.TELEGRAM_URL;
         break;
@@ -63,18 +85,18 @@ export class QRLandingPage {
         computedUrl = this.VENMO_URL;
         break;
       case 'PAYPAL_REQUEST':
-        computedUrl = `${this.PAYPAL_URL}${this.qrConfig.paypalRequestAmountUSD}`;
+        computedUrl = `${this.PAYPAL_URL}${qrConfig.paypalRequestAmountUSD}`;
         break;
       case 'ABOUT_TATTOO_PAGE':
         this.router.navigate(['qr/about']);
         break;
       case 'REDIRECTION_URL':
         const url =
-        this.qrConfig.redirectUrl.startsWith(this.URL_PREFIX) ?
-        this.qrConfig.redirectUrl : this.URL_PREFIX + this.qrConfig.redirectUrl;
+          qrConfig.redirectUrl.startsWith(this.URL_PREFIX) ?
+            qrConfig.redirectUrl : this.URL_PREFIX + qrConfig.redirectUrl;
         computedUrl = url;
         break;
-        default: this.showUnsupportedRedirectionMessage = true;
+      default: this.showUnsupportedRedirectionMessage = true;
     }
 
     if (!!computedUrl) {
@@ -91,6 +113,10 @@ export class QRLandingPage {
     const ageDate = new Date(ageDifMs);
     return Math.abs(ageDate.getUTCFullYear() - 1970);
   }
+}
+
+export interface ConfigResponse {
+  content: string;
 }
 
 export interface QRConfig {
