@@ -13,11 +13,15 @@ import qrConfigz from "./qr_config.json";
 //   styleUrls: ['./qr_landing_page.scss']
 })
 export class QRLandingPage {
-  showUnsupportedRedirectionMessage = false;
+  showFileNotFoundMessage = false;
   showEmergencyInfo = false;
   readonly localQrConfig: QRConfig = qrConfigz as QRConfig;
   readonly CONFIG_FILE_URL =
-      'https://api.github.com/repos/blakewilliams1/blakewilliams1.github.io/contents/src/app/qr/qr_config.json';
+    'https://api.github.com/repos/blakewilliams1/blakewilliams1.github.io/contents/src/app/qr/qr_config.json';
+  readonly VCARD_FILE_URL =
+    "https://raw.githubusercontent.com/blakewilliams1/blakewilliams1.github.io/main/src/app/qr/vcard.vcf";
+  readonly GENERIC_FILE_BASE_URL =
+    "https://raw.githubusercontent.com/blakewilliams1/blakewilliams1.github.io/main/src/app/qr/generic_files/";
   readonly URL_PREFIX = "https://"
   readonly FACEBOOK_URL = 'https://www.facebook.com/blake.williams.731135';
   readonly TELEGRAM_URL = 'https://t.me/Shadowslade';
@@ -59,11 +63,40 @@ export class QRLandingPage {
     if (this.redirectionActions.includes(qrConfig.actionType)) {
       this.handleRedirection(qrConfig);
     } else if (qrConfig.actionType === 'VCF_DOWNLOAD') {
-      // TODO: Fix this not working.
-      this.httpClient.get('../../vcard.vcf', { responseType: 'blob' });
+      this.httpClient.get(this.VCARD_FILE_URL, { responseType: 'blob' })
+        .subscribe(blob => {
+          const fileName =
+            this.VCARD_FILE_URL.substring(this.VCARD_FILE_URL.lastIndexOf('/') + 1);
+          this.downloadBlob(blob, fileName);
+        });
+    } else if (qrConfig.actionType === 'GENERIC_FILE_DOWNLOAD') {
+      if (!!qrConfig.genericFileName) {
+        this.downloadGenericFile(qrConfig.genericFileName);
+      } else {
+        this.showFileNotFoundMessage = true;
+      }
     } else if (qrConfig.actionType === 'EMERGENCY_INFO') {
       this.showEmergencyInfo = true;
     }
+  }
+
+  downloadGenericFile(fileName: string) {
+    this.httpClient.get(this.GENERIC_FILE_BASE_URL + fileName, { responseType: 'blob' })
+      .subscribe(blob => {
+        this.downloadBlob(blob, fileName);
+      }, () => {
+        this.showFileNotFoundMessage = true;
+      });
+  }
+
+  // Refactored helper function to download generic files.
+  private downloadBlob(blob: Blob, fileName: string) {
+    const a = document.createElement('a')
+    const objectUrl = URL.createObjectURL(blob)
+    a.href = objectUrl
+    a.download = fileName;
+    a.click();
+    URL.revokeObjectURL(objectUrl);
   }
 
   handleRedirection(qrConfig: QRConfig) {
@@ -96,7 +129,7 @@ export class QRLandingPage {
             qrConfig.redirectUrl : this.URL_PREFIX + qrConfig.redirectUrl;
         computedUrl = url;
         break;
-      default: this.showUnsupportedRedirectionMessage = true;
+      default: break;
     }
 
     if (!!computedUrl) {
