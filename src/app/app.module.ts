@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HomePageModule } from './homepage/home_page_module';
 import { QRLandingPageModule } from './qr/qr_landing_page_module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { Location } from '@angular/common';
 
 @NgModule({
   declarations: [
