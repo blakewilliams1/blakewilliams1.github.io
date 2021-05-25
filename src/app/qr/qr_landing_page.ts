@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { HttpClient } from '@angular/common/http';
 import { isDevMode } from '@angular/core';
 import { map } from 'rxjs/operators';
 
@@ -15,6 +14,7 @@ import qrConfigz from "./qr_config.json";
 export class QRLandingPage {
   showFileNotFoundMessage = false;
   showEmergencyInfo = false;
+  showArViewer = false;
   readonly localQrConfig: QRConfig = qrConfigz as QRConfig;
   readonly CONFIG_FILE_URL =
     'https://api.github.com/repos/blakewilliams1/blakewilliams1.github.io/contents/src/app/qr/qr_config.json';
@@ -75,6 +75,8 @@ export class QRLandingPage {
       } else {
         this.showFileNotFoundMessage = true;
       }
+    } else if (qrConfig.actionType === 'AR_VIEWER') {
+      this.showArViewer = true;
     } else if (qrConfig.actionType === 'EMERGENCY_INFO') {
       this.showEmergencyInfo = true;
     }
@@ -169,5 +171,6 @@ type ActionType =
   | 'GENERIC_FILE_DOWNLOAD'
   | 'VENMO_ACCOUNT'
   | 'PAYPAL_REQUEST'
+  | 'AR_VIEWER'
   | 'EMERGENCY_INFO'
   | 'ABOUT_TATTOO_PAGE';
