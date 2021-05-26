@@ -27,7 +27,6 @@ export class QRLandingPage {
   readonly TELEGRAM_URL = 'https://t.me/Shadowslade';
   readonly WHATSAPP_URL = 'https://wa.me/17605606898';
   readonly PAYPAL_URL = 'https://paypal.me/shadowslade/';
-  readonly CASH_APP_URL = 'https://cash.app.regrettispaghetti';
   readonly TWITTER_URL = 'https://twitter.com/Shadow_slade/';
   readonly VENMO_URL = 'https://venmo.com/code?user_id=1646046040031232265';
 
@@ -36,10 +35,9 @@ export class QRLandingPage {
     'TELEGRAM_ACCOUNT',
     'WHATSAPP_ACCOUNT',
     'FACEBOOK_ACCOUNT',
-    'TWITTER_ACCOUNT',
     'PAYPAL_REQUEST',
+    'TWITTER_ACCOUNT',
     'VENMO_ACCOUNT',
-    'CASH_APP_ACCOUNT',
     'ABOUT_TATTOO_PAGE',
     'REDIRECTION_URL',
   ];
@@ -121,9 +119,6 @@ export class QRLandingPage {
       case 'VENMO_ACCOUNT':
         computedUrl = this.VENMO_URL;
         break;
-      case 'CASH_APP_ACCOUNT':
-        computedUrl = this.CASH_APP_URL;
-        break;
       case 'PAYPAL_REQUEST':
         computedUrl = `${this.PAYPAL_URL}${qrConfig.paypalRequestAmountUSD}`;
         break;
@@ -176,7 +171,6 @@ type ActionType =
   | 'GENERIC_FILE_DOWNLOAD'
   | 'VENMO_ACCOUNT'
   | 'PAYPAL_REQUEST'
-  | 'CASH_APP_ACCOUNT'
   | 'AR_VIEWER'
   | 'EMERGENCY_INFO'
   | 'ABOUT_TATTOO_PAGE';
