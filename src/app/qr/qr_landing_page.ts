@@ -30,6 +30,7 @@ export class QRLandingPage {
   readonly CASH_APP_URL = 'https://cash.app.regrettispaghetti';
   readonly TWITTER_URL = 'https://twitter.com/Shadow_slade/';
   readonly VENMO_URL = 'https://venmo.com/code?user_id=1646046040031232265';
+  readonly AR_VIEWER_URL = 'https://raw.githack.com/blakewilliams1/blakewilliams1.github.io/main/src/app/qr/ar_index.html';
 
   // Actions that require immediate redirection to something else.
   readonly redirectionActions = [
@@ -42,6 +43,7 @@ export class QRLandingPage {
     'CASH_APP_ACCOUNT',
     'ABOUT_TATTOO_PAGE',
     'REDIRECTION_URL',
+    'AR_VIEWER',
   ];
 
   constructor(
@@ -77,8 +79,6 @@ export class QRLandingPage {
       } else {
         this.showFileNotFoundMessage = true;
       }
-    } else if (qrConfig.actionType === 'AR_VIEWER') {
-      this.showArViewer = true;
     } else if (qrConfig.actionType === 'EMERGENCY_INFO') {
       this.showEmergencyInfo = true;
     }
@@ -123,6 +123,9 @@ export class QRLandingPage {
         break;
       case 'CASH_APP_ACCOUNT':
         computedUrl = this.CASH_APP_URL;
+        break
+      case 'AR_VIEWER':
+        computedUrl = this.AR_VIEWER_URL;
         break;
       case 'PAYPAL_REQUEST':
         computedUrl = `${this.PAYPAL_URL}${qrConfig.paypalRequestAmountUSD}`;
