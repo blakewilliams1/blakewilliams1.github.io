@@ -1,1 +1,12 @@
-Stay tuned for a new up-to-date personal site soon!
+
+ <!-- TODO: Revise this to use true lazy loading -->
+<mat-tab-group #tabgroup mat-align-tabs="center" (selectedTabChange)="changeUrl($event)">
+    <mat-tab label="About">
+        My name is Blake Williams, I'm a software engineer.
+    </mat-tab>
+    <mat-tab label="Home">
+        <mat-card>Hello world</mat-card>
+        <!-- <div class="red-yellow-gradient" style="height: 1px;"></div> -->
+    </mat-tab>
+    <mat-tab label="Projects"></mat-tab>
+  </mat-tab-group>

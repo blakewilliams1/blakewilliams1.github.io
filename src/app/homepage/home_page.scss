@@ -1,0 +1,11 @@
+.red-yellow-gradient {
+    background-image: linear-gradient(to right, #f81d00 0%, #f9d423 100%);
+}
+
+mat-tab-group {
+    margin-top: 20px;
+}
+
+::ng-deep .mat-tab-group .mat-tab-header {
+    border-bottom: none;
+}
