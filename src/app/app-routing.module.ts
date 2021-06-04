@@ -7,23 +7,23 @@ import { QRLandingPage } from './qr/qr_landing_page';
 const routes: Routes = [
   {
     path: '',
-    component: HomePage,
+    loadChildren: () => import('./homepage/home_page_module').then(m => m.HomePageModule)
   },
   {
     path: 'about',
-    component: HomePage,
+    loadChildren: () => import('./homepage/home_page_module').then(m => m.HomePageModule)
   },
   {
     path: 'projects',
-    component: HomePage,
+    loadChildren: () => import('./homepage/home_page_module').then(m => m.HomePageModule)
   },
   {
     path: 'qr',
-    component: QRLandingPage,
+    loadChildren: () => import('./qr/qr_landing_page_module').then(m => m.QRLandingPageModule)
   },
   {
     path: 'qr/about',
-    component: AboutQrPage,
+    loadChildren: () => import('./qr/aboutqr/about_qr_page_module').then(m => m.AboutQrPageModule)
   },
 ];
 

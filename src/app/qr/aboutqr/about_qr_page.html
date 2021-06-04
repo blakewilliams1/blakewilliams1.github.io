@@ -1,10 +1,17 @@
-<div>About the QR Tattoo</div>
+<div class="page-container">
+    <h1>About the QR Tattoo</h1>
 
-<p>{{description}}</p>
+    <mat-card> {{description}} </mat-card>
 
-<div class="faq-container">
-    <div *ngFor="let faq of faqs">
-        <p class="question" [innerHTML]="faq.question"></p>
-        <p class="answer" [innerHTML]="faq.answer"></p>
-    </div>
+    <mat-accordion>
+        <mat-expansion-panel *ngFor="let faq of faqs">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{faq.question}}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="header-description-divider"></div>
+            <div [innerHtml]="faq.answer"></div>
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>

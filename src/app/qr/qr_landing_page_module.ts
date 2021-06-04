@@ -1,14 +1,29 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
-import { BrowserModule } from '@angular/platform-browser';
 import { QRLandingPage } from "./qr_landing_page";
+import { Routes, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
+const routes: Routes = [
+    {
+        path: '',
+        component: QRLandingPage
+    }
+];
+
+@NgModule({
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
+})
+export class QRLandingPageRoutingModule { }
 
 @NgModule({
     declarations: [
         QRLandingPage
     ],
     imports: [
-        BrowserModule,
+        QRLandingPageRoutingModule,
+        CommonModule,
         HttpClientModule
     ],
     exports: [QRLandingPage],
