@@ -1,0 +1,42 @@
+.timeline-block {
+    display: flex;
+}
+
+.timeline-bar-container {
+    display: flex;
+
+    span {
+        min-width: 115px;
+        white-space: nowrap;
+        text-align: right;
+        padding: 6px 10px 0 0;
+    }
+}
+
+.timeline-bar {
+    display: inline-block;
+}
+
+.timeline-node {
+    border: 3px solid grey;
+}
+
+.timeline-line {
+    border: 2px solid grey;
+    height: calc(100% - 35px);
+    margin: auto;
+    min-height: 30px;
+    width: 0;
+}
+
+.timeline-node {
+    border-radius: 18px;
+    border-color: gray;
+    height: 25px;
+    width: 25px;
+}
+
+.timeline-content {
+    padding: 0 0 20px 20px;
+    flex-grow: 1;
+}
