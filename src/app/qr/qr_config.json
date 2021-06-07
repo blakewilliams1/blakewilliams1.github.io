@@ -1,1 +1,1 @@
-{"actionType":"VENMO_ACCOUNT","arModelName":"trex","genericFileName":"test_image.png","paypalRequestAmountUSD":10.0,"redirectUrl":"https://youtu.be/dQw4w9WgXcQ"}
+{"actionType":"AR_VIEWER","arModelName":"trex","genericFileName":"test_image.png","paypalRequestAmountUSD":10.0,"redirectUrl":"https://youtu.be/dQw4w9WgXcQ"}
