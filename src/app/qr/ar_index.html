@@ -233,17 +233,46 @@
             console.log(resourceUrl);
             var entity = document.createElement("a-entity");
             entity.setAttribute('gltf-model', resourceUrl);
-            entity.setAttribute('gesture-handler', "minScale: 0.01; maxScale: 10");
+            entity.setAttribute('gesture-handler', "minScale: 0.0001; maxScale: 10");
             entity.setAttribute('scale', '0.07 0.07 0.07');
             entity.setAttribute('animation-mixer', '');
             document.getElementById("animated-marker").appendChild(entity);
+            getModelConfig(xhr.response.arModelName);
           } else {
             console.error(status);
             console.error(xhr.response);
           }
         };
         xhr.send();
-      }  
+      }
+
+      function getModelConfig(modelName) {
+        var modelConfigXhr = new XMLHttpRequest();
+        modelConfigXhr.open('GET', 'https://raw.githubusercontent.com/blakewilliams1/blakewilliams1.github.io/main/src/assets/armodels/' + modelName + '/config.json', true);
+        modelConfigXhr.responseType = '';
+        modelConfigXhr.onload = function() {
+          var entity = document.createElement("a-entity");
+          if (modelConfigXhr.status == 200) {
+            console.log(modelConfigXhr.response);
+            const scale = modelConfigXhr.response.scale;
+            if (scale) {
+              entity.setAttribute('scale', scale);
+            }
+
+            const position = modelConfigXhr.response.position;
+            if (position) {
+            entity.setAttribute('position', position);
+            }
+
+            // https://aframe.io/docs/1.2.0/guides/building-a-basic-scene.html#adding-animation
+            const duration = modelConfigXhr.response.duration;
+            if (duration) {
+              entity.setAttribute('animation', 'dur: ' + duration + '; loop: true');
+            }
+          }
+        }
+        modelConfigXhr.send();
+      }
     </script> 
 
     <a-scene embedded gesture-detector vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
