@@ -11,11 +11,11 @@ const routes: Routes = [
   },
   {
     path: 'about',
-    loadChildren: () => import('./homepage/home_page_module').then(m => m.HomePageModule)
+    loadChildren: () => import('./about/about_me_page_module').then(m => m.AboutMePageModule)
   },
   {
     path: 'projects',
-    loadChildren: () => import('./homepage/home_page_module').then(m => m.HomePageModule)
+    loadChildren: () => import('./projects/projects_page_module').then(m => m.ProjectsPageModule)
   },
   {
     path: 'qr',
