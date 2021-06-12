@@ -28,6 +28,7 @@ export class QRLandingPage {
   readonly WHATSAPP_URL = 'https://wa.me/17605606898';
   readonly PAYPAL_URL = 'https://paypal.me/shadowslade/';
   readonly CASH_APP_URL = 'https://cash.app.regrettispaghetti';
+  readonly DISCORD_URL = 'https://discord.com/users/shadowslade6516';
   readonly TWITTER_URL = 'https://twitter.com/Shadow_slade/';
   readonly VENMO_URL = 'https://venmo.com/code?user_id=1646046040031232265';
   readonly AR_VIEWER_URL = 'https://raw.githack.com/blakewilliams1/blakewilliams1.github.io/main/src/app/qr/ar_index.html';
@@ -38,6 +39,7 @@ export class QRLandingPage {
     'WHATSAPP_ACCOUNT',
     'FACEBOOK_ACCOUNT',
     'TWITTER_ACCOUNT',
+    'DISCORD_ACCOUNT',
     'PAYPAL_REQUEST',
     'VENMO_ACCOUNT',
     'CASH_APP_ACCOUNT',
@@ -118,6 +120,9 @@ export class QRLandingPage {
       case 'TWITTER_ACCOUNT':
         computedUrl = this.TWITTER_URL;
         break;
+      case 'DISCORD_ACCOUNT':
+        computedUrl = this.DISCORD_URL;
+        break;
       case 'VENMO_ACCOUNT':
         computedUrl = this.VENMO_URL;
         break;
@@ -176,6 +181,7 @@ type ActionType =
   | 'WHATSAPP_ACCOUNT'
   | 'FACEBOOK_ACCOUNT'
   | 'TWITTER_ACCOUNT'
+  | 'DISCORD_ACCOUNT'
   | 'GENERIC_FILE_DOWNLOAD'
   | 'VENMO_ACCOUNT'
   | 'PAYPAL_REQUEST'
