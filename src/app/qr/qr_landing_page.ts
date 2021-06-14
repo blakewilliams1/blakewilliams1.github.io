@@ -32,6 +32,7 @@ export class QRLandingPage {
   readonly TWITTER_URL = 'https://twitter.com/Shadow_slade/';
   readonly VENMO_URL = 'https://venmo.com/code?user_id=1646046040031232265';
   readonly AR_VIEWER_URL = 'https://raw.githack.com/blakewilliams1/blakewilliams1.github.io/main/src/app/qr/ar_index.html';
+  readonly AR_TRACKER_URL = 'https://raw.githack.com/blakewilliams1/blakewilliams1.github.io/main/src/app/qr/ar_tracking_tests.html';
 
   // Actions that require immediate redirection to something else.
   readonly redirectionActions = [
@@ -46,6 +47,7 @@ export class QRLandingPage {
     'ABOUT_TATTOO_PAGE',
     'REDIRECTION_URL',
     'AR_VIEWER',
+    'AR_TRACKER',
   ];
 
   constructor(
@@ -132,6 +134,9 @@ export class QRLandingPage {
       case 'AR_VIEWER':
         computedUrl = this.AR_VIEWER_URL;
         break;
+      case 'AR_TRACKER':
+        computedUrl = this.AR_TRACKER_URL;
+        break;
       case 'PAYPAL_REQUEST':
         computedUrl = `${this.PAYPAL_URL}${qrConfig.paypalRequestAmountUSD}`;
         break;
@@ -187,5 +192,6 @@ type ActionType =
   | 'PAYPAL_REQUEST'
   | 'CASH_APP_ACCOUNT'
   | 'AR_VIEWER'
+  | 'AR_TRACKER'
   | 'EMERGENCY_INFO'
   | 'ABOUT_TATTOO_PAGE';
