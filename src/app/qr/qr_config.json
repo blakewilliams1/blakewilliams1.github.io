@@ -1,1 +1,1 @@
-{"actionType":"REDIRECTION_URL","arModelName":"trex","genericFileName":"test_image.png","paypalRequestAmountUSD":10.0,"redirectUrl":"https://youtu.be/dQw4w9WgXcQ","trackerType":"HANDS"}
+{"actionType":"AR_TRACKER","arModelName":"trex","genericFileName":"test_image.png","paypalRequestAmountUSD":10.0,"redirectUrl":"https://youtu.be/dQw4w9WgXcQ","trackerType":"HANDS"}
