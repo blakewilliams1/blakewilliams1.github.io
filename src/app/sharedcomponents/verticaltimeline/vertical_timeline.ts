@@ -21,5 +21,6 @@ export class TimelineComponent {
 
 export interface TimelineEvent {
     date: Date;
+    title: string;
     content: SafeHtml;
 }

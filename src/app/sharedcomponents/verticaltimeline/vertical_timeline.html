@@ -7,24 +7,8 @@
         </div>
     </div>
     <div class="timeline-content">
+        <h1>{{ timelineEvent.title }}</h1>
         <span [innerHtml]="timelineEvent.content"></span>
     </div>
 </div>
-
-<!-- <table>
-    <tr *ngFor="let timelineEvent of timelineEvents; index as i">
-        <td class="timeline-bar-container">
-            <div class="flex">
-                <span>{{calculateTimelineDate(timelineEvent.date)}}</span>
-                <div>
-                    <div class="timeline-node"></div>
-                    <div *ngIf="i != timelineEvents.length - 1" class="timeline-line"></div>
-                </div>
-            </div>
-        </td>
-        <td>
-            <span [innerHtml]="timelineEvent.content"></span>
-        </td>
-    </tr>
-</table> -->
 
