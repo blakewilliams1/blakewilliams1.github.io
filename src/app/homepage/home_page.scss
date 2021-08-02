@@ -10,7 +10,19 @@ mat-tab-group {
     border-bottom: none;
 }
 
-timeline {
-    display: block;
-    margin: 20px;
+.home-body {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 100px auto;
+
+    img {
+        width: 100px;
+        border-radius: 50px;
+    }
+
+    .sub-title {
+        margin-top: 50px;
+        text-align: center;
+    }
 }

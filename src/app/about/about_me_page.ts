@@ -10,7 +10,7 @@ export class AboutMePage {
     
     projectTimeline: TimelineEvent[] = [{
         date: new Date(1625265780000),
-        title: 'Confidential AR/VR work (Google)',
+        title: 'AR/VR work (Google)',
         content: `<p>Finally within the realm of what I consider to be a dream job, I'm now working
         on things involving the AR/VR tech space. Can't talk about specifics yet, but I'm very
         enthusiastic about the work I do.</p>`,
