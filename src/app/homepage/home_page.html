@@ -13,3 +13,18 @@
   </span>
 </div>
 
+<div class="language-skill-container">
+  <p>Language Skills</p>
+  <div class="language-skill" *ngFor="let skill of languageSkills">
+      <div class="skill-label-container">
+        <span>{{skill.label}}</span>
+        <span>{{getSkillDescriptor(skill.percent)}}</span>
+      </div>
+      <div class="wrapper">
+        <div class="progress-bar">
+          <span class="progress-bar-fill red-yellow-gradient" [style.width.%]="skill.percent"></span>
+        </div>
+      </div>
+  </div>
+</div>
+
