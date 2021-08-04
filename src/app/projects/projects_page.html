@@ -1,8 +1,91 @@
+<head>
+  <script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+</head>
 <nav mat-tab-nav-bar>
-    <a mat-tab-link routerLink="/projects">Projects</a>
-    <a mat-tab-link routerLink="/">Home</a>
-    <a mat-tab-link routerLink="/about">About</a>
+  <a mat-tab-link routerLink="/projects">Projects</a>
+  <a mat-tab-link routerLink="/">Home</a>
+  <a mat-tab-link routerLink="/about">About</a>
 </nav>
 
-<a routerLink="/qr/about">QR Tattoo</a><br>
-  
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>QR Tattoo</mat-card-title>
+    <mat-card-subtitle>yes, it's permanent</mat-card-subtitle>
+  </mat-card-header>
+  <p>
+    <a routerLink="/qr/about">Click here</a> to go to the full page I dedicated to talking about
+    the tattoo.
+  </p>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Smart Pay Casio Watch</mat-card-title>
+    <mat-card-subtitle>[hiatus]</mat-card-subtitle>
+  </mat-card-header>
+  <p>
+    I like the tap-to-pay features of smart watches, but don't want a fully featured smart watch
+    that needs to be recharged every single day to work. Now that contactless payment via NFC
+    chips is much more common, I wanted to make my own ultra lightweight contactless payment watch.
+    I attempted to make it with favorite cheap digital watch - the Casio A168WEM, a custom NFC
+    antenna I had printed on a flex PCB from Oshpark, and a NFC chip that I got by melting down
+    one of my credit cards in acetone.<br>
+    Outside of the watch, the NFC chip and custom antenna worked like a charm!! However, I get
+    too much parasitic capacitance or other inteference when nestled in the digital watch case.
+    I'll need to figure this out to solve it and call it done.
+  </p>
+  <blockquote class="imgur-embed-pub" lang="en" data-id="a/L7AnwLG"  >
+    <a href="//imgur.com/a/L7AnwLG">Progress on custom contactless payment watch</a>
+  </blockquote>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Electric Mountainboard</mat-card-title>
+    <mat-card-subtitle>very stoked</mat-card-subtitle>
+  </mat-card-header>
+  <p>
+    A road bike is to a mounntain bike, as a skateboard is to a mountainboard. Their height of popularity
+    was in the early 2000's along with the X-games. Some compare it to the sensation of snowboarding,
+    but like most analogies it's a little bit of a stetch.<br>
+    This was a major project where I learned about good battery design, some machining skills, and a
+    lot of patience.
+  </p>
+  <blockquote class="imgur-embed-pub" lang="en" data-id="a/YKbkF02">
+    <a href="//imgur.com/a/YKbkF02">Electric Mountainboard build</a>
+  </blockquote>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Dot Matrix Watch</mat-card-title>
+    <mat-card-subtitle>[hiatus]</mat-card-subtitle>
+  </mat-card-header>
+  <p>
+    Wanting to make another watch after finishing the nixie tube watch, I decided to try working with
+    some <a href="https://www.industrialalchemy.org/articleview.php?item=750">retro dot matrix dipslays</a>.
+    These are REALLY neet to look at if you can get your hands on them. They're very early gallium-phosphate
+    LEDS; the only application I've seen them used in are for commercial airplane cockpit displays. Because
+    these were used in avionics, they are ceramic case-bodies and the top layer is saphire. I was able to
+    write <a href="https://github.com/blakewilliams1/dot-matrix-watch-2">these display drivers</a> for it
+    based on <a href="http://www.datasheetspdf.com/pdf-down/H/D/S/HDSP2000_Hewlett-Packard.pdf">these xerox scans</a>
+    of old datasheets from the 1970's.
+  </p>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Nixie Tube Wrist Watch</mat-card-title>
+    <mat-card-subtitle>Check the divergence!</mat-card-subtitle>
+  </mat-card-header>
+  <p>
+    This was one of my first exposures to hardware design beyond simple arudino proto boards that
+    drove small motors or read from simple sensors. I heavily based my schematic off of an existing
+    one I found online by <a href="http://www.cathodecorner.com/nixiewatch/firmware/firmware.html">David Forbes</a>.
+    The main difference is that mine uses four IN-17 nixie tubes instead of just two B5870L tubes.
+    I accounted for this doubling of tubes by swapping out his PIC18LF22SS with an atmega324pb, which
+    has around 30-ish GPIO pins. I directly drove every filament in use with a GPIO pin and a darlington
+    transistor. As this was my first 'major' hardware project, I didn't want to deal with extra IC
+    components like a serial to parallel shift register to complicate it any more.
+  </p>
+</mat-card>
