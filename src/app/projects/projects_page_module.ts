@@ -4,6 +4,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { Routes, RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { ProjectsPage } from "./projects_page";
+import {MatIconModule} from '@angular/material/icon';
 
 const routes: Routes = [
     {
@@ -23,6 +24,7 @@ export class ProjectsPageRoutingModule { }
         ProjectsPage,
     ],
     imports: [
+        MatIconModule,
         MatCardModule,
         CommonModule,
         MatTabsModule,

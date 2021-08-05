@@ -1,6 +1,10 @@
 mat-card {
   margin: 20px 10%;
 
+  mat-card-header {    
+    justify-content: space-between;
+  }
+
   > p {
     margin-left: 16px;
   }
