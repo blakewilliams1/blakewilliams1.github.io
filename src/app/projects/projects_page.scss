@@ -9,3 +9,8 @@ mat-card {
     margin-left: 16px;
   }
 }
+
+:host {
+  display: block;
+  padding-bottom: 20px;
+}
