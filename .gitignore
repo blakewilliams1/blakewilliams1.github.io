@@ -18,6 +18,7 @@ speed-measure-plugin*.json
 /.idea
 .project
 .classpath
+
 .c9/
 *.launch
 .settings/
@@ -30,6 +31,7 @@ speed-measure-plugin*.json
 !.vscode/launch.json
 !.vscode/extensions.json
 .history/*
+.editorconfig
 
 # misc
 /.sass-cache
