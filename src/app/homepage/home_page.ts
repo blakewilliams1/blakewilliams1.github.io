@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatTabGroup } from '@angular/material/tabs';
 import { Router } from '@angular/router';
+import { KonamiCodeService } from '../sharedcomponents/konamicodeservice/konami_code_service';
 
 @Component({
     selector: 'home-page',
@@ -35,8 +36,11 @@ export class HomePage {
         }
     }
 
-    constructor(private readonly router: Router) {
+    constructor(
+        private readonly router: Router,
+        private readonly konamiService: KonamiCodeService) {
         console.log('(͡ ͡° ͜ つ ͡͡°) nosey now, aren\'t we?')
+        konamiService.registerListener();
     }
 }
 
