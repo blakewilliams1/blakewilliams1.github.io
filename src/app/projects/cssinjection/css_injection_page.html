@@ -1,0 +1,63 @@
+<nav mat-tab-nav-bar>
+  <a mat-tab-link routerLink="/projects">Projects</a>
+  <a mat-tab-link routerLink="/">Home</a>
+  <a mat-tab-link routerLink="/about">About</a>
+</nav>
+
+<mat-card>
+  <mat-card-title>CSS Injection</mat-card-title>
+  <p class="disclaimer">DISCLAIMER: I do not own the chrome extension, know it's developer, or
+    have been paid to endorse it. My thoughts are my own.</p>
+  <p>
+    While ad blockers can make browsing the web a significantly different experience than without,
+    there is still a lot of content that I don't like seeing online. Not that there is anything
+    inherently wrong with the things I don't enjoy viewing, it's just my personal preferences. I thought
+    "gee, wouldn't it be great if there was a Chrome extension that could inject custom CSS rules you
+    create into websites of your choosing to hide things you don't want to see?" Sure enough, there are
+    several extensions made to do just that! I tried a few and found one that works well and has a nice UI.
+  </p>
+  <p>
+    <a href="https://chrome.google.com/webstore/detail/user-javascript-and-css/nbhcbdghjpllgmfilhnhkllmkecfmpld" target="_blank">
+      User JavaScript and CSS
+    </a>
+    is a great extension that I've been using to great effect. Here are a few of my favorite custom CSS rules
+    I've created for myself to make browsing certain websites more enjoyable. Here are a few of my
+    favorite custom CSS rules I've created for myself to make browsing certain websites more enjoyable. 
+  </p>
+
+  <h1>Twitter.com</h1>
+  <p>I don't want to see what the people I follow like and retweet. I want to see <i>their</i> content!!
+    Most of the retweets and likes from other people I see tend to be political, hot takes, or tiktok
+    reposts. I don't miss this spam for the most part.</p>
+    <pre><code [innerHTML]="twitterCss"></code></pre>
+
+  <h1>Pornhub.com</h1>
+  <p>I'm not a fan of 'step fantasy' porn, where the actors pretend to be related. I really don't get
+    this taboo appeal, but it's all over the platform. Sure you can set a Taste Profile if you have
+    even a free account, but this only blocks categorical content on the My Recommendations page.
+    Taste Profile doesn't apply when using the site in any other way than that.</p>
+    <pre><code [innerHTML]="pornhubCss"></code></pre>
+
+  <h1>Shortcomings</h1>
+  <p>This (and any CSS injector) is not without it's shortcomings. There are some things that it
+    can struggle with such as:</p>
+  <ul>
+    <li>
+      <b>High barrier to entry:</b>
+      The percent of people who know how to write CSS selectors is relatively small, all things considered.
+    </li>
+    <li>
+      <b>Easily broken when a website remodels:</b>
+      If a website overhauls itself, there is a good chance your selectors will break. These little
+      'hacks' usually are very dependent on the current iteration of the website. 
+    </li>
+    <li>
+      <b>Difficult to create well:</b>
+      Inspecting the DOM of most big name websites reveal a lot of generated elements, randomclass
+      names, and general obfuscation/minification. You rarely ever get so lucky as to find a &lt;div&gt;
+      with a human readable and obvious class name. I think the
+      <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:has" target="_blank">:has selector</a>
+      will significantly help with this once it lands (assuming it's reasonably performant).
+    </li>
+  </ul>
+</mat-card>
