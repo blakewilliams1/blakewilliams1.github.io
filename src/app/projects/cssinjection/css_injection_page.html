@@ -38,6 +38,10 @@
     Taste Profile doesn't apply when using the site in any other way than that.</p>
     <pre><code [innerHTML]="pornhubCss"></code></pre>
 
+  <h1>spanishdict.com</h1>
+  <p>Removes a modal that blocks the screen on page load</p>
+    <pre><code [innerHTML]="spanishDictCss"></code></pre>
+
   <h1>Shortcomings</h1>
   <p>This (and any CSS injector) is not without it's shortcomings. There are some things that it
     can struggle with such as:</p>
@@ -49,11 +53,11 @@
     <li>
       <b>Easily broken when a website remodels:</b>
       If a website overhauls itself, there is a good chance your selectors will break. These little
-      'hacks' usually are very dependent on the current iteration of the website. 
+      'hacks' usually are very dependent on the current iteration of the website's UI. 
     </li>
     <li>
       <b>Difficult to create well:</b>
-      Inspecting the DOM of most big name websites reveal a lot of generated elements, randomclass
+      Inspecting the DOM of most big name websites reveal a lot of generated elements, random class
       names, and general obfuscation/minification. You rarely ever get so lucky as to find a &lt;div&gt;
       with a human readable and obvious class name. I think the
       <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:has" target="_blank">:has selector</a>

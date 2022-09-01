@@ -30,6 +30,12 @@ export class CssInjectionPage {
   }
   `;
 
+  readonly spanishDictCss = `
+  /* Limited page view popup. */
+  .ReactModalPortal {
+    visibility: hidden;
+  }`;
+
   readonly twitterCss = `
   /**
    * Not functional till :has() selector is implemented.
