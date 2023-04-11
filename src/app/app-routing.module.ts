@@ -22,6 +22,10 @@ const routes: Routes = [
     loadChildren: () => import('./projects/cssinjection/css_injection_page_module').then(m => m.CssInjectionPageModule)
   },
   {
+    path: 'mauritania_trip',
+    loadChildren: () => import('./projects/mauritania_trip/mauritania_trip_page_module').then(m => m.MauritaniaTripPageModule)
+  },
+  {
     path: 'qr',
     loadChildren: () => import('./qr/qr_landing_page_module').then(m => m.QRLandingPageModule)
   },
