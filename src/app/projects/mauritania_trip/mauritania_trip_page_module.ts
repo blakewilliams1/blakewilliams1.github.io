@@ -4,7 +4,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import {ScrollingModule} from '@angular/cdk/scrolling';
 
 const routes: Routes = [
     {
@@ -26,7 +25,6 @@ export class MauritaniaTripPageRoutingModule { }
     imports: [
         CommonModule,
         MatTabsModule,
-        ScrollingModule,
         MauritaniaTripPageRoutingModule,
         MatCardModule,
     ],
