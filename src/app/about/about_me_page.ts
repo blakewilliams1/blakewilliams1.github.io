@@ -7,8 +7,13 @@ import { TimelineEvent } from 'src/app/sharedcomponents/verticaltimeline/vertica
     styleUrls: ['./about_me_page.scss']
 })
 export class AboutMePage {
-    
-    projectTimeline: TimelineEvent[] = [{
+    projectTimeline: TimelineEvent[] = [
+    {
+        date: new Date(1683484096000),
+        title: 'Senior Engineer',
+        content: `<p>Still at Google, I was promoted to L5 for my contributions to the AV/VR efforts
+        I'm part of. This is the crossover point at which you are considered a Senior Engineer.</p>`,
+    },{
         date: new Date(1625265780000),
         title: 'AR/VR work (Google)',
         content: `<p>Finally within the realm of what I consider to be a dream job, I'm now working
