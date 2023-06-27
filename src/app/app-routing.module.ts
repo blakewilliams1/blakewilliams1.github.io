@@ -26,6 +26,10 @@ const routes: Routes = [
     loadChildren: () => import('./projects/mauritania_trip/mauritania_trip_page_module').then(m => m.MauritaniaTripPageModule)
   },
   {
+    path: 'shasta',
+    loadChildren: () => import('./projects/shasta/shasta_page_module').then(m => m.ShastaTripPageModule)
+  },
+  {
     path: 'qr',
     loadChildren: () => import('./qr/qr_landing_page_module').then(m => m.QRLandingPageModule)
   },
