@@ -15,8 +15,8 @@ export class HomePage {
         {label: 'Typescript', percent: 80},
         {label: 'Javascript', percent: 80},
         {label: 'C++', percent: 70},
-        {label: 'Dart', percent: 40},
-        {label: 'Kotlin', percent: 30},
+        {label: 'Kotlin', percent: 40},
+        {label: 'Dart', percent: 30},
     ];
 
     // Gets a descriptive word to match the skill percentage.
