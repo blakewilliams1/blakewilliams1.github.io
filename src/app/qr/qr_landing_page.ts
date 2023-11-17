@@ -30,6 +30,7 @@ export class QRLandingPage {
   readonly CASH_APP_URL = 'https://cash.app.regrettispaghetti';
   readonly DISCORD_URL = 'https://discord.com/users/shadowslade6516';
   readonly TWITTER_URL = 'https://twitter.com/Shadow_slade/';
+  readonly BLUESKY_URL = 'https://bsky.app/profile/sladewolf.bsky.social';
   readonly VENMO_URL = 'https://venmo.com/code?user_id=1646046040031232265';
   readonly AR_VIEWER_URL = 'https://raw.githack.com/blakewilliams1/blakewilliams1.github.io/main/src/app/qr/ar_index.html';
   readonly AR_TRACKER_URL = 'https://raw.githack.com/blakewilliams1/blakewilliams1.github.io/main/src/app/qr/ar_tracking_tests.html';
