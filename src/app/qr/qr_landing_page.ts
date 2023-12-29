@@ -24,7 +24,7 @@ export class QRLandingPage {
     "https://raw.githubusercontent.com/blakewilliams1/blakewilliams1.github.io/main/src/app/qr/generic_files/";
   readonly URL_PREFIX = "https://"
   readonly FACEBOOK_URL = 'https://www.facebook.com/blake.williams.731135';
-  readonly TELEGRAM_URL = 'https://t.me/Shadowslade';
+  readonly TELEGRAM_URL = 'https://t.me/sladewolf';
   readonly WHATSAPP_URL = 'https://wa.me/17605606898';
   readonly PAYPAL_URL = 'https://paypal.me/shadowslade/';
   readonly CASH_APP_URL = 'https://cash.app.regrettispaghetti';
