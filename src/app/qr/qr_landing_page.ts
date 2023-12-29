@@ -41,6 +41,7 @@ export class QRLandingPage {
     'WHATSAPP_ACCOUNT',
     'FACEBOOK_ACCOUNT',
     'TWITTER_ACCOUNT',
+    'BLUESKY_ACCOUNT',
     'DISCORD_ACCOUNT',
     'PAYPAL_REQUEST',
     'VENMO_ACCOUNT',
@@ -120,6 +121,9 @@ export class QRLandingPage {
       case 'FACEBOOK_ACCOUNT':
         computedUrl = this.FACEBOOK_URL;
         break;
+      case 'BLUESKY_ACCOUNT':
+        computedUrl = this.BLUESKY_URL;
+        break;
       case 'TWITTER_ACCOUNT':
         computedUrl = this.TWITTER_URL;
         break;
@@ -153,6 +157,7 @@ export class QRLandingPage {
       default: break;
     }
 
+    // If the computed URL is not null, redirect the user to it in the current window.
     if (!!computedUrl) {
       window.location.href = computedUrl;
     }
@@ -187,6 +192,7 @@ type ActionType =
   | 'WHATSAPP_ACCOUNT'
   | 'FACEBOOK_ACCOUNT'
   | 'TWITTER_ACCOUNT'
+  | 'BLUESKY_ACCOUNT'
   | 'DISCORD_ACCOUNT'
   | 'GENERIC_FILE_DOWNLOAD'
   | 'VENMO_ACCOUNT'
