@@ -15,7 +15,7 @@ const routes: Routes = [
     loadChildren: () => import('./projects/projects_page_module').then(m => m.ProjectsPageModule)
   },
   {
-    path: 'projects/cssinjection',
+    path: 'cssinjection',
     loadChildren: () => import('./projects/cssinjection/css_injection_page_module').then(m => m.CssInjectionPageModule)
   },
   {

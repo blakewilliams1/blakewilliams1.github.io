@@ -27,8 +27,7 @@ export class CssInjectionPage {
   a[data-title~="stepdaughter" i],
   a[data-title~="stepcousin" i] {
     visibility: hidden;
-  }
-  `;
+  }`;
 
   readonly spanishDictCss = `
   /* Limited page view popup. */
@@ -37,12 +36,27 @@ export class CssInjectionPage {
   }`;
 
   readonly twitterCss = `
-  /**
-   * Not functional till :has() selector is implemented.
-   * Very har to make selector for twitter :(
-   */
   article:has([data-testid="socialContext"]) {
     display: none;
+  }`;
+
+  readonly youtubeCss = `
+  ytd-emergency-onebox-renderer {
+    display: none;
   }
-  `;
+  
+  /* Rows of youtube shorts on the search page */
+  ytd-reel-shelf-renderer {
+    display: none !important;
+  }
+  
+  /* Rows of youtube shorts on the home page */
+  div#dismissible:has(span#title) {
+    display: none;
+  }
+  
+  /* Misc bullshit messaging */
+  .ytd-statement-banner-renderer {
+      display: none;
+  }`;
 }

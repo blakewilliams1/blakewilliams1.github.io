@@ -4,8 +4,9 @@
   <a mat-tab-link routerLink="/about">About</a>
 </nav>
 
+<mat-card-title>CSS Injection</mat-card-title>
+
 <mat-card>
-  <mat-card-title>CSS Injection</mat-card-title>
   <p class="disclaimer">DISCLAIMER: I do not own the chrome extension, know it's developer, or
     have been paid to endorse it. My thoughts are my own.</p>
   <p>
@@ -25,6 +26,15 @@
     favorite custom CSS rules I've created for myself to make browsing certain websites more enjoyable. 
   </p>
 
+  <h1>Youtube.com</h1>
+  <p>I really don't like Youtube Shorts, and the site force-feeds you them constantly. There is no way to
+    disable Shorts as <a href="https://blog.logrocket.com/product-management/why-youtube-created-shorts/">the
+    company seems pressured to compete with Tiktok.</a> I don't think it encourages healthy, intentional, or mindful viewing
+    and it feels more like brainrot when you viewing Shorts, as if the Tiktok content model is something to
+    aspire to copy. These injections will hide them from your view.</p>
+    <pre><code [innerHTML]="youtubeCss"></code></pre>
+
+
   <h1>Twitter.com</h1>
   <p>I don't want to see what the people I follow like and retweet. I want to see <i>their</i> content!!
     Most of the retweets and likes from other people I see tend to be political, hot takes, or tiktok
@@ -38,8 +48,9 @@
     Taste Profile doesn't apply when using the site in any other way than that.</p>
     <pre><code [innerHTML]="pornhubCss"></code></pre>
 
-  <h1>spanishdict.com</h1>
-  <p>Removes a modal that blocks the screen on page load</p>
+  <h1>Spanishdict.com</h1>
+  <p>This is a great website for viewing verb conjugations if you're learning spanish. This removes a modal
+    that blocks the screen on page load</p>
     <pre><code [innerHTML]="spanishDictCss"></code></pre>
 
   <h1>Shortcomings</h1>
