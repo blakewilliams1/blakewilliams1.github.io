@@ -1,17 +1,18 @@
+<nav mat-tab-nav-bar>
+    <a mat-tab-link routerLink="/projects">Projects</a>
+    <a mat-tab-link routerLink="/">Home</a>
+    <a mat-tab-link routerLink="/about">About</a>
+</nav>
+  
 <div class="page-container">
+    <mat-card>
     <h1>About the QR Tattoo</h1>
-
-    <mat-card> {{description}} </mat-card>
-
-    <mat-accordion>
-        <mat-expansion-panel *ngFor="let faq of faqs">
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    {{faq.question}}
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div class="header-description-divider"></div>
-            <div [innerHtml]="faq.answer"></div>
-        </mat-expansion-panel>
-    </mat-accordion>
+    <!-- <img src="https://i.imgur.com/r9Nmh7d.jpg"> -->
+        <span>{{description}}</span>
+        <div *ngFor="let faq of faqs">
+            <div class="divider"></div>
+            <h2>{{faq.question}}</h2>
+            <div>{{faq.answer}}</div>
+        </div>
+    </mat-card>
 </div>

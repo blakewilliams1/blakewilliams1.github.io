@@ -6,6 +6,16 @@ mat-card {
     margin-bottom: 20px;
 }
 
+h2 {
+    margin: 0;
+}
+
+.divider {
+    border-top: 1px solid white;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
 .header-description-divider {
     background-image: linear-gradient(to right, #f81d00 0%, #f9d423 100%);height: 1px;
     left: -24px;
