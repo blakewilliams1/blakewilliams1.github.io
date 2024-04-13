@@ -27,18 +27,21 @@ export class CssInjectionPage {
   a[data-title~="stepdaughter" i],
   a[data-title~="stepcousin" i] {
     visibility: hidden;
-  }`;
+  }
+  `;
 
   readonly spanishDictCss = `
   /* Limited page view popup. */
   .ReactModalPortal {
     visibility: hidden;
-  }`;
+  }
+  `;
 
   readonly twitterCss = `
   article:has([data-testid="socialContext"]) {
     display: none;
-  }`;
+  }
+  `;
 
   readonly youtubeCss = `
   ytd-emergency-onebox-renderer {
@@ -58,5 +61,6 @@ export class CssInjectionPage {
   /* Misc bullshit messaging */
   .ytd-statement-banner-renderer {
       display: none;
-  }`;
+  }
+  `;
 }

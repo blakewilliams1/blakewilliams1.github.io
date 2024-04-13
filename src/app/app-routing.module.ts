@@ -19,6 +19,10 @@ const routes: Routes = [
     loadChildren: () => import('./projects/cssinjection/css_injection_page_module').then(m => m.CssInjectionPageModule)
   },
   {
+    path: 'fursuit',
+    loadChildren: () => import('./projects/fursuit/fursuit_page_module').then(m => m.FursuitPageModule)
+  },
+  {
     path: 'mauritania_trip',
     loadChildren: () => import('./projects/mauritania_trip/mauritania_trip_page_module').then(m => m.MauritaniaTripPageModule)
   },

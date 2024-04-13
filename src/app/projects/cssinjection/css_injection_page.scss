@@ -2,10 +2,19 @@ mat-card, mat-card-title {
   margin: 20px 5%;
 }
 
+mat-card-title {
+  margin-top: 20px !important;
+}
+
 .disclaimer {
   display: block;
   margin-bottom: 20px;
   font-size: 1.1rem;
+}
+
+.code-container {
+   overflow-x: auto;
+   width: auto;
 }
 
 h1 {
