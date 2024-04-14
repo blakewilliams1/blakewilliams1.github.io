@@ -23,6 +23,10 @@ const routes: Routes = [
     loadChildren: () => import('./projects/fursuit/fursuit_page_module').then(m => m.FursuitPageModule)
   },
   {
+    path: 'burning_man_2023',
+    loadChildren: () => import('./projects/burning_man_2023/burning_man_2023_page_module').then(m => m.BurningMan2023PageModule)
+  },
+  {
     path: 'mauritania_trip',
     loadChildren: () => import('./projects/mauritania_trip/mauritania_trip_page_module').then(m => m.MauritaniaTripPageModule)
   },

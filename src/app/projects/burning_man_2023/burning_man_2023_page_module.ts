@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
-import { FursuitPage } from "./fursuit_page";
+import { BurningMan2023Page } from "./burning_man_2023_page";
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { MatIconModule } from '@angular/material/icon';
 
 const routes: Routes = [
     {
         path: '',
-        component: FursuitPage
+        component: BurningMan2023Page
     }
 ];
 
@@ -17,19 +16,18 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class FursuitPageRoutingModule { }
+export class BurningMan2023PageRoutingModule { }
 
 @NgModule({
     declarations: [
-      FursuitPage,
+      BurningMan2023Page,
     ],
     imports: [
         CommonModule,
         MatTabsModule,
-        FursuitPageRoutingModule,
+        BurningMan2023PageRoutingModule,
         MatCardModule,
-        MatIconModule,
     ],
-    exports: [FursuitPage],
+    exports: [BurningMan2023Page],
 })
-export class FursuitPageModule { }
+export class BurningMan2023PageModule { }
