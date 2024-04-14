@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { TimelineEvent } from 'src/app/sharedcomponents/verticaltimeline/vertical_timeline';
 
 @Component({
-    selector: 'about-me-page',
-    templateUrl: './about_me_page.html',
-    styleUrls: ['./about_me_page.scss']
+    selector: 'career-page',
+    templateUrl: './career_page.html',
+    styleUrls: ['./career_page.scss']
 })
-export class AboutMePage {
+export class CareerPage {
     projectTimeline: TimelineEvent[] = [
     {
         date: new Date(1683484096000),

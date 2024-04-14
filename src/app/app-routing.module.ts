@@ -7,8 +7,8 @@ const routes: Routes = [
     loadChildren: () => import('./homepage/home_page_module').then(m => m.HomePageModule)
   },
   {
-    path: 'about',
-    loadChildren: () => import('./about/about_me_page_module').then(m => m.AboutMePageModule)
+    path: 'career',
+    loadChildren: () => import('./career/career_page_module').then(m => m.CareerPageModule)
   },
   {
     path: 'projects',

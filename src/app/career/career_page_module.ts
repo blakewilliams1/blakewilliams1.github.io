@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { AboutMePage } from "./about_me_page";
+import { CareerPage } from "./career_page";
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
@@ -9,7 +9,7 @@ import { TimelineComponentModule } from 'src/app/sharedcomponents/verticaltimeli
 const routes: Routes = [
     {
         path: '',
-        component: AboutMePage
+        component: CareerPage
     }
 ];
 
@@ -17,19 +17,19 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class AboutMeRoutingModule { }
+export class CareerRoutingModule { }
 
 @NgModule({
     declarations: [
-        AboutMePage,
+        CareerPage,
     ],
     imports: [
         CommonModule,
         TimelineComponentModule,
         MatTabsModule,
-        AboutMeRoutingModule,
+        CareerRoutingModule,
         MatCardModule,
     ],
-    exports: [AboutMePage],
+    exports: [CareerPage],
 })
-export class AboutMePageModule { }
+export class CareerPageModule { }
