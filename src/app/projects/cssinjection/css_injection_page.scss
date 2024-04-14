@@ -13,17 +13,18 @@ mat-card-title {
 }
 
 .code-container {
-   overflow-x: auto;
-   width: auto;
+  max-width: fit-content;
+  overflow-x: auto;
+  width: auto;
 }
 
 h1 {
   margin-top: 40px;
 }
 
-pre {  
-  width: fit-content;
+pre {
   background: #303030;
-  padding-right: 16px;
   border-radius: 8px;
+  padding-right: 16px;
+  width: fit-content;
 }
