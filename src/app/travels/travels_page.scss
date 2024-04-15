@@ -1,0 +1,16 @@
+mat-card {
+  margin: 20px 5%;
+
+  mat-card-header {    
+    justify-content: space-between;
+  }
+
+  > p {
+    margin-left: 16px;
+  }
+}
+
+:host {
+  display: block;
+  padding-bottom: 20px;
+}

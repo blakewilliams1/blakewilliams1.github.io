@@ -15,6 +15,10 @@ const routes: Routes = [
     loadChildren: () => import('./projects/projects_page_module').then(m => m.ProjectsPageModule)
   },
   {
+    path: 'travels',
+    loadChildren: () => import('./travels/travels_page_module').then(m => m.TravelsPageModule)
+  },
+  {
     path: 'cssinjection',
     loadChildren: () => import('./projects/cssinjection/css_injection_page_module').then(m => m.CssInjectionPageModule)
   },
@@ -24,15 +28,15 @@ const routes: Routes = [
   },
   {
     path: 'burning_man_2023',
-    loadChildren: () => import('./projects/burning_man_2023/burning_man_2023_page_module').then(m => m.BurningMan2023PageModule)
+    loadChildren: () => import('./travels/burning_man_2023/burning_man_2023_page_module').then(m => m.BurningMan2023PageModule)
   },
   {
     path: 'mauritania_trip',
-    loadChildren: () => import('./projects/mauritania_trip/mauritania_trip_page_module').then(m => m.MauritaniaTripPageModule)
+    loadChildren: () => import('./travels/mauritania_trip/mauritania_trip_page_module').then(m => m.MauritaniaTripPageModule)
   },
   {
     path: 'shasta',
-    loadChildren: () => import('./projects/shasta/shasta_page_module').then(m => m.ShastaTripPageModule)
+    loadChildren: () => import('./travels/shasta/shasta_page_module').then(m => m.ShastaTripPageModule)
   },
   {
     path: 'qr',
