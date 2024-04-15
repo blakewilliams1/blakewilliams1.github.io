@@ -23,10 +23,6 @@ const routes: Routes = [
     loadChildren: () => import('./projects/cssinjection/css_injection_page_module').then(m => m.CssInjectionPageModule)
   },
   {
-    path: 'fursuit',
-    loadChildren: () => import('./projects/fursuit/fursuit_page_module').then(m => m.FursuitPageModule)
-  },
-  {
     path: 'burning_man_2023',
     loadChildren: () => import('./travels/burning_man_2023/burning_man_2023_page_module').then(m => m.BurningMan2023PageModule)
   },
