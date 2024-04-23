@@ -15,6 +15,10 @@ const routes: Routes = [
     loadChildren: () => import('./projects/projects_page_module').then(m => m.ProjectsPageModule)
   },
   {
+    path: 'fursuit',
+    loadChildren: () => import('./projects/fursuit/fursuit_page_module').then(m => m.FursuitPageModule)
+  },
+  {
     path: 'travels',
     loadChildren: () => import('./travels/travels_page_module').then(m => m.TravelsPageModule)
   },
