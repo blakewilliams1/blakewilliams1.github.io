@@ -31,7 +31,7 @@ const routes: Routes = [
     loadChildren: () => import('./travels/burning_man_2023/burning_man_2023_page_module').then(m => m.BurningMan2023PageModule)
   },
   {
-    path: 'mauritania_trip',
+    path: 'mauritania-trip',
     loadChildren: () => import('./travels/mauritania_trip/mauritania_trip_page_module').then(m => m.MauritaniaTripPageModule)
   },
   {
@@ -54,6 +54,11 @@ const routes: Routes = [
     path: 'qr/about',
     loadChildren: () => import('./qr/aboutqr/about_qr_page_module').then(m => m.AboutQrPageModule)
   },
+  // Invalid routes (404) should redirect back to home page.
+  {
+    path: '**', pathMatch: 'full',  
+    redirectTo: '',
+  }, 
 ];
 
 @NgModule({
