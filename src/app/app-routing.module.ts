@@ -23,11 +23,11 @@ const routes: Routes = [
     loadChildren: () => import('./travels/travels_page_module').then(m => m.TravelsPageModule)
   },
   {
-    path: 'cssinjection',
+    path: 'css-injection',
     loadChildren: () => import('./projects/cssinjection/css_injection_page_module').then(m => m.CssInjectionPageModule)
   },
   {
-    path: 'burning_man_2023',
+    path: 'burning-man-2023',
     loadChildren: () => import('./travels/burning_man_2023/burning_man_2023_page_module').then(m => m.BurningMan2023PageModule)
   },
   {
@@ -36,6 +36,10 @@ const routes: Routes = [
   },
   {
     path: 'road_to_ushuaia',
+    redirectTo: 'road-to-ushuaia',
+  },
+  {
+    path: 'road-to-ushuaia',
     loadChildren: () => import('./travels/road_to_ushuaia/road_to_ushuaia_page_module').then(m => m.RoadToUshuaiaPageModule)
   },
   {
