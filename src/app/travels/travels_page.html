@@ -5,11 +5,10 @@
   <a mat-tab-link routerLink="/career">Career</a>
 </nav>
 
-<mat-card>
+<mat-card routerLink="/road-to-ushuaia">
   <mat-card-header>
     <mat-card-title>Motorcycle ride from San Francisco to the Ushuaia, Argentina (Upcoming)</mat-card-title>
     <mat-card-subtitle>Don't get got</mat-card-subtitle>
-    <a href="/road-to-ushuaia"><mat-icon>launch</mat-icon></a>
   </mat-card-header>
   <p>
     This July, I'm planning to ride my motorcycle on the largest expedition I've ever done; a 6 month
@@ -17,7 +16,11 @@
     accomplish this one.
   </p>
 </mat-card>
-  <!-- <mat-card-header>
+
+<!-- 
+  <a href="/europe_trip_2023">
+  </mat-card>
+  <mat-card-header>
     <mat-card-title>Europe Trip, Fall 2023</mat-card-title>
     <mat-card-subtitle>Ein voller liter!</mat-card-subtitle>
     <a href="/europe_trip_2023"><mat-icon>launch</mat-icon></a>
@@ -27,12 +30,13 @@
     in Poland, so why not make a trip out of it if I'm already going that far? My trip was Netherlands
     -> Germany -> Poland -> Czech Republic
   </p>
-</mat-card> -->
-<mat-card>
+</mat-card>
+</a> -->
+
+<mat-card routerLink="/burning-man-2023">
   <mat-card-header>
     <mat-card-title>Burning Man 2023</mat-card-title>
     <mat-card-subtitle>Playing in the mud</mat-card-subtitle>
-    <a href="/burning-man-2023"><mat-icon>launch</mat-icon></a>
   </mat-card-header>
   <p>
     For many years I hadn't thought much about Burning Man; I'd met a handful of people that made
@@ -41,51 +45,54 @@
     a spot at a camp I took it and went to see what the hype was about.
   </p>
 </mat-card>
-<mat-card>
+
+<mat-card routerLink="/shasta">
   <mat-card-header>
     <mat-card-title>Climbing Mt. Shasta</mat-card-title>
     <mat-card-subtitle>Searching for Telos (not really)</mat-card-subtitle>
-    <a href="/shasta"><mat-icon>launch</mat-icon></a>
   </mat-card-header>
   <p>
     I solo climbed Mt. Shasta over 2 days, ascenting the Avalanche Gulch route and taking my snowboarding gear with me
     to backcountry ride back down after summitting
   </p>
 </mat-card>
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Hiking the Sahara Desert</mat-card-title>
-    <mat-card-subtitle>no, we didn't ride the camels</mat-card-subtitle>
-    <a href="/mauritania-trip"><mat-icon>launch</mat-icon></a>
-  </mat-card-header>
-  <p>
-    In the early spring of 2023 I solo traveled to Mauritania, west Africa to hike through a portion
-    of the Sahara desert over 6 and a half days, and hop the worlds longest freight train.
-  </p>
-</mat-card>
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Motorcycle ride from San Francisco to the Arctic Ocean</mat-card-title>
-    <mat-card-subtitle>About as remote as you can get</mat-card-subtitle>
-    <a href="https://www.advrider.com/f/threads/san-francisco-to-tuktoyaktuk-2022.1559749/" target="_blank"><mat-icon>launch</mat-icon></a>
-  </mat-card-header>
-  <p>
-    I rode my motorcycle from the SF Bay Area up the California coast, Orgeon coast, Washington
-    coast, took a ferry to Vancouver island, took another ferry back to Prince Rupert BC, rode to
-    the Yukon, then rode the Dempster Highway to the town of Tuktoyaktuk, NWT Canada to see the
-    Arctic Ocean.
-  </p>
-</mat-card>
 
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Motorcycle ride along the Pony Express</mat-card-title>
-    <mat-card-subtitle>giddy up</mat-card-subtitle>
-    <a href="https://www.advrider.com/f/threads/san-jose-california-park-city-utah-via-pony-express.1495742/" target="_blank"><mat-icon>launch</mat-icon></a>
-  </mat-card-header>
-  <p>
-    I rode my motorcycle long the original overland trail that is the Pony Express, from Sacramento to
-    Salt Lake City Utah. This covered ~700 miles of dirt road and many stops along the way at historic
-    stations used by the original Pony Express business.
-  </p>
-</mat-card>
+  <mat-card routerLink="/mauritania-trip">
+    <mat-card-header>
+      <mat-card-title>Hiking the Sahara Desert</mat-card-title>
+      <mat-card-subtitle>no, we didn't ride the camels</mat-card-subtitle>
+    </mat-card-header>
+    <p>
+      In the early spring of 2023 I solo traveled to Mauritania, west Africa to hike through a portion
+      of the Sahara desert over 6 and a half days, and hop the worlds longest freight train.
+    </p>
+  </mat-card>
+
+<a href="https://www.advrider.com/f/threads/san-francisco-to-tuktoyaktuk-2022.1559749/" target="_blank" class="no-underline">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Motorcycle ride from San Francisco to the Arctic Ocean</mat-card-title>
+      <mat-card-subtitle>About as remote as you can get</mat-card-subtitle>
+    </mat-card-header>
+    <p>
+      I rode my motorcycle from the SF Bay Area up the California coast, Orgeon coast, Washington
+      coast, took a ferry to Vancouver island, took another ferry back to Prince Rupert BC, rode to
+      the Yukon, then rode the Dempster Highway to the town of Tuktoyaktuk, NWT Canada to see the
+      Arctic Ocean.
+    </p>
+  </mat-card>
+</a>
+
+<a href="https://www.advrider.com/f/threads/san-jose-california-park-city-utah-via-pony-express.1495742/" target="_blank" class="no-underline">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Motorcycle ride along the Pony Express</mat-card-title>
+      <mat-card-subtitle>giddy up</mat-card-subtitle>
+    </mat-card-header>
+    <p>
+      I rode my motorcycle long the original overland trail that is the Pony Express, from Sacramento to
+      Salt Lake City Utah. This covered ~700 miles of dirt road and many stops along the way at historic
+      stations used by the original Pony Express business.
+    </p>
+  </mat-card>
+</a>
