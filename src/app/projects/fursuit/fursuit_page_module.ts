@@ -4,7 +4,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { MatIconModule } from '@angular/material/icon';
 
 const routes: Routes = [
     {
@@ -28,7 +27,6 @@ export class FursuitPageRoutingModule { }
         MatTabsModule,
         FursuitPageRoutingModule,
         MatCardModule,
-        MatIconModule,
     ],
     exports: [FursuitPage],
 })
