@@ -35,10 +35,6 @@ const routes: Routes = [
     loadChildren: () => import('./travels/mauritania_trip/mauritania_trip_page_module').then(m => m.MauritaniaTripPageModule)
   },
   {
-    path: 'road_to_ushuaia',
-    redirectTo: 'road-to-ushuaia',
-  },
-  {
     path: 'road-to-ushuaia',
     loadChildren: () => import('./travels/road_to_ushuaia/road_to_ushuaia_page_module').then(m => m.RoadToUshuaiaPageModule)
   },
