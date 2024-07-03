@@ -1,14 +1,16 @@
 mat-card {
-  margin: 20px 5%;
   cursor: pointer;
-
-  mat-card-header {    
-    justify-content: space-between;
-  }
+  margin: 20px 5%;
+  max-width: 800px;
 
   > p {
     margin-left: 16px;
   }
+}
+
+.page-container {
+  margin: 0 auto;
+  width: fit-content;
 }
 
 :host {
