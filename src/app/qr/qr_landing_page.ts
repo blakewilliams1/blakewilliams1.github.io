@@ -162,16 +162,6 @@ export class QRLandingPage {
       window.location.href = computedUrl;
     }
   }
-
-  calculateAge() {
-    const birthday = new Date();
-    birthday.setMonth(7);
-    birthday.setDate(26);
-    birthday.setFullYear(1994);
-    const ageDifMs = Date.now() - birthday.getTime();
-    const ageDate = new Date(ageDifMs);
-    return Math.abs(ageDate.getUTCFullYear() - 1970);
-  }
 }
 
 export interface ConfigResponse {
