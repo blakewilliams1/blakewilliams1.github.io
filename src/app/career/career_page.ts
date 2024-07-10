@@ -25,7 +25,7 @@ export class CareerPage {
         content: `<p>After 2 long years of working on the Maps project, I left the team for the next
         opportunity at the company. I joined the Movies and TV division of Google Play to do a very
         similar subject of work but with a new goal. Similar to the work done for Maps where there
-        was a special area dedicated to techincal poeple to upload data to Google (the transit data)
+        was a special area dedicated to technical people to upload data to Google (the transit data)
         that improved the product, Google Play has a special section dedicated to movie studios to
         upload movies, TV shows, and other assets for them.</p>
         <p>For example, someone at Warner Bros could potentially log in to upload The Joker when it
@@ -39,15 +39,15 @@ export class CareerPage {
         of Google Maps accessible only for transit operators, AKA the people who determine the routes
         and timetables of any given cities public transit system. Through this portal I was in charge
         of, they upload data to Google about GPS locations of where their busses stop, timetables of
-        when that happen, info about road closures for contruction/events, etc... This is done for
+        when that happen, info about road closures for construction/events, etc... This is done for
         <b>ALL</b> forms of public transportation from buses to trains to subways and everything in
         between. <b>Nearly 100% of all public transit data flows through this tool for use by
         Maps route calculation engines</b></p>
         <p>Although this tool already existed when I started on the project, it had organically grown
-        since the inception of Google Maps into a 'messy' and unoptimal experience for users. The
+        since the inception of Google Maps into a 'messy' and non-optimal experience for users. The
         scope, use cases, and features of Maps had drastically changed but this crucial tool was stuck
         in the past. I was responsible with redesigning it from scratch (but keeping existing data
-            storeage layers intact) and had the help of 3 other engineers to do it.</p>`,
+            storage layers intact) and had the help of 3 other engineers to do it.</p>`,
     },{
         date: new Date(1475448180000),
         title: 'Joining Google',
@@ -61,7 +61,7 @@ export class CareerPage {
         title: 'Graduating UC Santa Cruz',
         content: `After 4 years, I graduated from UC Santa Cruz with a degree in "Computer Science
         with Emphasis in Game Design" which is a fancy way of saying CS degree where all my upper
-        division classes were geared towards someone expecting to joing specifically the video games
+        division classes were geared towards someone expecting to joining specifically the video games
         industry after schooling.`,
     }
 ];
