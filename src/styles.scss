@@ -68,3 +68,11 @@ nav {
     no-repeat; 
   background-size:100% 1px ;
 }
+
+// For changing the text highlighting color when selecting text.
+::selection {
+  background: #151515; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #151515; /* Gecko Browsers */
+}

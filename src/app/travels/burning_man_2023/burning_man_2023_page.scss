@@ -2,7 +2,7 @@ img {
   border-radius: 3px;
   margin: 1em 0;
   max-width: 100%;
-  min-height: 100px;
+  min-height: 130px;
 }
 
 .divider {
@@ -16,5 +16,6 @@ mat-card {
 
 .youtube-player {
   aspect-ratio: 16 / 9;
+  margin-bottom: 1em;
   width: 100%;
 }
