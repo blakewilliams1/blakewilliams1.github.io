@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://blakewilliams.org/sitemap.xml

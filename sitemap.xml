@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <!-- Home Page -->
+  <url>
+    <loc>https://blakewilliams.org/</loc>
+    <lastmod>2024-11-19</lastmod>
+    <priority>1.00</priority>
+  </url>
+
+  <!-- Projects Page -->
+  <url>
+    <loc>https://blakewilliams.org/projects</loc>
+    <lastmod>2024-11-19</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Travels Page -->
+  <url>
+    <loc>https://blakewilliams.org/travels</loc>
+    <lastmod>2024-11-19</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Career Page -->
+  <url>
+    <loc>https://blakewilliams.org/career</loc>
+    <lastmod>2024-11-19</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+</urlset>
