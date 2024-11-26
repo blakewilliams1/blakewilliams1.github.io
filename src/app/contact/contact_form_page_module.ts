@@ -3,6 +3,7 @@ import { ContactFormPage } from "./contact_form_page";
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import {MatButtonModule} from '@angular/material/button';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import {MatInputModule} from '@angular/material/input'
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -34,6 +35,7 @@ export class ContactFormPageRoutingModule { }
         MatButtonModule,
         ReactiveFormsModule,
         MatFormFieldModule,
+        MatProgressSpinnerModule,
         ContactFormPageRoutingModule,
         MatCardModule,
     ],

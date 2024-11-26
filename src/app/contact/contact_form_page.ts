@@ -7,6 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./contact_form_page.scss']
 })
 export class ContactFormPage {
+  formIsSubmitting = false;
   formSubmittedSuccessfully = false;
   readonly nameField = new FormControl('', [Validators.required]);
   readonly emailField = new FormControl('', [Validators.required, Validators.email]);
@@ -33,6 +34,7 @@ export class ContactFormPage {
     const jsonBody = JSON.stringify(object);
 
     // Send the POST with contents of the form and act on the response.
+    this.formIsSubmitting = true;
     fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: {
@@ -42,6 +44,7 @@ export class ContactFormPage {
       body: jsonBody
   })
   .then(async (response) => {
+    this.formIsSubmitting = false;
       let json = await response.json();
       if (response.status == 200) {
           this.formSubmittedSuccessfully = true;
@@ -51,6 +54,7 @@ export class ContactFormPage {
       }
   })
   .catch(error => {
+      this.formIsSubmitting = false;
       console.log('error submitting form: ');
       console.log(error);
   });
