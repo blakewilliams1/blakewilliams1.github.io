@@ -1,0 +1,44 @@
+<nav mat-tab-nav-bar>
+  <a mat-tab-link routerLink="/">Home</a>
+  <a mat-tab-link routerLink="/travels">Travels</a>
+  <a mat-tab-link routerLink="/projects">Projects</a>
+  <a mat-tab-link routerLink="/career">Career</a>
+</nav>
+
+<div class="page-container">
+  <mat-card *ngIf="!formSubmittedSuccessfully">
+    <h1 style="text-align: center">Contact Form</h1>
+    <div class="divider"></div>
+    <p>This form will send me an email (not posting my email address publicly reduces it getting scraped by bots). I'll respond to you asap!</p>
+
+    <form (ngSubmit)="onSubmit()" [formGroup]="contactForm" >
+        <mat-form-field required class="short-field" appearance="outline">
+          <mat-label class="form-label">Name</mat-label>
+          <input matInput formControlName="name" class="form-input" placeholder="Your name" type="text" />
+          <mat-error *ngIf="nameField.invalid">Name is required</mat-error>
+        </mat-form-field>
+        <mat-form-field required class="short-field" appearance="outline">
+          <mat-label class="form-label">Email</mat-label>
+          <input matInput formControlName="email" class="form-input" placeholder="Your email" type="email" />
+          <mat-error *ngIf="emailField.invalid">Not a valid email address</mat-error>
+        </mat-form-field>
+        <mat-form-field class="short-field" appearance="outline">
+          <mat-label>Subject</mat-label>
+          <input matInput formControlName="subject" type="text" />
+          <mat-error *ngIf="subjectField.invalid">Subject title is required</mat-error>
+        </mat-form-field>
+        <mat-form-field required appearance="outline">
+          <mat-label class="form-label">Message</mat-label>
+          <textarea matInput formControlName="message" placeholder="Your message"></textarea>
+          <mat-error *ngIf="messageField.invalid">Message must not be empty</mat-error>
+        </mat-form-field>
+      <button mat-button type="submit" [disabled]="contactForm.invalid">Send Email</button>
+    </form>
+
+  </mat-card>
+
+  
+  <mat-card *ngIf="formSubmittedSuccessfully">
+    <p>Form submitted successfully! Thank you for reaching out to me :)</p>
+  </mat-card>
+</div>

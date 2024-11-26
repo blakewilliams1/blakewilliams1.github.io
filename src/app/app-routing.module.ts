@@ -50,6 +50,10 @@ const routes: Routes = [
     path: 'qr/about',
     loadChildren: () => import('./qr/aboutqr/about_qr_page_module').then(m => m.AboutQrPageModule)
   },
+  {
+    path: 'contact',
+    loadChildren: () => import('./contact/contact_form_page_module').then(m => m.ContactFormPageModule)
+  },
   // Invalid routes (404) should redirect back to home page.
   {
     path: '**', pathMatch: 'full',  

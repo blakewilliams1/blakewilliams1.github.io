@@ -1,0 +1,31 @@
+.divider {
+  border-top: 1px solid white;
+  margin-bottom: 1em;
+}
+
+mat-card {
+  margin: 20px 5%;
+  max-width: 800px;
+}
+
+.page-container {
+  margin: 0 auto;
+  width: fit-content;
+}
+
+p {
+  margin-bottom: 2em;
+}
+
+mat-form-field {
+  display: block;
+  margin: 1em 0;
+}
+
+.short-field {
+  width: 66%;
+}
+
+textarea {
+  min-height: 160px;
+}
