@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
+import { ImageResizerDirectiveModule } from 'src/app/sharedcomponents/imageresizerdirective/image_resizer_directive_module';
 
 const routes: Routes = [
     {
@@ -26,6 +27,7 @@ export class ShastaPageRoutingModule { }
         CommonModule,
         MatTabsModule,
         ShastaPageRoutingModule,
+        ImageResizerDirectiveModule,
         MatCardModule,
     ],
     exports: [ShastaTripPage],
