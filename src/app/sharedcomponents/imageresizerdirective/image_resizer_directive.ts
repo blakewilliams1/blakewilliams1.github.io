@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Input} from '@angular/core';
+import {Directive, ElementRef, HostListener, Input} from '@angular/core';
 @Directive({
   selector: '[imgurId]',
 })
@@ -25,16 +25,35 @@ export class ImageResizerDirective {
   // This is held as a class member because it's acquired in the constructor but cannot be used
   // before ngOnInit is ran.
   private readonly el: ElementRef;
+  // Keeps track of the last calculated img size suffix. This helps ensure that on window size
+  // change we are not making excessive calls to change the image src attribute. 
+  private lastCalculatedSuffix: string | undefined = undefined;
 
   constructor(private element: ElementRef) {
     this.el = element;
   }
 
   ngOnInit() {
+    this.calculateSrcAttribute();
+  }
+
+  // Recalculate the needed suffix for the imgur images, then apply the change if it's different than before.
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.calculateSrcAttribute();
+  }
+
+  private calculateSrcAttribute() {
     // Determine the amount of pixels that the browser is going to allocate to this image.
     const renderedWidth = this.el.nativeElement.width;
     // Obtain the proper imgur suffix for correct thumbnail size.
     const chosenSuffix = this.chooseSuffix(renderedWidth);
+    // If we just recalculated the suffix to be the same as it just was, don't bother changing the
+    // image src attribute.
+    if (this.lastCalculatedSuffix != undefined && chosenSuffix == this.lastCalculatedSuffix) {
+      return;
+    }
+    this.lastCalculatedSuffix = chosenSuffix;
 
     // Construct the full URL of the image at the desired resolution.
     const imgurUrl = `${this.imgurUrlPattern}${this.imgurId}${chosenSuffix}.jpg`;
