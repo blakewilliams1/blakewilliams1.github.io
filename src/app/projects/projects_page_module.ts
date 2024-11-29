@@ -4,6 +4,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { Routes, RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { ProjectsPage } from "./projects_page";
+import { ImageResizerDirectiveModule } from 'src/app/sharedcomponents/imageresizerdirective/image_resizer_directive_module';
 
 const routes: Routes = [
     {
@@ -27,6 +28,7 @@ export class ProjectsPageRoutingModule { }
         CommonModule,
         MatTabsModule,
         ProjectsPageRoutingModule,
+        ImageResizerDirectiveModule,
     ],
     exports: [ProjectsPage],
 })
