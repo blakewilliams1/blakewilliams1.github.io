@@ -28,6 +28,7 @@ export class ImageResizerDirective {
   // Keeps track of the last calculated img size suffix. This helps ensure that on window size
   // change we are not making excessive calls to change the image src attribute. 
   private lastCalculatedSuffix: string | undefined = undefined;
+  private lastCalculatedWidth = 0;
 
   constructor(private element: ElementRef) {
     this.el = element;
@@ -46,6 +47,11 @@ export class ImageResizerDirective {
   private calculateSrcAttribute() {
     // Determine the amount of pixels that the browser is going to allocate to this image.
     const renderedWidth = this.el.nativeElement.width;
+    // Don't recalculate or re-download a smaller size image if we already have a higher fidelity version on hand.
+    if(renderedWidth < this.lastCalculatedWidth) {
+      return;
+    }
+
     // Obtain the proper imgur suffix for correct thumbnail size.
     const chosenSuffix = this.chooseSuffix(renderedWidth);
     // If we just recalculated the suffix to be the same as it just was, don't bother changing the
@@ -54,6 +60,7 @@ export class ImageResizerDirective {
       return;
     }
     this.lastCalculatedSuffix = chosenSuffix;
+    this.lastCalculatedWidth = renderedWidth;
 
     // Construct the full URL of the image at the desired resolution.
     const imgurUrl = `${this.imgurUrlPattern}${this.imgurId}${chosenSuffix}.jpg`;
