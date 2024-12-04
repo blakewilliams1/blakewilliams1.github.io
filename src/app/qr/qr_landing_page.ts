@@ -9,7 +9,6 @@ import qrConfigz from "./qr_config.json";
 @Component({
   selector: 'qr-landing-page',
   templateUrl: './qr_landing_page.html',
-//   styleUrls: ['./qr_landing_page.scss']
 })
 export class QRLandingPage {
   showFileNotFoundMessage = false;
@@ -28,12 +27,11 @@ export class QRLandingPage {
   readonly WHATSAPP_URL = 'https://wa.me/17605606898';
   readonly PAYPAL_URL = 'https://paypal.me/shadowslade/';
   readonly CASH_APP_URL = 'https://cash.app.regrettispaghetti';
+  readonly INSTAGRAM_URL = 'https://instagram.com/_sladewolf';
   readonly DISCORD_URL = 'https://discord.com/users/shadowslade6516';
   readonly TWITTER_URL = 'https://twitter.com/Shadow_slade/';
   readonly BLUESKY_URL = 'https://bsky.app/profile/sladewolf.bsky.social';
   readonly VENMO_URL = 'https://venmo.com/code?user_id=1646046040031232265';
-  readonly AR_VIEWER_URL = 'https://raw.githack.com/blakewilliams1/blakewilliams1.github.io/main/src/app/qr/ar_index.html';
-  readonly AR_TRACKER_URL = 'https://raw.githack.com/blakewilliams1/blakewilliams1.github.io/main/src/app/qr/ar_tracking_tests.html';
 
   // Actions that require immediate redirection to something else.
   readonly redirectionActions = [
@@ -41,6 +39,7 @@ export class QRLandingPage {
     'WHATSAPP_ACCOUNT',
     'FACEBOOK_ACCOUNT',
     'TWITTER_ACCOUNT',
+    'INSTAGRAM_URL',
     'BLUESKY_ACCOUNT',
     'DISCORD_ACCOUNT',
     'PAYPAL_REQUEST',
@@ -48,8 +47,6 @@ export class QRLandingPage {
     'CASH_APP_ACCOUNT',
     'ABOUT_TATTOO_PAGE',
     'REDIRECTION_URL',
-    'AR_VIEWER',
-    'AR_TRACKER',
   ];
 
   constructor(
@@ -127,6 +124,9 @@ export class QRLandingPage {
       case 'TWITTER_ACCOUNT':
         computedUrl = this.TWITTER_URL;
         break;
+      case 'INSTAGRAM_ACCOUNT':
+        computedUrl = this.INSTAGRAM_URL;
+        break;
       case 'DISCORD_ACCOUNT':
         computedUrl = this.DISCORD_URL;
         break;
@@ -135,12 +135,6 @@ export class QRLandingPage {
         break;
       case 'CASH_APP_ACCOUNT':
         computedUrl = this.CASH_APP_URL;
-        break
-      case 'AR_VIEWER':
-        computedUrl = this.AR_VIEWER_URL;
-        break;
-      case 'AR_TRACKER':
-        computedUrl = this.AR_TRACKER_URL;
         break;
       case 'PAYPAL_REQUEST':
         computedUrl = `${this.PAYPAL_URL}${qrConfig.paypalRequestAmountUSD}`;
@@ -188,7 +182,6 @@ type ActionType =
   | 'VENMO_ACCOUNT'
   | 'PAYPAL_REQUEST'
   | 'CASH_APP_ACCOUNT'
-  | 'AR_VIEWER'
-  | 'AR_TRACKER'
+  | 'INSTAGRAM_ACCOUNT'
   | 'EMERGENCY_INFO'
   | 'ABOUT_TATTOO_PAGE';
