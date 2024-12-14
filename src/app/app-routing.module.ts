@@ -43,6 +43,10 @@ const routes: Routes = [
     loadChildren: () => import('./travels/shasta/shasta_page_module').then(m => m.ShastaTripPageModule)
   },
   {
+    path: 'half-dome',
+    loadChildren: () => import('./travels/half_dome_2022/half_dome_hike_page_module').then(m => m.HalfDomeHikePageModule)
+  },
+  {
     path: 'qr',
     loadChildren: () => import('./qr/qr_landing_page_module').then(m => m.QRLandingPageModule)
   },

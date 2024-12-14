@@ -5,6 +5,7 @@ import {Directive, ElementRef, HostListener, Input} from '@angular/core';
 // This Directive is used to calculate the image URL of images stored in Imgur at resolutions that help reduce bandwidth usages.
 export class ImageResizerDirective {
   @Input('imgurId') imgurId = '';
+  @Input('isLandscape') isLandscape = false;
   private readonly imgurUrlPattern = 'https://imgur.com/';
   // This static mapping was created based on the info here:
   // https://meta.stackexchange.com/questions/298818
@@ -46,7 +47,12 @@ export class ImageResizerDirective {
 
   private calculateSrcAttribute() {
     // Determine the amount of pixels that the browser is going to allocate to this image.
-    const renderedWidth = this.el.nativeElement.width;
+    let renderedWidth = this.el.nativeElement.width;
+    // Landscape photos will inherently take up more of the screen and be stretched larger. Here we assume
+    // that all photos are 16:9 and adjust the renderedWidth variable accordingly.
+    if (this.isLandscape) {
+      renderedWidth = (renderedWidth * 16) / 9;
+    }
     // Don't recalculate or re-download a smaller size image if we already have a higher fidelity version on hand.
     if(renderedWidth < this.lastCalculatedWidth) {
       return;

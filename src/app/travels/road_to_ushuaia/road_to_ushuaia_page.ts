@@ -12,7 +12,7 @@ export class RoadToUshuaiaPage {
       setTimeout(() => {
         router.navigate(['/travels']);
       }, 100);
-      window.open('https://advrider.com/f/threads/california-to-ushuaia-2024.1750647/page-1000', '_blank');
+      window.open('https://advrider.com/f/threads/california-to-ushuaia-2024.1750647/page-1000', '_blank', 'noopener,noreferrer');
     }, 2000);
   }
 }
