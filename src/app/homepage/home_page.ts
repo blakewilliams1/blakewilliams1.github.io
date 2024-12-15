@@ -1,5 +1,4 @@
 import { Component, ViewChild } from '@angular/core';
-import { MatTabGroup } from '@angular/material/tabs';
 import { Router } from '@angular/router';
 import { KonamiCodeService } from '../sharedcomponents/konamicodeservice/konami_code_service';
 
@@ -9,7 +8,6 @@ import { KonamiCodeService } from '../sharedcomponents/konamicodeservice/konami_
     styleUrls: ['./home_page.scss']
 })
 export class HomePage {
-    @ViewChild('tabgroup') tabGroup!: MatTabGroup;
     readonly languageSkills: Skill[] = [
         {label: 'Java', percent: 90},
         {label: 'Typescript', percent: 80},
@@ -28,7 +26,7 @@ export class HomePage {
         } else if (percent >=60) {
             return 'Proficient';
         } else if (percent >=40) {
-            return 'Competant';
+            return 'Competent';
         } else if (percent >=20) {
             return 'Novice';
         } else {
