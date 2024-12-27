@@ -9,7 +9,7 @@ import { TimelineEvent } from 'src/app/sharedcomponents/verticaltimeline/vertica
 export class CareerPage {
     projectTimeline: TimelineEvent[] = [
     {
-        date: new Date(1683484096000),
+        date: new Date(1678165200000),
         title: 'Senior Engineer',
         content: `<p>Still at Google, I was promoted to L5 for my contributions to the AV/VR efforts
         I'm part of. This is the crossover point at which you are considered a Senior Engineer.</p>`,
@@ -17,8 +17,20 @@ export class CareerPage {
         date: new Date(1625265780000),
         title: 'AR/VR work (Google)',
         content: `<p>Finally within the realm of what I consider to be a dream job, I'm now working
-        on things involving the AR/VR tech space. Can't talk about specifics yet, but I'm very
-        enthusiastic about the work I do.</p>`,
+        on things involving the AR/VR tech space. The work involves platform and level support for
+        experimental AR glasses.
+        <a href="https://youtu.be/lj0bFX9HXeE?t=25s">Here is a direct example of the hardware worked on</a>.</p>
+        <p>One of the greatest challenges is creating a device capable of all-day use while
+        providing non-trivial and power-intensive functionality. Because there is a hard limit on
+        the weight of eyeglasses people are willing to wear all day, consequently hard limits exist
+        on maximum possible battery capacity + draw, SoC options, etc… Additionally, introducing
+        new frameworks and libraries to the public creates higher friction to adoption of the
+        technology than leveraging ones that already exist and are widely available. Much of the
+        specific challenges my team and I faced lie at the intersection of these ideas; immensely
+        optimizing performance to support a still-emerging new class of hardware product with
+        massive physical constraints not present in headsets, while simultaneously supporting known
+        frameworks which application developers can leverage to create the experiences that make the
+        hardware worth buying.</p>`,
     },{
         date: new Date(1580683380000),
         title: 'Play Movies/TV (Google)',
