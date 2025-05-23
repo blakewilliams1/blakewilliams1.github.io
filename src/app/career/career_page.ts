@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { TimelineEvent } from '../sharedcomponents/verticaltimeline/vertical_timeline';
+import { TimelineComponentModule } from '../sharedcomponents/verticaltimeline/vertical_timeline_module';
 
 @Component({
     selector: 'career-page',
     templateUrl: './career_page.html',
-    styleUrls: ['./career_page.scss']
+    styleUrls: ['./career_page.scss'],
+    standalone: true,
+    imports: [TimelineComponentModule],
 })
 export class CareerPage {
     projectTimeline: TimelineEvent[] = [

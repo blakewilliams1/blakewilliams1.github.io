@@ -1,11 +1,18 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { KonamiCodeService } from '../sharedcomponents/konamicodeservice/konami_code_service';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
     selector: 'home-page',
     templateUrl: './home_page.html',
-    styleUrls: ['./home_page.scss']
+    styleUrls: ['./home_page.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        MatCardModule,
+    ],
 })
 export class HomePage {
     readonly languageSkills: Skill[] = [

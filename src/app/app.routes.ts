@@ -3,59 +3,59 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./homepage/home_page_module').then(m => m.HomePageModule)
+    loadComponent: () => import('./homepage/home_page').then(m => m.HomePage)
   },
   {
     path: 'career',
-    loadChildren: () => import('./career/career_page_module').then(m => m.CareerPageModule)
+    loadComponent: () => import('./career/career_page').then(m => m.CareerPage)
   },
   {
     path: 'projects',
-    loadChildren: () => import('./projects/projects_page_module').then(m => m.ProjectsPageModule)
+    loadComponent: () => import('./projects/projects_page').then(m => m.ProjectsPage)
   },
   {
     path: 'fursuit',
-    loadChildren: () => import('./projects/fursuit/fursuit_page_module').then(m => m.FursuitPageModule)
+    loadComponent: () => import('./projects/fursuit/fursuit_page').then(m => m.FursuitPage)
   },
   {
     path: 'travels',
-    loadChildren: () => import('./travels/travels_page_module').then(m => m.TravelsPageModule)
+    loadComponent: () => import('./travels/travels_page').then(m => m.TravelsPage)
   },
   {
     path: 'css-injection',
-    loadChildren: () => import('./projects/cssinjection/css_injection_page_module').then(m => m.CssInjectionPageModule)
+    loadComponent: () => import('./projects/cssinjection/css_injection_page').then(m => m.CssInjectionPage)
   },
   {
     path: 'burning-man-2023',
-    loadChildren: () => import('./travels/burning_man_2023/burning_man_2023_page_module').then(m => m.BurningMan2023PageModule)
+    loadComponent: () => import('./travels/burning_man_2023/burning_man_2023_page').then(m => m.BurningMan2023Page)
   },
   {
     path: 'mauritania-trip',
-    loadChildren: () => import('./travels/mauritania_trip/mauritania_trip_page_module').then(m => m.MauritaniaTripPageModule)
+    loadComponent: () => import('./travels/mauritania_trip/mauritania_trip_page').then(m => m.MauritaniaTripPage)
   },
   {
     path: 'road-to-ushuaia',
-    loadChildren: () => import('./travels/road_to_ushuaia/road_to_ushuaia_page_module').then(m => m.RoadToUshuaiaPageModule)
+    loadComponent: () => import('./travels/road_to_ushuaia/road_to_ushuaia_page').then(m => m.RoadToUshuaiaPage)
   },
   {
     path: 'shasta',
-    loadChildren: () => import('./travels/shasta/shasta_page_module').then(m => m.ShastaTripPageModule)
+    loadComponent: () => import('./travels/shasta/shasta_page').then(m => m.ShastaTripPage)
   },
   {
     path: 'half-dome',
-    loadChildren: () => import('./travels/half_dome_2022/half_dome_hike_page_module').then(m => m.HalfDomeHikePageModule)
+    loadComponent: () => import('./travels/half_dome_2022/half_dome_hike_page').then(m => m.HalfDomeHikePage)
   },
   {
     path: 'qr',
-    loadChildren: () => import('./qr/qr_landing_page_module').then(m => m.QRLandingPageModule)
+    loadComponent: () => import('./qr/qr_landing_page').then(m => m.QRLandingPage)
   },
   {
     path: 'qr/about',
-    loadChildren: () => import('./qr/aboutqr/about_qr_page_module').then(m => m.AboutQrPageModule)
+    loadComponent: () => import('./qr/aboutqr/about_qr_page').then(m => m.AboutQrPage)
   },
   {
     path: 'contact',
-    loadChildren: () => import('./contact/contact_form_page_module').then(m => m.ContactFormPageModule)
+    loadComponent: () => import('./contact/contact_form_page').then(m => m.ContactFormPage)
   },
   // Invalid routes (404) should redirect back to home page.
   {

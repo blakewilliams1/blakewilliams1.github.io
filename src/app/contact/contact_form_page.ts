@@ -1,10 +1,26 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCardModule } from '@angular/material/card';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'contact-form-page',
   templateUrl: './contact_form_page.html',
-  styleUrls: ['./contact_form_page.scss']
+  styleUrls: ['./contact_form_page.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatInputModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatProgressSpinnerModule,
+    MatCardModule,
+  ],
 })
 export class ContactFormPage {
   formIsSubmitting = false;

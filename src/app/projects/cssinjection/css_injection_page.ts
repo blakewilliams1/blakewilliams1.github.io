@@ -1,9 +1,16 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'css-injections-page',
   templateUrl: './css_injection_page.html',
-  styleUrls: ['./css_injection_page.scss']
+  styleUrls: ['./css_injection_page.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatCardModule,
+  ],
 })
 export class CssInjectionPage {
   readonly pornhubCss = `

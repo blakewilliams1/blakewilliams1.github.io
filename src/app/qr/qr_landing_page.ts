@@ -1,14 +1,20 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { isDevMode } from '@angular/core';
 import { map } from 'rxjs/operators';
 
 import qrConfigz from "./qr_config.json";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'qr-landing-page',
   templateUrl: './qr_landing_page.html',
+  standalone: true,
+  imports: [
+      CommonModule,
+      HttpClientModule
+  ],
 })
 export class QRLandingPage {
   showFileNotFoundMessage = false;
