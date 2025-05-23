@@ -1,10 +1,9 @@
 import { NgModule } from "@angular/core";
 import { AboutQrPage } from "./about_qr_page";
 import { Routes, RouterModule } from '@angular/router';
-import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from "@angular/material/card";
 import { CommonModule } from "@angular/common";
-import { ImageResizerDirectiveModule } from 'src/app/sharedcomponents/imageresizerdirective/image_resizer_directive_module';
+import { ImageResizerDirectiveModule } from "../../sharedcomponents/imageresizerdirective/image_resizer_directive_module";
 
 
 const routes: Routes = [
@@ -26,7 +25,6 @@ export class AboutQrPageRoutingModule { }
     ],
     imports: [
         MatCardModule,
-        MatTabsModule,
         CommonModule,
         ImageResizerDirectiveModule,
         AboutQrPageRoutingModule,

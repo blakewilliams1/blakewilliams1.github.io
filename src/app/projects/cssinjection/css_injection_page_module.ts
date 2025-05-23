@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CssInjectionPage } from "./css_injection_page";
 import { MatCardModule } from '@angular/material/card';
-import { MatTabsModule } from '@angular/material/tabs';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -24,7 +23,6 @@ export class CssInjectionPageRoutingModule { }
     ],
     imports: [
         CommonModule,
-        MatTabsModule,
         CssInjectionPageRoutingModule,
         MatCardModule,
     ],

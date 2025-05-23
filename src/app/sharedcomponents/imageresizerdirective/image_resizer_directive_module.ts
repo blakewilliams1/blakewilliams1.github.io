@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ImageResizerDirective } from 'src/app/sharedcomponents/imageresizerdirective/image_resizer_directive';
+import { ImageResizerDirective } from './image_resizer_directive';
 
 @NgModule({
   declarations: [

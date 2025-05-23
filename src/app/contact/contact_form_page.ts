@@ -17,7 +17,10 @@ export class ContactFormPage {
     name: this.nameField,
     email: this.emailField,
     subject: this.subjectField,
-    message: this.messageField
+    message: this.messageField,
+    // These next 2 are not needed, but help deal with typedef issues in onSubmit().
+    from_name: new FormControl(),
+    access_key: new FormControl(),
   });
 
   onSubmit() {
@@ -59,4 +62,14 @@ export class ContactFormPage {
       console.log(error);
   });
   }
+
 }
+
+// export type ContactFormInfo = {
+//   name: String | null,
+//   email: String | null,
+//   subject: String | null,
+//   message: String | null,
+//   access_key: String | null,
+//   from_name: String | null,
+// }

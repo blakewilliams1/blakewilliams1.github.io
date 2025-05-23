@@ -37,8 +37,11 @@ export class HomePage {
     constructor(
         private readonly router: Router,
         private readonly konamiService: KonamiCodeService) {
+    }
+
+    ngAfterViewInit () {
         console.log('(͡ ͡° ͜ つ ͡͡°) nosey now, aren\'t we?')
-        konamiService.registerListener();
+        this.konamiService.registerListener();
     }
 }
 

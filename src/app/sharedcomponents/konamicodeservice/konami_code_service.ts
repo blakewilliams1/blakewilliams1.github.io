@@ -18,7 +18,7 @@ export class KonamiCodeService {
   }
 
   public registerListener() {
-    document.addEventListener('keydown', this.keyboardListener);
+  //  document.addEventListener('keydown', this.keyboardListener);
   }
 
   private checkForCode(event: KeyboardEvent) {

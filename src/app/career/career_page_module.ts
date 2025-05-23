@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CareerPage } from "./career_page";
-import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { TimelineComponentModule } from 'src/app/sharedcomponents/verticaltimeline/vertical_timeline_module';
+import { TimelineComponentModule } from '../sharedcomponents/verticaltimeline/vertical_timeline_module';
 
 const routes: Routes = [
     {
@@ -26,7 +25,6 @@ export class CareerRoutingModule { }
     imports: [
         CommonModule,
         TimelineComponentModule,
-        MatTabsModule,
         CareerRoutingModule,
         MatCardModule,
     ],
