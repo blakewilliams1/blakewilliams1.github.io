@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ImageResizerDirectiveModule } from '../../sharedcomponents/imageresizerdirective/image_resizer_directive_module';
-import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
@@ -9,7 +8,6 @@ import { MatCardModule } from '@angular/material/card';
   styleUrls: ['./fursuit_page.scss'],
   standalone: true,
   imports: [
-      CommonModule,
       ImageResizerDirectiveModule,
       MatCardModule,
   ],

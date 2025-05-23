@@ -1,4 +1,3 @@
-import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
 import { MatCardModule } from "@angular/material/card";
 import { Title } from '@angular/platform-browser';
@@ -11,7 +10,6 @@ import { ImageResizerDirectiveModule } from "../../sharedcomponents/imageresizer
     standalone: true,
     imports: [
         MatCardModule,
-        CommonModule,
         ImageResizerDirectiveModule,
     ],
 })

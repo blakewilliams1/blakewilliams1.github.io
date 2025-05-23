@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { ImageResizerDirectiveModule } from '../sharedcomponents/imageresizerdirective/image_resizer_directive_module';
@@ -11,7 +10,6 @@ import { RouterModule } from '@angular/router';
     standalone: true,
     imports: [
         MatCardModule,
-        CommonModule,
         ImageResizerDirectiveModule,
         RouterModule,
     ]

@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
@@ -9,7 +8,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./road_to_ushuaia_page.scss'],
   standalone: true,
   imports: [
-      CommonModule,
       MatCardModule,
   ],
 })

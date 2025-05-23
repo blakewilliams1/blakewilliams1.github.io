@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 
@@ -8,7 +7,6 @@ import { MatCardModule } from '@angular/material/card';
   styleUrls: ['./css_injection_page.scss'],
   standalone: true,
   imports: [
-    CommonModule,
     MatCardModule,
   ],
 })

@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ImageResizerDirectiveModule } from '../../sharedcomponents/imageresizerdirective/image_resizer_directive_module';
 import { MatCardModule } from '@angular/material/card';
@@ -9,7 +8,6 @@ import { MatCardModule } from '@angular/material/card';
   styleUrls: ['./mauritania_trip_page.scss'],
   standalone: true,
   imports: [
-      CommonModule,
       ImageResizerDirectiveModule,
       MatCardModule,
   ],

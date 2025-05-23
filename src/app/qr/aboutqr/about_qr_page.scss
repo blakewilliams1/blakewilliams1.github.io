@@ -1,12 +1,16 @@
 .page-container {
-  margin: 20px 5%;
+  margin: auto;
+  width: fit-content;
 }
 
 mat-card {
   margin-bottom: 20px;
+  margin: 20px 5%;
+  max-width: 1000px;
 }
 
 img {
+  margin-bottom: 16px;
   width: 100%;
 }
 
@@ -19,6 +23,7 @@ li {
 }
 
 iframe {
-  width: 100%;
   aspect-ratio: 16/9;
+  margin-top: 16px;
+  width: 100%;
 }
