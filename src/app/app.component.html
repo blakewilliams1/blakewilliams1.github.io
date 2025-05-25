@@ -1,8 +1,10 @@
 <nav mat-tab-nav-bar [tabPanel]="tabPanel">
-  <a mat-tab-link routerLink="/" #homeTab>Home</a>
-  <a mat-tab-link routerLink="/travels" #travelsTab>Travels</a>
-  <a mat-tab-link routerLink="/projects" #projectsTab>Projects</a>
-  <a mat-tab-link routerLink="/career" #careerTab>Career</a>
+  <!-- These ngClass bindings exists to make custom CSS on the selected entry. Angular Material wants to add an
+  underline to the selected route, but I want different styling to signify which tab is actively selected. -->
+  <a mat-tab-link routerLink="/" [ngClass]="{'bold-title' : currentRoute === '/'}">Home</a>
+  <a mat-tab-link routerLink="/travels" [ngClass]="{'bold-title' : currentRoute === '/travels'}">Travels</a>
+  <a mat-tab-link routerLink="/projects" [ngClass]="{'bold-title' : currentRoute === '/projects'}">Projects</a>
+  <a mat-tab-link routerLink="/career" [ngClass]="{'bold-title' : currentRoute === '/career'}">Career</a>
 </nav>
 
 <router-outlet />

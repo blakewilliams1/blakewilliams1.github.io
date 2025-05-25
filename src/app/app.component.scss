@@ -1,0 +1,7 @@
+// This encapsulation breaking rule custom styles the currently selected tab. ng-deep allows this
+// encapsulation breaking and :host prevents that from leaking up into the rest of the app from
+// this component.
+:host .bold-title ::ng-deep span {
+  font-weight: bold;
+  color: white;
+}

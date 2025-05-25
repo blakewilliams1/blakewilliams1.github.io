@@ -80,12 +80,3 @@ export class ContactFormPage {
   }
 
 }
-
-// export type ContactFormInfo = {
-//   name: String | null,
-//   email: String | null,
-//   subject: String | null,
-//   message: String | null,
-//   access_key: String | null,
-//   from_name: String | null,
-// }
