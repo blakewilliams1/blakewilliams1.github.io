@@ -165,7 +165,7 @@ var routes = [
   },
   {
     path: "projects",
-    loadComponent: () => import("./chunk-FABWKVVZ.js").then((m) => m.ProjectsPage)
+    loadComponent: () => import("./chunk-P254K3IP.js").then((m) => m.ProjectsPage)
   },
   {
     path: "fursuit",
