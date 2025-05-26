@@ -24,10 +24,3 @@ img {
   min-height: 130px;
   width: 100%;
 }
-
-/* mat-card-header-title comes with a 16px padding on top/left/right, this offsets that and makes padding better with
-a single padding rule in global styles.scss. */
-mat-card-header {
-  margin-left: -16px;
-  margin-top: -16px;
-}
