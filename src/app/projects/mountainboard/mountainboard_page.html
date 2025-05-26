@@ -1,0 +1,144 @@
+<mat-card>
+  <mat-card-header>
+    <h1>DIY Electric Mountainboard</h1>
+  </mat-card-header>
+  <div class="divider"></div>
+
+  <mat-card-content>
+    <p>
+      If you're unfamiliar with what a mountainboard is, it's essentially an off-road skateboard. A mountain bike is to
+      a road bicycle as a mountainboard is to a skateboard. I first learned about mountainboards from this youtube
+      video I was linked to while watching snowboarding videos:
+    </p>
+    <iframe loading="lazy" class="youtube-player" src="https://www.youtube.com/embed/65AcTk5Hcmg" frameborder="0"
+    allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>
+
+    <p>
+      It was immediately interesting to me, but when first discovering this around 2018 it was such a niche market that
+      pretty much all electric variants were custom made by builders online, or by one of 2 companies charging 3-5
+      grand per board. I decided to make one myself as well, and started with this base mountainboard; It's a Trampa
+      HS11 deck with MBS trucks, foot bindings, and wheels.
+    </p>
+    <img loading="lazy" imgurId="u5ORhhv"/>
+
+    <p>
+      The first major hurdle was making the battery pack. Here I am spot welding Samsung 30Q 18650 batteries together
+      into parallel groups, for use in a 12 series 6 parallel battery configuration.
+    </p>
+    <img loading="lazy" imgurId="Z7YQTo5"/>
+
+    <p>
+      All parallel groups put into a pelican case for test fitting. The extra space at the front will be used for a
+      battery management system for balanced recharging.
+    </p>
+    <img loading="lazy" imgurId="0ZYvYrH"/>
+
+    <p>
+      I made each series connection out of 4 lines of flat braided tinned copper wire. Each of the lines are rated up
+      to 40A continuous, so since I want my pack to be able to discharge up to 100A continuous I made these internal
+      connections rated up to 160A for extra safety. There is at least 2 layers of kapton tape between each of the
+      parallel groups as well as the entire exterior of the battery coated in it as well.
+    </p>
+    <img loading="lazy" imgurId="kSjnMVu" [isLandscape]="true"/>
+
+    <p>
+      Here is the full assembly put into the pelican case, with charge ports installed and connected to the balance
+      charger. This was the first charge test to verify the pack would charge correctly and it was really
+      nerve-wracking; if it went wrong it could have been a MASSIVE battery fire.
+    </p>
+    <img loading="lazy" imgurId="Dig72Wq"/>
+    
+    <p>
+      Here are some 3d printed holders for xt 90 connectors. I drilled some holes in the pelican case to make room
+      for them. They act as power switches for the board.
+      <a href="https://www.thingiverse.com/thing:3655161" target="_blank">The 3D files can be found here.</a>
+    </p>
+    <img loading="lazy" imgurId="dFXcyXl"/>
+
+    <p>
+      The assembly is getting much closer to being finished! The battery and ESC are mounted to the deck  as well as
+      the motors mounted to the rear trucks. I still need to make motor pulleys, connect power lines from battery to
+      ESC, and solder the right bullet connectors to the motors to fit the ones on the ESC
+    </p>
+    <img loading="lazy" imgurId="Y80fQ4P"/>
+    
+    <p>
+      Going through the motions of flashing the ESCs, setting FOC and input configurations. Nearly all Electronic
+      Speed Controllers (ESCs) run on open source firmware called Vedder ESC, and it comes with a desktop application
+      to calibrate your controllers to your specific hardware setup.
+    </p>
+    <img loading="lazy" imgurId="172Fc5c"/>
+    
+    <p>
+      I 3D printed some 72 teeth gears to mount to the wheel hubs. The gears are PLA at 95% infill with a giant
+      0.5mm layer height
+    </p>
+    <img loading="lazy" imgurId="sIIbXUP"/>
+    
+    <p>
+      The board is 'finished'!! Ready for first test ride!
+    </p>
+    <img loading="lazy" imgurId="DznzMo0"/>
+
+    <p>
+      It handles very well, except for a little issue with belt skipping. Because the gears are so close and have
+      drastically different tooth counts, the motor pulleys only ever have 3-4 teeth in mesh. Asphalt handles fine
+      but higher torque needs like off-road and deep gravel struggle with belt skip. At this point I begin to
+      look into adding an idler pulley
+    </p>
+    <img loading="lazy" imgurId="wt3G9Xq"/>
+
+    <p>
+      This was second sign that my drivetrain needs a re-work. Besides belt skipping, 3d printed gears are just not
+      strong enough for the job. Layer separation would occur if the gears took any non-trivial impact. Printing
+      again with nylon filament might work and I considered reprinting in ABS, Nylon or PETG.
+    </p>
+    <img loading="lazy" imgurId="v5FolcF"/>
+
+    <p>
+      The third and final sign that the rubber belts weren't going to cut it anymore for the project. Too much torque,
+      too much belt skips, too brittle parts for what I need. The torque after only about 20 miles begin to cause the
+      internal fibers of the belts to tear. This is when I begin to replace the belts with chain.
+    </p>
+    <img loading="lazy" imgurId="nwvLNSc"/>
+
+    <p>
+      I bought some 66 tooth sprockets and 25H roller chain. This is me drill pressing adapter holes along the spokes
+      to adapt it to the wheel hubs I used.
+    </p>
+    <img loading="lazy" imgurId="58qglCx"/>
+
+    <p>
+      The inner diameter of the wheel sprockets weren't wide enough to fit over the trucks so the inner part had to
+      be increased in size, so a friend and I used a lathe to make enough clearance on the inner diameter of the
+      sprockets to accomodate the skate trucks.
+    </p>
+    <img loading="lazy" imgurId="52EAVeL"/>
+
+
+    <p>
+      The drivetrain now completely overhauled to use chain!
+    </p>
+    <img loading="lazy" imgurId="GRgvhNR"/>
+
+    <p>
+      Here's the completely functional board but now with chain drive
+    </p>
+    <img loading="lazy" imgurId="zOxCDDU"/>
+
+    <p>
+      There's a popular open source 'dashboard' floating around the Internet called DaveGa, and it uses a 177 x 220px
+      screen. I put in effort to rewriting it's display drivers to work with larger format touch screens and a more
+      powerful microcontroller to drive the screens at a sufficent refresh rate.
+      <a href="https://github.com/blakewilliams1/DaveGa-ili9341">You can find my modified version of the DaveGA library here.</a>
+    </p>
+    <img loading="lazy" imgurId="NOHQO1l" [isLandscape]="true"/>
+
+    <p>
+      Here's the the finished result fully installed! It's a 3D printed enclosure to hold the display and
+      microcontroller, as well as a few tactile buttons to navigate the menus and adjust the configuration
+    </p>
+    <img loading="lazy" imgurId="EvxxF9m"/>
+
+  </mat-card-content>
+</mat-card>

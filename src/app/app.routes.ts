@@ -22,6 +22,10 @@ export const routes: Routes = [
     loadComponent: () => import('./projects/neonsign/neon_sign_page').then(m => m.NeonSignPage)
   },
   {
+    path: 'mountainboard',
+    loadComponent: () => import('./projects/mountainboard/mountainboard_page').then(m => m.MountainboardPage)
+  },
+  {
     path: 'travels',
     loadComponent: () => import('./travels/travels_page').then(m => m.TravelsPage)
   },
