@@ -1,9 +1,9 @@
-import {Directive, ElementRef, HostListener, Input} from '@angular/core';
+import {AfterViewInit, Directive, ElementRef, HostListener, Input} from '@angular/core';
 @Directive({
   selector: '[imgurId]',
 })
 // This Directive is used to calculate the image URL of images stored in Imgur at resolutions that help reduce bandwidth usages.
-export class ImageResizerDirective {
+export class ImageResizerDirective implements AfterViewInit {
   @Input('imgurId') imgurId = '';
   @Input('isLandscape') isLandscape = false;
   private readonly imgurUrlPattern = 'https://imgur.com/';
@@ -23,31 +23,34 @@ export class ImageResizerDirective {
       suffix: 'h',
     },
   ];
-  // This is held as a class member because it's acquired in the constructor but cannot be used
-  // before ngOnInit is ran.
-  private readonly el: ElementRef;
+
   // Keeps track of the last calculated img size suffix. This helps ensure that on window size
   // change we are not making excessive calls to change the image src attribute. 
   private lastCalculatedSuffix: string | undefined = undefined;
   private lastCalculatedWidth = 0;
+  // Exists to ensure that the <img> src attribute doesn't change before initial hydration is done, as DOM mismatch
+  // will cause errors that break the application.
+  private afterViewInitFinished = false;
 
-  constructor(private element: ElementRef) {
-    this.el = element;
-  }
+  constructor(private element: ElementRef) {}
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.calculateSrcAttribute();
+    this.afterViewInitFinished = true;
   }
 
   // Recalculate the needed suffix for the imgur images, then apply the change if it's different than before.
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
+    if (!this.afterViewInitFinished) {
+      return;
+    }
     this.calculateSrcAttribute();
   }
 
   private calculateSrcAttribute() {
     // Determine the amount of pixels that the browser is going to allocate to this image.
-    let renderedWidth = this.el.nativeElement.width;
+    let renderedWidth = this.element.nativeElement.width;
     // Landscape photos will inherently take up more of the screen and be stretched larger. Here we assume
     // that all photos are 16:9 and adjust the renderedWidth variable accordingly.
     if (this.isLandscape) {
@@ -72,7 +75,7 @@ export class ImageResizerDirective {
     const imgurUrl = `${this.imgurUrlPattern}${this.imgurId}${chosenSuffix}.jpg`;
 
     // Set attribute source so the image is loaded.
-    this.el.nativeElement.setAttribute('src', imgurUrl);
+    this.element.nativeElement.setAttribute('src', imgurUrl);
   }
 
   private chooseSuffix(renderedWidth: number): string {
