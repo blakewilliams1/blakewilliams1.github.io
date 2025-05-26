@@ -5,9 +5,13 @@ img {
   min-height: 130px;
 }
 
+h1 {
+  margin-top: 0;
+}
+
 .divider {
   border-top: 1px solid white;
-  margin-bottom: 1em;
+  margin: 0 -16px 1em -16px;
 }
 
 mat-card {
