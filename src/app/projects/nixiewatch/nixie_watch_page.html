@@ -1,0 +1,68 @@
+<mat-card>
+  <mat-card-header>
+    <h1>Nixie Tube Watch</h1>
+  </mat-card-header>
+  <div class="divider"></div>
+
+  <mat-card-content>
+    <p>
+      Around 2017 a friend of mine that is a hardware engineer created a small wristwatch out of
+      <a href="https://www.industrialalchemy.org/articleview.php?item=696" target="_blank">7 segment minitron displays</a>,
+      and I thought it was incredibly cool. What makes them novel is that they are made from incredibly thin tungsten
+      wires inside a tiny vacuum chamber, emitting light by being heated to between 3,100 to 5,400 degrees Fahrenheit.
+    </p>
+    <p>
+      Despite never having done hardware engineering beyond Arduino and other simple microcontroller project up till
+      this point, I decided to try something similar, but with nixie tubes. Unlike minitron filament displays, nixie
+      tubes are filled with neon gas and function idential to a neon display, but shrunk down to a much smaller scale.
+      There were many challenges and new things I learned along the way; this was my first time ever using any CAD
+      software for routing PCBs.
+    </p>
+    <img loading="lazy" imgurId="Pj0JfXg"/>
+
+    <p>
+      This design was heavily based on the high voltage power supply circuit created by David Forbes, with many
+      smaller changes to work with a microcontroller of my choice. In the next photo you can see the blank back
+      of the final PCB board design.
+    </p>
+    <img loading="lazy" imgurId="4CJOzEQ"/>
+
+    <p>
+      Here I am trying on the bare PCB after installing some custom lugs out of scrap metal and some cannibalized
+      pogo pins to hold the strap's lugs in place.
+    </p>
+    <img loading="lazy" imgurId="EFVuTdm"/>
+
+    <p>
+      This was my flashing setup. The In-Circuit Serial programmer output has jumper wires plugged into it, and the
+      jumper wires jump to a ribbon cable (left) where each wire of the ribbon cable is soldered to an exposed section
+      of pcb trace that deals with the ISCP functionality.
+    </p>
+    <img loading="lazy" imgurId="Zb4Fl8T"/>
+
+    
+    <p>
+       The back of the watch with programming lines still soldered on. I 3d printed a caseback to shield the components
+       from my skin/sweat. If they directly touched my skin, it would be high enough voltage to shock me.
+    </p>
+    <img loading="lazy" imgurId="4Mcgkhp"/>
+    
+    <p>
+      Here's the first test flashing of the MCU with some test code, I added power to it, and it worked first try!
+    </p>
+    <img loading="lazy" imgurId="wMgVzgf"/>
+
+
+    <p>
+      Here's how the finished result looks on the wrist
+    </p>
+    <img loading="lazy" imgurId="4KsMWDh"/>
+
+    <p>
+      And this is the final result!
+    </p>
+    <img loading="lazy" imgurId="dHJe2YO"/>
+
+
+  </mat-card-content>
+</mat-card>

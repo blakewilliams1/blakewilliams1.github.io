@@ -26,6 +26,10 @@ export const routes: Routes = [
     loadComponent: () => import('./projects/mountainboard/mountainboard_page').then(m => m.MountainboardPage)
   },
   {
+    path: 'nixie-watch',
+    loadComponent: () => import('./projects/nixiewatch/nixie_watch_page').then(m => m.NixieWatchPage)
+  },
+  {
     path: 'travels',
     loadComponent: () => import('./travels/travels_page').then(m => m.TravelsPage)
   },
