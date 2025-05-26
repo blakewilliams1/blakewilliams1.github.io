@@ -18,6 +18,10 @@ export const routes: Routes = [
     loadComponent: () => import('./projects/fursuit/fursuit_page').then(m => m.FursuitPage)
   },
   {
+    path: 'neon-sign',
+    loadComponent: () => import('./projects/neonsign/neon_sign_page').then(m => m.NeonSignPage)
+  },
+  {
     path: 'travels',
     loadComponent: () => import('./travels/travels_page').then(m => m.TravelsPage)
   },
