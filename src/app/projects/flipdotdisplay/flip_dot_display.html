@@ -1,0 +1,89 @@
+<mat-card>
+  <mat-card-header>
+    <h1>Flip Dot Display</h1>
+  </mat-card-header>
+  <div class="divider"></div>
+
+  <mat-card-content>
+    <p>
+      Before covid, there was a massive wall of flip dot displays tiled together in the lobby of one of the buildings
+      at my work. It had a Microsoft Kinect sensor on it, and whenever you got close enough it would cast a silhouette
+      of your body onto the wall that would mimic your motions. It was incredibly fun and made a really satisfying
+      shimmering noise when in use, as the metallic disks flickered back and forth across the screens. Here's a video
+      (not of the same wall) that gives an idea of what it was like:
+    </p>
+
+    <iframe loading="lazy" class="youtube-player" src="https://www.youtube.com/embed/s94PscZJ5EE" width="fit-content" frameborder="0"
+      allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>
+
+    <p>
+      When everyone eventually started returning back to office, the wall had fallen into disrepair. An important 3rd
+      party service it used on boot-up had been killed off while everyone was working from home, and the original
+      maintainers of the wall had since left the company as well. Some folks attempted to revive it, but after several
+      weeks of fruitless effort it was deemed not worth the time investment anymore. The panels were taken down and
+      posted as up for grabs on the internal Makers email list. Naturally I grabbed a few and attempted to make a mini
+      version of the original wall for myself!
+    </p>
+
+    <p>
+      I felt the first step was to make a chasis to hold together the panels, so I bought some aluminum L-bracket from
+      Home Depot and salvaged some aluminum T-slot rail from the recycle bins at work. Here's a progress shot of the
+      backing frame coming together. The T-slot rails are being cut down to size and joined together
+    </p>
+    <img loading="lazy" imgurId="NaGwOYr"/>
+
+    <p>
+      I drilled and cut aluminum L bracket down to size to hold the panels onto a larger rigid frame that was made
+      from the T-slot rails.
+    </p>
+    <img loading="lazy" imgurId="7IVaHO5"/>
+
+    <p>
+      Originally the display drive code was prototyped on an Arduino Uno. The mess of wires and a Raspberry Pi in the
+      next photo was what I finally got working. I decided to go with a Raspberry Pi because there were convenient
+      libraries for using cheap Intel RealSense depth cameras. The Raspberry Pi output is sent to a logic level
+      shifter to convert from 3v to 5v, then finally that signal goes to a RS485 converter which the displays require.
+      There is a lot small magnetic fields around the display to flip the discs, so they use RS485 twisted cabling to
+      handle the large amount of electrical noise generated.
+    </p>
+    <img loading="lazy" imgurId="1mmVQLA"/>
+
+
+    <p>
+      I was having issues for the longest time getting the code to work on the Raspberry Pi even though it was working
+      fine on the Arduino. This took an EMBARRASSINGLY long time to realize and I finally had to break out the
+      oscilloscope and decode the data being sent from each device to find the delta (next image is how it was supposed
+      to look). I was actually sending 3 extra empty bytes in front of each intended byte... there was a single line in
+      my code where I accidentally converted an Arduino 'byte' type to 'int' which is 4x the size I was having issues
+      for the longest time getting the code to work on the Raspberry Pi even though it was working fine on the Arduino.
+      This took an EMBARRASSINGLY long time to realize and I finally had to break out the oscilloscope and decode the
+      data being sent from each device to find the delta (next image is how it was supposed to look). I was actually
+      sending 3 extra empty bytes in front of each intended byte... there was a single line in my code where I
+      accidentally converted an Arduino 'byte' type to 'int' which is 4x the size 🤦‍♂️.
+    </p>
+    <img loading="lazy" imgurId="ITn7YlV"/>
+
+    <p>
+      Here is an example of drawing text and individual pixels [TURN SOUND ON]. I wrote a simple library for drawing
+      text, lines, points, and raw black/white bitmaps to the screen.
+    </p>
+    <video loop controls playsInline>
+      <source src="https://imgur.com/6z6NkLU.mp4" type="video/mp4"/>
+    </video>
+
+    <p>
+      This next video came from experimenting with finding the max refresh rate of the displays, which happens to be
+      about 10 fps [TURN SOUND ON].
+    </p>
+    <video loop controls playsInline>
+      <source src="https://imgur.com/oezksWt.mp4" type="video/mp4"/>
+    </video>
+
+    <p>
+      Currently this project is on hiatus but will be resumed (really!). I'm very close to finishing the depth camera
+      integration, currently there is a but in which the output bitmaps are written offset, like header packets from
+      the depth camera are being interpreted as sensor data. I'm working through the issue and it will get fixed.
+    </p>
+
+  </mat-card-content>
+</mat-card>

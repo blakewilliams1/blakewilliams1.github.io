@@ -26,6 +26,10 @@ export const routes: Routes = [
     loadComponent: () => import('./projects/mountainboard/mountainboard_page').then(m => m.MountainboardPage)
   },
   {
+    path: 'flip-dot-display',
+    loadComponent: () => import('./projects/flipdotdisplay/flip_dot_display').then(m => m.FlipDotDisplayPage)
+  },
+  {
     path: 'nixie-watch',
     loadComponent: () => import('./projects/nixiewatch/nixie_watch_page').then(m => m.NixieWatchPage)
   },
