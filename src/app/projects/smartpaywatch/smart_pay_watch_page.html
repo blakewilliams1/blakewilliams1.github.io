@@ -1,0 +1,72 @@
+<mat-card>
+  <mat-card-header>
+    <h1>Casio Smart Pay Watch</h1>
+  </mat-card-header>
+  <div class="divider"></div>
+
+  <mat-card-content>
+    <p>
+      I've wanted to get a smart watch to easily pay for things with a tap, but also don't want yet another thing in my
+      life to charge every night. I thought how cool it'd be to just repurpose my casio watch as a tap-to-pay watch if
+      it contained the NFC chip from my credit card! First step is to melt down the credit card in acetone. I left it
+      in a sealed mason jar until the plastic card got soggy enough for the chip to easily come off of the card. You
+      can see it on the left side if you look carefully.
+    </p>
+    <img loading="lazy" imgurId="mvfyQ6B"/>
+
+    <p>
+      Once the chip was off the credit card, I 3D printed a mold to wrap magnet wire around that represented the
+      antenna size/layout of how it would be under the watch face.
+    </p>
+
+    <p>I got some very strange looks at checkout while paying with this:</p>
+    <img loading="lazy" imgurId="W4RKKkn"/>
+    <p>
+      This is the custom NFC antenna printed onto a flexible PCB, with the NFC chip from a credit card soldered to it.
+      The wiring is 30AWG insulated magnet wire. Online calculators estimate it to be around 3 microHenry but haven't
+      verified actual inductance. <b>It works when paying at card readers in this configuration.</b>
+    </p>
+    <img loading="lazy" imgurId="BXPA6Dr"/>
+    <p>
+      Here is the antenna fitted in front of the watch face. There is this 'retaining' plastic that separates the watch
+      unit w/LCD screen from the front of the watch face. The pcb is in front of that dividing material, and will sit
+      behind a sheet of acrylic like the ones seen with lettering on the front of cheap casio digital watches.
+    </p>
+    <img loading="lazy" imgurId="WboU1Qg"/>
+    <p>
+      Pic of front of the watch. Not shown is the piece of acrylic that sits in front of the pcb. it's ~1mm thick and
+      painted black on the back of it everywhere except the view port.
+    </p>
+    <img loading="lazy" imgurId="CQUeKN8"/>
+    <p>
+      Finally, the watch unit is inserted and the NFC chip fits in a small cavity next to the battery. It's wrapped
+      in kapton tape to prevent shorting. <b>In this configuration, it does not work.</b>
+    </p>
+    <img loading="lazy" imgurId="ZQ7151F"/>
+
+    <p>
+       I tried in vain to wrap the card in metallic tape to act as a shield. The goal was to reduce the parasitic
+       capacitance I was getting that seemed to throw off the resonant frequency antenna and the LC tank circuit it
+       forms.
+    </p>
+    <img loading="lazy" imgurId="aoOEplp"/>
+
+    <p>
+       I used an arbitrary waveform generator to send a sweeping square wave over the antenna + chip assembly, and an
+       oscilloscope with Fast-Fourier Transform feature to see what frequencies the system (antenna + SIM chip) would
+       resonate at, which in turn would help me figure out how large of a capacitor I'd need to add on to target the
+       right frequency of tap to pay chip readers 
+    </p>
+    <img loading="lazy" imgurId="Et6AlKG"/>
+
+
+    <p>This was the result of that, and where this project currently is left off at :/ </p>
+    <img loading="lazy" imgurId="9D6Szwq"/>
+
+    <p>
+      I'd love to resume this project, it was so close to being complete! If you have any advice on next debugging
+      steps, <a href="./contact">let me know.</a>
+    </p>
+
+  </mat-card-content>
+</mat-card>
