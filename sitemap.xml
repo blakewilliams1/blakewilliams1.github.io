@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://blakewilliams.org/</loc>
+    <lastmod>2025-05-26</lastmod>
+    <priority>1.00</priority>
+  </url>
+
+  <url>
+    <loc>https://blakewilliams.org/projects</loc>
+    <lastmod>2025-05-26</lastmod>
+    <priority>0.90</priority>
+  </url>
+
+    <url>
+      <loc>https://blakewilliams.org/fursuit</loc>
+      <lastmod>2025-05-26</lastmod>
+      <priority>0.80</priority>
+    </url>
+
+    <url>
+      <loc>https://blakewilliams.org/neon-sign</loc>
+      <lastmod>2025-05-26</lastmod>
+      <priority>0.80</priority>
+    </url>
+
+    <url>
+      <loc>https://blakewilliams.org/flip-dot-display</loc>
+      <lastmod>2025-05-26</lastmod>
+      <priority>0.80</priority>
+    </url>
+
+    <url>
+      <loc>https://blakewilliams.org/mountainboard</loc>
+      <lastmod>2025-05-26</lastmod>
+      <priority>0.80</priority>
+    </url>
+
+    <url>
+      <loc>https://blakewilliams.org/nixie-watch</loc>
+      <lastmod>2025-05-26</lastmod>
+      <priority>0.80</priority>
+    </url>
+
+    <url>
+      <loc>https://blakewilliams.org/css-injection</loc>
+      <lastmod>2025-05-26</lastmod>
+      <priority>0.80</priority>
+    </url>
+
+    <url>
+      <loc>https://blakewilliams.org/qr/about</loc>
+      <lastmod>2025-05-26</lastmod>
+      <priority>0.80</priority>
+    </url>
+
+  <url>
+    <loc>https://blakewilliams.org/travels</loc>
+    <lastmod>2025-05-26</lastmod>
+    <priority>0.90</priority>
+  </url>
+
+    <url>
+      <loc>https://blakewilliams.org/burning-man-2023</loc>
+      <lastmod>2025-05-26</lastmod>
+      <priority>0.80</priority>
+    </url>
+
+    <url>
+      <loc>https://blakewilliams.org/road-to-ushuaia</loc>
+      <lastmod>2025-05-26</lastmod>
+      <priority>0.80</priority>
+    </url>
+
+    <url>
+      <loc>https://blakewilliams.org/half-dome</loc>
+      <lastmod>2025-05-26</lastmod>
+      <priority>0.80</priority>
+    </url>
+
+    <url>
+      <loc>https://blakewilliams.org/shasta</loc>
+      <lastmod>2025-05-26</lastmod>
+      <priority>0.80</priority>
+    </url>
+
+  <url>
+    <loc>https://blakewilliams.org/career</loc>
+    <lastmod>2025-05-26</lastmod>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://blakewilliams.org/contact</loc>
+    <lastmod>2025-05-26</lastmod>
+    <priority>0.90</priority>
+  </url>
+
+</urlset>
