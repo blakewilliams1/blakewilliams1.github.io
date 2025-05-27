@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ImageResizerDirectiveModule } from '../../sharedcomponents/imageresizerdirective/image_resizer_directive_module';
 import { MatCardModule } from '@angular/material/card';
+import { ImageResizerDirective } from '../../sharedcomponents/imageresizerdirective/image_resizer_directive';
 
 @Component({
   selector: 'nixie-watch-page',
@@ -8,7 +8,7 @@ import { MatCardModule } from '@angular/material/card';
   styleUrls: ['./nixie_watch_page.scss'],
   standalone: true,
   imports: [
-      ImageResizerDirectiveModule,
+      ImageResizerDirective,
       MatCardModule,
   ],
 })

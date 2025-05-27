@@ -1,10 +1,13 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { SafeHtml } from '@angular/platform-browser';
 
 @Component({
     selector: 'timeline',
     templateUrl: './vertical_timeline.html',
-    styleUrls: ['./vertical_timeline.scss']
+    styleUrls: ['./vertical_timeline.scss'],
+    standalone: true,
+    imports: [CommonModule]
 })
 export class TimelineComponent {
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { ImageResizerDirectiveModule } from '../sharedcomponents/imageresizerdirective/image_resizer_directive_module';
+import { ImageResizerDirective } from '../sharedcomponents/imageresizerdirective/image_resizer_directive';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
     standalone: true,
     imports: [
         MatCardModule,
-        ImageResizerDirectiveModule,
+        ImageResizerDirective,
         RouterModule,
     ]
 })

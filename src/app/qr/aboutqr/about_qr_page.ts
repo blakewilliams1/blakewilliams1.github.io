@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { MatCardModule } from "@angular/material/card";
 import { Title } from '@angular/platform-browser';
-import { ImageResizerDirectiveModule } from "../../sharedcomponents/imageresizerdirective/image_resizer_directive_module";
+import { ImageResizerDirective } from "../../sharedcomponents/imageresizerdirective/image_resizer_directive";
 
 @Component({
     selector: 'about-qr-page',
@@ -10,7 +10,7 @@ import { ImageResizerDirectiveModule } from "../../sharedcomponents/imageresizer
     standalone: true,
     imports: [
         MatCardModule,
-        ImageResizerDirectiveModule,
+        ImageResizerDirective,
     ],
 })
 export class AboutQrPage {

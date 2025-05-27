@@ -1,6 +1,7 @@
 import {AfterViewInit, Directive, ElementRef, HostListener, Input} from '@angular/core';
 @Directive({
   selector: '[imgurId]',
+  standalone: true,
 })
 // This Directive is used to calculate the image URL of images stored in Imgur at resolutions that help reduce bandwidth usages.
 export class ImageResizerDirective implements AfterViewInit {
