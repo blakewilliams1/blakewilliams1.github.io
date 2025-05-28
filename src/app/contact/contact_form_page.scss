@@ -8,7 +8,8 @@ mat-card {
   max-width: 800px;
 }
 
-.page-container {
+:host {
+  display: block;
   margin: 0 auto;
   width: fit-content;
 }

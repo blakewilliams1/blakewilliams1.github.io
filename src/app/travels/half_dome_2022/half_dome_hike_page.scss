@@ -10,6 +10,13 @@ img {
   margin-bottom: 1em;
 }
 
+:host {
+  display: block;
+  margin: auto;
+  width: fit-content;
+}
+
 mat-card {
   margin: 20px 5%;
+  max-width: 1400px;
 }

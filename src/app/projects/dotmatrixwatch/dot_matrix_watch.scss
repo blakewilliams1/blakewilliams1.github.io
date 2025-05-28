@@ -1,5 +1,12 @@
+:host {
+  display: block;
+  margin: auto;
+  width: fit-content;
+}
+
 mat-card {
   margin: 20px 5%;
+  max-width: 1400px;
 }
 
 mat-card-title {
@@ -15,6 +22,7 @@ img {
   min-height: 130px;
   width: 100%;
 }
+
 video {
   min-height: 130px;
   width: 100%;
@@ -23,11 +31,4 @@ video {
 .divider {
   border-top: 1px solid white;
   margin-bottom: 1em;
-}
-
-.youtube-player {
-  aspect-ratio: 16 / 9;
-  display: block;
-  margin: 1em 0;
-  width: 100%;
 }

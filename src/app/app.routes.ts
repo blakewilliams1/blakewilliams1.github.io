@@ -30,6 +30,10 @@ export const routes: Routes = [
     loadComponent: () => import('./projects/smartpaywatch/smart_pay_watch_page').then(m => m.SmartPayWatchPage)
   },
   {
+    path: 'dot-matrix-watch',
+    loadComponent: () => import('./projects/dotmatrixwatch/dot_matrix_watch').then(m => m.DotMatrixWatchPage)
+  },
+  {
     path: 'flip-dot-display',
     loadComponent: () => import('./projects/flipdotdisplay/flip_dot_display').then(m => m.FlipDotDisplayPage)
   },

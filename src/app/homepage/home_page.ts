@@ -18,17 +18,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 export class HomePage implements AfterViewInit {
   @ViewChild('actionContainer') actionContainer: ElementRef;
   @ViewChild('actions') actionsList: ElementRef;
-  readonly CONFIG_FILE_URL =
+  readonly ACTIVITIES_LIST_URL =
     'https://raw.githubusercontent.com/blakewilliams1/blakewilliams1.github.io/main/src/assets/current_activities.txt';
-	currentActivities: string[] = [
-		'first',
-		'second',
-		'third',
-		'fourth',
-		'fifth'
-	];
+	currentActivities: string[] = [''];
+	// Guards against client-side-only code from being ran server-side.
   isBrowser: boolean;
-	private readonly ACTION_CHANGE_INTERVAL_MS = 5000;
+	private readonly ACTION_CHANGE_INTERVAL_MS = 4000;
 	readonly scrollingTask = () => {
 		const actions: Element[] = this.actionsList.nativeElement.children;
 		const containerOffsetTopPx = (actions[0] as HTMLElement).offsetTop;
@@ -75,17 +70,18 @@ export class HomePage implements AfterViewInit {
 		console.log('(͡ ͡° ͜ つ ͡͡°) nosey now, aren\'t we?')
 		// Prevent hydration breaking errors by only modifying the DOM if this is being ran client side in the browser.
 		if (this.isBrowser) {
-		this.konamiService.registerListener();
+			this.konamiService.registerListener();
 
-		// Load the contents of the txt file containing all the current activities, then save it as a class member.
-		this.httpClient.get(this.CONFIG_FILE_URL, {responseType: 'text'})
+			// Load the contents of the txt file containing all the current activities, then save it as a class member.
+			this.httpClient.get(this.ACTIVITIES_LIST_URL, {responseType: 'text'})
 					.subscribe((response) => {
 						this.currentActivities = response.split('\n').filter(str => str.trim() !== "") || [];
-					});
 
-					// Once we've acquired the list of actions I'm 'currently doing', initiate the repeating call to scroll
-					// through them all.
-					this.scrollingTask();
+						// Once we've acquired the list of actions I'm 'currently doing', initiate the repeating call to scroll
+					// through them all. setTimeout() is needed to schedule the animations in next update loop, after
+					// this.currentActivities has been set.
+					setTimeout(() => this.scrollingTask());
+					});
 		}
 	}
 }
