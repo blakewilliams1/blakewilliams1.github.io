@@ -158,7 +158,7 @@ export class QRLandingPage {
     }
 
     // If the computed URL is not null, redirect the user to it in the current window.
-    if (!!computedUrl) {
+    if (!!computedUrl && !!window) {
       window.location.href = computedUrl;
     }
   }

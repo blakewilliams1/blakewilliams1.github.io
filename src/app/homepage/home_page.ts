@@ -31,10 +31,16 @@ export class HomePage implements AfterViewInit {
 	private readonly ACTION_CHANGE_INTERVAL_MS = 5000;
 	readonly scrollingTask = () => {
 		const actions: Element[] = this.actionsList.nativeElement.children;
+		const containerOffsetTopPx = (actions[0] as HTMLElement).offsetTop;
+		// Select a new index of an action to show on screen that is unique from the current one.
+		let targetActionIndex = -1;
+		do {
+			targetActionIndex = Math.floor(this.currentActivities.length * Math.random());
+		}		while (this.previousTargetActionIndex == targetActionIndex && actions.length > 1);
+		this.previousTargetActionIndex = targetActionIndex;
+ 
 		// Calculate the vertical distance between the top of the container for the actions and the action about to be
 		// displayed.
-		const containerOffsetTopPx = (actions[0] as HTMLElement).offsetTop;
-		const targetActionIndex = Math.floor(this.currentActivities.length * Math.random());
 		const targetChild = this.actionsList.nativeElement.children[targetActionIndex];
 		const yTranslateOffset = -((targetChild as HTMLElement).offsetTop - containerOffsetTopPx);
 		// Ensure that the viewport into the current action is tall enough to show the entry if it wraps.
@@ -55,6 +61,7 @@ export class HomePage implements AfterViewInit {
 		// Re-trigger the same task again at the desired interval.
 		setTimeout(this.scrollingTask, this.ACTION_CHANGE_INTERVAL_MS);
 	}
+	private previousTargetActionIndex = 0;
 
 	constructor(
 			private renderer: Renderer2,
