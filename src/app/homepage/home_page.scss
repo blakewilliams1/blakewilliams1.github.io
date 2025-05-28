@@ -1,27 +1,25 @@
-.red-yellow-gradient {
-    background-image: linear-gradient(to right, #f81d00 0%, #f9d423 100%);
-}
-
-.home-body {
+:host {
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin: 100px auto;
+    justify-content: center;
+    // Occupy the full remaining height beneath the navigation tabs
+    height: calc(100vh - 50px);
+}
 
-    img {
-        border-radius: 50px;
-        height: 100px;
-        width: 100px;
-    }
+img {
+    border-radius: 50px;
+    height: 100px;
+    width: 100px;
+}
 
-    .sub-title {
-        margin: 50px 20px 12px;
-        text-align: center;
-    }
+.sub-title {
+    margin: 50px 20px 12px;
+    text-align: center;
 }
 
 #actionContainer {
-	margin: 0 auto;
+	margin: 100px auto;
 	text-align: center;
 	width: fit-content;
 	
