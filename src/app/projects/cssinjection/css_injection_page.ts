@@ -48,6 +48,17 @@ export class CssInjectionPage {
   }
   `;
 
+  readonly chatgptCss = `
+  body {
+    pointer-events: auto;
+  }
+
+  div[data-testid=modal-no-auth-rate-limit] {
+    visibility: hidden;
+    display: none;
+  }
+  `;
+
   readonly youtubeCss = `
   ytd-emergency-onebox-renderer {
     display: none;
