@@ -45,7 +45,6 @@ export class YoutubePlaceholder implements AfterContentInit {
       return 'hqdefault';
     }
 
-    console.log(this.placeholder);
     for (let pairing of this.imageSizesToYoutubeSuffixArray) {
       // If the current width/suffix pairing is smaller than the screen real estate provided to us
       // by the browser, skip it and check the next largest pairing.
