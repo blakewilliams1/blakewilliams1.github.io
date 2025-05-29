@@ -1,0 +1,7 @@
+<div id="placeholder" #placeholder>
+  <img [src]="'https://i.ytimg.com/vi/' + videoId + '/' + getThumbnailSize() + '.jpg'"
+      (click)="onYoutubeClick()"
+      alt="YouTube Video"
+      loading="lazy">
+  <div class="play-button" (click)="onYoutubeClick()"></div>
+</div>

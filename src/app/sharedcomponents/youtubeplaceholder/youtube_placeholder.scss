@@ -1,0 +1,21 @@
+:host {
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+}
+
+img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  width: 100%;
+}
+
+.play-button {
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='68' height='48' viewBox='0 0 68 48'><path fill='%23f00' d='M66.52 7.18C66.52 3.21 63.31 0 59.34 0H8.66C4.69 0 1.48 3.21 1.48 7.18v33.64C1.48 44.79 4.69 48 8.66 48h50.68c3.97 0 7.18-3.21 7.18-7.18V7.18z'/><path d='M45 24L27 14v20z' fill='%23fff'/></svg>") no-repeat center;
+  position: absolute;
+  height: 48px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  width: 68px;
+}

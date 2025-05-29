@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { ImageResizerDirective } from '../../sharedcomponents/imageresizerdirective/image_resizer_directive';
+import { YoutubePlaceholder } from '../../sharedcomponents/youtubeplaceholder/youtube_placeholder';
 
 @Component({
   selector: 'mauritania-trip-page',
@@ -10,6 +11,7 @@ import { ImageResizerDirective } from '../../sharedcomponents/imageresizerdirect
   imports: [
       ImageResizerDirective,
       MatCardModule,
+      YoutubePlaceholder,
   ],
 })
 export class MauritaniaTripPage {
