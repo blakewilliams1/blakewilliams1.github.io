@@ -21,7 +21,8 @@ export class CareerPage {
         content: `<p>Finally within the realm of what I consider to be a dream job, I'm now working
         on things involving the AR/VR tech space. The work involves platform and level support for
         experimental AR glasses.
-        <a href="https://youtu.be/lj0bFX9HXeE?t=25s">Here is a direct example of the hardware worked on</a>.</p>
+        <a href="https://youtu.be/lj0bFX9HXeE?t=25s" target="_blank">Here is a direct example of the
+        hardware worked on</a>.</p>
         <p>One of the greatest challenges is creating a device capable of all-day use while
         providing non-trivial and power-intensive functionality. Because there is a hard limit on
         the weight of eyeglasses people are willing to wear all day, consequently hard limits exist

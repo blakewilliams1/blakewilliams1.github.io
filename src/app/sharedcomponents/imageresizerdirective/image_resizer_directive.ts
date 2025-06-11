@@ -1,4 +1,5 @@
-import {AfterViewInit, Directive, ElementRef, HostListener, Input} from '@angular/core';
+import {AfterViewInit, Directive, ElementRef, HostBinding, HostListener, Input} from '@angular/core';
+import { ImageViewerDialogService } from '../imageviewerdialog/image_viewer_dialog_service';
 @Directive({
   selector: '[imgurId]',
   standalone: true,
@@ -7,7 +8,9 @@ import {AfterViewInit, Directive, ElementRef, HostListener, Input} from '@angula
 export class ImageResizerDirective implements AfterViewInit {
   @Input('imgurId') imgurId = '';
   @Input('isLandscape') isLandscape = false;
+  @Input('preventDialogOpening') preventDialogOpening = false;
   private readonly imgurUrlPattern = 'https://imgur.com/';
+  private readonly minWidthToExpandModal = 1500;
   // This static mapping was created based on the info here:
   // https://meta.stackexchange.com/questions/298818
   private readonly imageSizesToImgurSuffixArray: ImageSizeToImgurSuffix[] = [
@@ -32,8 +35,11 @@ export class ImageResizerDirective implements AfterViewInit {
   // Exists to ensure that the <img> src attribute doesn't change before initial hydration is done, as DOM mismatch
   // will cause errors that break the application.
   private afterViewInitFinished = false;
+  windowWidth: number;
 
-  constructor(private element: ElementRef) {}
+  constructor(
+    private readonly element: ElementRef,
+    private readonly dialogImageService: ImageViewerDialogService) {}
 
   ngAfterViewInit() {
     this.calculateSrcAttribute();
@@ -42,14 +48,30 @@ export class ImageResizerDirective implements AfterViewInit {
 
   // Recalculate the needed suffix for the imgur images, then apply the change if it's different than before.
   @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
+  onResize() {
+    this.windowWidth = window.innerWidth;
     if (!this.afterViewInitFinished) {
       return;
     }
     this.calculateSrcAttribute();
   }
 
-  private calculateSrcAttribute() {
+  // On image click, fire off an event to the image viewer dialog service. This will open an image viewing dialog
+  // at full image resolution.
+  @HostListener('click')
+  onClick(e: any) {
+    // Forward the URL to a full sized image without any downscaling.
+    if (!this.preventDialogOpening && this.windowWidth > this.minWidthToExpandModal) {
+      this.dialogImageService.emitImageClick(`${this.imgurUrlPattern}${this.imgurId}.jpg`);
+    }
+  }
+
+  // Dynamically bind the cursor style based on if the image can be clicked and expanded into a modal.
+  @HostBinding('style.cursor') get cursor() {
+    return !this.preventDialogOpening && this.windowWidth > this.minWidthToExpandModal ? 'pointer' : 'default';
+  }
+
+private calculateSrcAttribute() {
     // Determine the amount of pixels that the browser is going to allocate to this image.
     let renderedWidth = this.element.nativeElement.width;
     // Landscape photos will inherently take up more of the screen and be stretched larger. Here we assume
