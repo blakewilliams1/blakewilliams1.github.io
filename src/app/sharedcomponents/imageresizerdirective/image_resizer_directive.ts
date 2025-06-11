@@ -35,7 +35,7 @@ export class ImageResizerDirective implements AfterViewInit {
   // Exists to ensure that the <img> src attribute doesn't change before initial hydration is done, as DOM mismatch
   // will cause errors that break the application.
   private afterViewInitFinished = false;
-  windowWidth: number;
+  private windowWidth: number;
 
   constructor(
     private readonly element: ElementRef,
@@ -44,6 +44,7 @@ export class ImageResizerDirective implements AfterViewInit {
   ngAfterViewInit() {
     this.calculateSrcAttribute();
     this.afterViewInitFinished = true;
+    this.windowWidth = window.innerWidth;
   }
 
   // Recalculate the needed suffix for the imgur images, then apply the change if it's different than before.
