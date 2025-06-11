@@ -34,6 +34,10 @@ export const routes: Routes = [
     loadComponent: () => import('./projects/dotmatrixwatch/dot_matrix_watch').then(m => m.DotMatrixWatchPage)
   },
   {
+    path: 'altimeter',
+    loadComponent: () => import('./projects/minitronaltimeter/minitron_altimeter_page').then(m => m.MinitronAltimeterPage)
+  },
+  {
     path: 'flip-dot-display',
     loadComponent: () => import('./projects/flipdotdisplay/flip_dot_display').then(m => m.FlipDotDisplayPage)
   },

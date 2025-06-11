@@ -10,5 +10,5 @@ const inMemoryScrollingFeatures = withInMemoryScrolling({
     anchorScrolling: 'enabled',
   });
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes, inMemoryScrollingFeatures), /*provideClientHydration({enabled: false}),*/ provideAnimationsAsync()]
+  providers: [provideRouter(routes, inMemoryScrollingFeatures), provideClientHydration(), provideAnimationsAsync()]
 };

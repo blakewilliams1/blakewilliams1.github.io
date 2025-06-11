@@ -1,0 +1,29 @@
+:host {
+  display: block;
+  margin: auto;
+  width: fit-content;
+}
+
+mat-card {
+  margin: 20px 5%;
+  max-width: 1400px;
+}
+
+mat-card-title {
+  margin-top: 20px !important;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+/* Without this, the images will be however large they were downloaded to be and stretch the mat-cards to the right. */
+img {
+  min-height: 130px;
+  width: 100%;
+}
+
+.divider {
+  border-top: 1px solid white;
+  margin-bottom: 1em;
+}

@@ -1,0 +1,40 @@
+<mat-card>
+  <mat-card-header>
+    <h1>Minitron Altimeter</h1>
+  </mat-card-header>
+  <div class="divider"></div>
+
+  <mat-card-content>
+    <p>
+      I was able to acquire four KW-105AL displays. These are so incredibly difficult to find online. The only easy
+      place I could find them were a few niche aerospace parts vendors; the kind where there are no prices, only email
+      contact for salesmen. I was getting quoted 500-1200$ USD, EACH. They sell for $25-50 USD each from any other
+      sources.
+    </p>
+    <img loading="lazy" imgurId="Epnmr64"/>
+
+    <p>
+      First breadboarding attempts to use all major components together. The BMP280 barometer and LSM303 IMU work as
+      expected, but getting the displays to drive is proving to be a challenge. The only compact way I can think of
+      connecting to the displays involve permanently soldering them to the board, so that's not going to happen until
+      the very end. You have to press them into the vias on the board which isn't very reliable so I'll make some faux
+      16 segment display for testing I can use to prove it's functionality.
+    </p>
+    <img loading="lazy" imgurId="IfHf662"/>
+
+    <p>
+      The actual displays were incredibly difficult to get to work without soldering to their test boards; I would
+      need to twist them in their sockets to have all the pins make proper contact, and that wasn't even very reliable
+      either. I decided to make another test board to verify the LED drivers were being sent data correctly using
+      through hole LEDs, where each LED represents one of the 16 segments no need to test with the actual filament
+      displays now!
+    </p>
+    <img loading="lazy" imgurId="WneVhxB"/>
+
+    <p>
+      Unfortunately this is where the project has been left off, it got stuck at the integration of the LED driver ICs
+      but the rest of the project should be relatively straightforward once this is solved. In terms of firmware, there
+      is little left to do.
+    </p>
+  </mat-card-content>
+</mat-card>
