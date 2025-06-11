@@ -1,15 +1,23 @@
-import { CommonModule } from '@angular/common';
-import { AfterContentInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { AfterContentInit, Component, ElementRef, Inject, Input, isDevMode, PLATFORM_ID, ViewChild } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+//import { isDevMode } from '@angular/core';
+
 @Component({
   selector: 'youtube-placeholder',
   templateUrl: './youtube_placeholder.html',
   styleUrls: ['./youtube_placeholder.scss'],
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule, 
+    HttpClientModule
+  ],
 })
 export class YoutubePlaceholder implements AfterContentInit {
   @Input('videoId') videoId = '';
   @ViewChild('placeholder', {static: true}) placeholder!: ElementRef;
+  private readonly API_KEY = "AIzaSyAgB_ANPJ3PENDu2MGFWRycAkoFfnT1Q3U";
+  private readonly YOUTUBE_API_URL = `https://www.googleapis.com/youtube/v3/videos?part=snippet&key=${this.API_KEY}&`;
   // Standard thumbnail sizes associated with their file names.
   private readonly imageSizesToYoutubeSuffixArray: ImageSizeToThumbnailSuffix[] = [
     {
@@ -34,10 +42,24 @@ export class YoutubePlaceholder implements AfterContentInit {
     },
   ];
   private afterViewHasRan: boolean = false;
+  private isBrowser : boolean = false;
+  title: string= "";
 
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private readonly httpClient: HttpClient) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
 
   ngAfterContentInit(): void {
     this.afterViewHasRan = true;
+
+    // Obtain the youtube video title.
+    if (this.isBrowser) {
+			this.httpClient.get(`${this.YOUTUBE_API_URL}&id=${this.videoId}`, {responseType: 'json'})
+					.subscribe((response) => {
+            const data = response as YoutubeTitleResponse;
+            this.title = data.items[0]?.snippet.localized.title;	
+					});
+		}
   }
 
   getThumbnailSize(): string {
@@ -78,4 +100,14 @@ export class YoutubePlaceholder implements AfterContentInit {
 interface ImageSizeToThumbnailSuffix {
   width: number,
   suffix: string,
+}
+
+interface YoutubeTitleResponse {
+  items: Array<{
+    snippet: {
+      localized: {
+        title: string,
+      }
+    }
+  }>;
 }

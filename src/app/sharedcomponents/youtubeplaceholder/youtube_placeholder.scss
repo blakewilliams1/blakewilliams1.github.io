@@ -20,3 +20,14 @@ img {
   top: 50%;
   width: 68px;
 }
+
+p {
+  font-weight: bold;
+  left: 16px;
+  max-width: calc(100% - 36px);
+  overflow: hidden;
+  position: absolute;
+  text-overflow: ellipsis;
+  top: 0%;
+  white-space: nowrap;
+}
