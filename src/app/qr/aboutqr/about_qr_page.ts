@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { MatCardModule } from "@angular/material/card";
 import { Title } from '@angular/platform-browser';
 import { ImageResizerDirective } from "../../sharedcomponents/imageresizerdirective/image_resizer_directive";
+import { YoutubePlaceholder } from '../../sharedcomponents/youtubeplaceholder/youtube_placeholder';
 
 @Component({
     selector: 'about-qr-page',
@@ -11,6 +12,7 @@ import { ImageResizerDirective } from "../../sharedcomponents/imageresizerdirect
     imports: [
         MatCardModule,
         ImageResizerDirective,
+        YoutubePlaceholder,
     ],
 })
 export class AboutQrPage {

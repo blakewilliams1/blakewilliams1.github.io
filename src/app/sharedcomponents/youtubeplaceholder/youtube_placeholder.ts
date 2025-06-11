@@ -1,7 +1,6 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { AfterContentInit, Component, ElementRef, Inject, Input, isDevMode, PLATFORM_ID, ViewChild } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-//import { isDevMode } from '@angular/core';
 
 @Component({
   selector: 'youtube-placeholder',
