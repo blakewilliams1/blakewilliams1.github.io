@@ -2,7 +2,7 @@ import { KonamiCodeService } from '../sharedcomponents/konamicodeservice/konami_
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { Component, ElementRef, Renderer2, ViewChild, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'home-page',
@@ -12,7 +12,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     imports: [
         CommonModule,
         MatCardModule,
-        HttpClientModule,
     ],
 })
 export class HomePage implements AfterViewInit {

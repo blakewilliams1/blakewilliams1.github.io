@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { isDevMode } from '@angular/core';
 import { map } from 'rxjs/operators';
 
@@ -13,7 +13,6 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [
       CommonModule,
-      HttpClientModule
   ],
 })
 export class QRLandingPage {

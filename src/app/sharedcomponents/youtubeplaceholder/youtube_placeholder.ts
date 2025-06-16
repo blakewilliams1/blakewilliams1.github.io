@@ -1,6 +1,6 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { AfterContentInit, Component, ElementRef, Inject, Input, isDevMode, PLATFORM_ID, ViewChild } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'youtube-placeholder',
@@ -9,7 +9,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   standalone: true,
   imports: [
     CommonModule, 
-    HttpClientModule
   ],
 })
 export class YoutubePlaceholder implements AfterContentInit {
