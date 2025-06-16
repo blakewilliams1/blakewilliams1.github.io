@@ -1,5 +1,6 @@
-import {AfterViewInit, Directive, ElementRef, HostBinding, HostListener, Input} from '@angular/core';
+import {AfterViewInit, Directive, ElementRef, HostBinding, HostListener, Inject, Input, PLATFORM_ID} from '@angular/core';
 import { ImageViewerDialogService } from '../imageviewerdialog/image_viewer_dialog_service';
+import { isPlatformBrowser } from '@angular/common';
 @Directive({
   selector: '[imgurId]',
   standalone: true,
@@ -36,15 +37,21 @@ export class ImageResizerDirective implements AfterViewInit {
   // will cause errors that break the application.
   private afterViewInitFinished = false;
   private windowWidth: number;
+  isBrowser: boolean;
 
   constructor(
     private readonly element: ElementRef,
-    private readonly dialogImageService: ImageViewerDialogService) {}
+    private readonly dialogImageService: ImageViewerDialogService,
+    @Inject(PLATFORM_ID) private platformId: Object) {
+      this.isBrowser = isPlatformBrowser(this.platformId);
+    }
 
   ngAfterViewInit() {
     this.calculateSrcAttribute();
-    this.afterViewInitFinished = true;
-    this.windowWidth = window.innerWidth;
+    setTimeout(() => this.afterViewInitFinished = true);
+    if (this.isBrowser) {
+      this.windowWidth = window.innerWidth;
+    }
   }
 
   // Recalculate the needed suffix for the imgur images, then apply the change if it's different than before.
@@ -69,7 +76,15 @@ export class ImageResizerDirective implements AfterViewInit {
 
   // Dynamically bind the cursor style based on if the image can be clicked and expanded into a modal.
   @HostBinding('style.cursor') get cursor() {
-    return !this.preventDialogOpening && this.windowWidth > this.minWidthToExpandModal ? 'pointer' : 'default';
+    if (!this.afterViewInitFinished) {
+      return null;
+    }
+
+    if (this.preventDialogOpening) {
+      return null;
+    }
+
+    return this.windowWidth > this.minWidthToExpandModal ? 'pointer' : null;
   }
 
 private calculateSrcAttribute() {
