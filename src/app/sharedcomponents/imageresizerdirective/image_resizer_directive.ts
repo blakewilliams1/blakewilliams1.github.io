@@ -36,7 +36,7 @@ export class ImageResizerDirective implements AfterViewInit {
   // Exists to ensure that the <img> src attribute doesn't change before initial hydration is done, as DOM mismatch
   // will cause errors that break the application.
   private afterViewInitFinished = false;
-  private windowWidth: number;
+  private windowWidth: number = 0;
   isBrowser: boolean;
 
   constructor(

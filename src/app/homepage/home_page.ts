@@ -1,7 +1,7 @@
 import { KonamiCodeService } from '../sharedcomponents/konamicodeservice/konami_code_service';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-import { Component, ElementRef, Renderer2, ViewChild, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild, AfterViewInit, Inject, PLATFORM_ID, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -15,8 +15,8 @@ import { HttpClient } from '@angular/common/http';
     ],
 })
 export class HomePage implements AfterViewInit {
-  @ViewChild('actionContainer') actionContainer: ElementRef;
-  @ViewChild('actions') actionsList: ElementRef;
+  @ViewChild('actionContainer') actionContainer!: ElementRef;
+  @ViewChild('actions') actionsList!: ElementRef;
 	private readonly ACTION_CHANGE_INTERVAL_MS = 4000;
   readonly ACTIVITIES_LIST_URL =
     'https://raw.githubusercontent.com/blakewilliams1/blakewilliams1.github.io/main/src/assets/current_activities.txt';
@@ -28,6 +28,7 @@ export class HomePage implements AfterViewInit {
 	constructor(
 			private renderer: Renderer2,
 			private readonly konamiService: KonamiCodeService,
+			private cdr: ChangeDetectorRef,
 			@Inject(PLATFORM_ID) private platformId: Object,
 			private readonly httpClient: HttpClient) {
 		this.isBrowser = isPlatformBrowser(this.platformId);
@@ -43,10 +44,10 @@ export class HomePage implements AfterViewInit {
 					.subscribe((response) => {
 						this.allCurrentActivities = response.split('\n').filter(str => str.trim() !== "") || [];
 
-						// Once we've acquired the list of actions I'm 'currently doing', initiate the repeating call to scroll
-						// through them all. setTimeout() is needed to schedule the animations in next update loop, after
-						// this.allCurrentActivities has been set.
-						setTimeout(() => this.scrollingTask());
+						// Ensure that the assignment of this.allCurrentActivities propagates out to the DOM before calling
+						// scrollingTask() so the template contains elements for each.
+						this.cdr.detectChanges();
+						this.scrollingTask();
 					});
 		}
 	}
@@ -67,7 +68,7 @@ export class HomePage implements AfterViewInit {
 				this.activityRandomIndexOrder[swapIndex] = valueA;
 			}
 		}
-	
+
 		// The default value is never expected tyo be used, but is here to satisfy the static compiler.
 		const targetActionIndex: number = this.activityRandomIndexOrder.pop() || 0;
 		// Calculate the vertical distance between the top of the container for the actions and the action about to be
