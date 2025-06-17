@@ -55,7 +55,7 @@ export class ImageResizerDirective implements AfterViewInit {
   }
 
   // Recalculate the needed suffix for the imgur images, then apply the change if it's different than before.
-  @HostListener('window:resize', ['$event'])
+  @HostListener('window:resize')
   onResize() {
     this.windowWidth = window.innerWidth;
     if (!this.afterViewInitFinished) {
@@ -67,7 +67,7 @@ export class ImageResizerDirective implements AfterViewInit {
   // On image click, fire off an event to the image viewer dialog service. This will open an image viewing dialog
   // at full image resolution.
   @HostListener('click')
-  onClick(e: any) {
+  onClick() {
     // Forward the URL to a full sized image without any downscaling.
     if (!this.preventDialogOpening && this.windowWidth > this.minWidthToExpandModal) {
       this.dialogImageService.emitImageClick(`${this.imgurUrlPattern}${this.imgurId}.jpg`);

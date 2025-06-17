@@ -1,8 +1,8 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection } from '@angular/core';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideClientHydration } from '@angular/platform-browser';
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient } from '@angular/common/http';
 
@@ -14,8 +14,9 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes, inMemoryScrollingFeatures),
     provideHttpClient(),
-    provideClientHydration(),
+    provideClientHydration(withEventReplay()),
     provideAnimationsAsync(),
-    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideBrowserGlobalErrorListeners(),
+    provideZonelessChangeDetection(),
   ]
 };

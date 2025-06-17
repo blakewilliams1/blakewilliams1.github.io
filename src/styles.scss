@@ -30,7 +30,12 @@ $personalsite-theme: mat.m2-define-dark-theme((
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  background-color: #303030;
+  color: white;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 // Any link that is visited, 'a' tag or otherwise, not within the header nav.
 *:visited:not(nav *) {

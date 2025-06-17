@@ -1,21 +1,21 @@
+import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet, Router, RouterModule, ResolveEnd} from '@angular/router';
+import { ResolveEnd, RouterModule, RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   imports: [
     CommonModule,
     MatTabsModule,
     RouterModule,
     RouterOutlet
   ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  templateUrl: './app.html',
+  styleUrl: './app.scss'
 })
-export class AppComponent implements AfterViewInit {
+export class App implements AfterViewInit {
   currentRoute: string = '';
 
   constructor(private router: Router) {}
