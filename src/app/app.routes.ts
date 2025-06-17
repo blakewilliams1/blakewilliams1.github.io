@@ -1,3 +1,4 @@
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
@@ -83,7 +84,10 @@ export const routes: Routes = [
   },
   {
     path: 'contact',
-    loadComponent: () => import('./contact/contact_form_page').then(m => m.ContactFormPage)
+    loadComponent: () => import('./contact/contact_form_page').then(m => m.ContactFormPage),
+    // This is for animations on the form input fields. Nothing else in the application uses animations, so they're
+    // lazy loaded just in the one component that uses it.
+    providers: [provideAnimationsAsync()],
   },
   // Invalid routes (404) should redirect back to home page.
   {
