@@ -5,7 +5,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 @Component({
   standalone: true,
   selector: 'image-viewer-dialog',
-  template: `<div><img #image id="image" [src]="data.imageUrl" (click)="closeDialog()"/></div>`,
+  template: `<div><img #image id="image" [src]="data.imageUrl" (load)="onImageLoad()" (click)="closeDialog()"/></div>`,
   styles: `
     div {
       overflow: hidden;
@@ -14,6 +14,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
     }
     img {
       width: 100%;
+      will-change: transform;
     }
   `,
     imports: [
@@ -41,10 +42,38 @@ export class ImageViewerDialog implements AfterViewInit, OnDestroy {
     this.updateCursorStyle();
   }
 
+  onImageLoad() {
+    // Once the image loads, calculate the natural aspect ratio and apply it to the container. This ensures that the
+    // material dialog has the correct aspect ratio when for the image.
+    const aspectRatio = this.image.nativeElement.offsetWidth / this.image.nativeElement.offsetHeight;
+    this.renderer.setStyle(this.image.nativeElement.parentNode, 'aspect-ratio', aspectRatio);
+  }
+
   private onWheelScroll = (event: WheelEvent) => {
+    console.log(event);
     // Zoom in multiplicative by 1.1x so deeper zooming doesn't feel weak.
-    const increment = event.deltaY > 0 ? 1/1.1 : 1.1;
-    this.scale = Math.max(1, Math.min(this.scale * increment, 10));
+    const scaleIncrement = event.deltaY > 0 ? 1/1.1 : 1.1;
+    this.scale = Math.max(1, Math.min(this.scale * scaleIncrement, 10));
+
+    // Add some translate to make it zoom in relative to the mouse position.
+    const centerCoordX = window.innerWidth / 2;
+    const centerCoordY = window.innerHeight / 2;
+    const imageWidth = this.image.nativeElement.offsetWidth;
+    const imageHeight = this.image.nativeElement.offsetHeight;
+    // Percents from center tell how far the mouse cursor is from the image center to image border.
+    const percentFromCenterX = (centerCoordX - event.clientX) / (imageWidth / 2);
+    const percentFromCenterY = (centerCoordY - event.clientY) / (imageHeight / 2);
+    
+    const container =  this.image.nativeElement.parentNode;
+    const dialogWidth = container.offsetWidth;
+    const dialogHeight = container.offsetHeight;
+    // Using the percents from above, explicitly set the translates to be the max distance over before
+    // clamping * percent the cursor is over. We want zero translate if the cursor is in dead center but
+    // full possible translate if it's on the border edge. Not perfect, assumes user never moves cursor
+    // location while scrolling in.
+    this.offsetX = percentFromCenterX * (imageWidth * this.scale - dialogWidth) / 2;
+    this.offsetY = percentFromCenterY * (imageHeight * this.scale - dialogHeight) / 2;
+
     this.updateImagePosition();
   }
 
@@ -58,6 +87,7 @@ export class ImageViewerDialog implements AfterViewInit, OnDestroy {
     if (!this.isDragging) {
       return;
     }
+    // Events at (0,0) are basically guaranteed to be red herrings. Chrome emits one event like this on mouse up.
     if (event.clientX == 0 && event.clientY == 0) {
       return;
     }
@@ -88,6 +118,7 @@ export class ImageViewerDialog implements AfterViewInit, OnDestroy {
     // Clamp how much the image can be dragged towards the top
     this.offsetY = Math.max(this.offsetY,  -1 * (imageHeight * this.scale - dialogHeight) / 2);
     
+    console.log(`translate(${this.offsetX}px, ${this.offsetY}px) scale(${this.scale})`);
     this.renderer.setStyle(
       this.image.nativeElement,
       'transform',
