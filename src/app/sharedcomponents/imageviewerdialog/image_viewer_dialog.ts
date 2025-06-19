@@ -50,7 +50,6 @@ export class ImageViewerDialog implements AfterViewInit, OnDestroy {
   }
 
   private onWheelScroll = (event: WheelEvent) => {
-    console.log(event);
     // Zoom in multiplicative by 1.1x so deeper zooming doesn't feel weak.
     const scaleIncrement = event.deltaY > 0 ? 1/1.1 : 1.1;
     this.scale = Math.max(1, Math.min(this.scale * scaleIncrement, 10));
@@ -118,7 +117,6 @@ export class ImageViewerDialog implements AfterViewInit, OnDestroy {
     // Clamp how much the image can be dragged towards the top
     this.offsetY = Math.max(this.offsetY,  -1 * (imageHeight * this.scale - dialogHeight) / 2);
     
-    console.log(`translate(${this.offsetX}px, ${this.offsetY}px) scale(${this.scale})`);
     this.renderer.setStyle(
       this.image.nativeElement,
       'transform',
