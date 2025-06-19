@@ -1,5 +1,5 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { AfterContentInit, Component, ElementRef, Inject, Input, isDevMode, PLATFORM_ID, ViewChild } from '@angular/core';
+import { AfterContentInit, ChangeDetectorRef, Component, ElementRef, Inject, Input, isDevMode, PLATFORM_ID, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -43,7 +43,10 @@ export class YoutubePlaceholder implements AfterContentInit {
   private isBrowser : boolean = false;
   title: string= "";
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object, private readonly httpClient: HttpClient) {
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private readonly httpClient: HttpClient,
+    private readonly cdr: ChangeDetectorRef) {
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
 
@@ -55,7 +58,8 @@ export class YoutubePlaceholder implements AfterContentInit {
 			this.httpClient.get(`${this.YOUTUBE_API_URL}&id=${this.videoId}`, {responseType: 'json'})
 					.subscribe((response) => {
             const data = response as YoutubeTitleResponse;
-            this.title = data.items[0]?.snippet.localized.title;	
+            this.title = data.items[0]?.snippet.localized.title;
+            this.cdr.detectChanges();
 					});
 		}
   }
@@ -100,6 +104,7 @@ interface ImageSizeToThumbnailSuffix {
   suffix: string,
 }
 
+// A representation of a response from the Youtube data API, only the properties I care about.
 interface YoutubeTitleResponse {
   items: Array<{
     snippet: {
