@@ -62,16 +62,15 @@ export class ImageViewerDialog implements AfterViewInit, OnDestroy {
     // Percents from center tell how far the mouse cursor is from the image center to image border.
     const percentFromCenterX = (centerCoordX - event.clientX) / (imageWidth / 2);
     const percentFromCenterY = (centerCoordY - event.clientY) / (imageHeight / 2);
-    
+
     const container =  this.image.nativeElement.parentNode;
     const dialogWidth = container.offsetWidth;
     const dialogHeight = container.offsetHeight;
     // Using the percents from above, explicitly set the translates to be the max distance over before
     // clamping * percent the cursor is over. We want zero translate if the cursor is in dead center but
-    // full possible translate if it's on the border edge. Not perfect, assumes user never moves cursor
-    // location while scrolling in.
-    this.offsetX = percentFromCenterX * (imageWidth * this.scale - dialogWidth) / 2;
-    this.offsetY = percentFromCenterY * (imageHeight * this.scale - dialogHeight) / 2;
+    // full possible translate if it's on the border edge.
+    this.offsetX += percentFromCenterX * (imageWidth * scaleIncrement - dialogWidth) / 2;
+    this.offsetY += percentFromCenterY * (imageHeight * scaleIncrement - dialogHeight) / 2;
 
     this.updateImagePosition();
   }
