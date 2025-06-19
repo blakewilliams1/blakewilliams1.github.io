@@ -22,12 +22,19 @@ $personalsite-theme: mat.m2-define-dark-theme((
   )
 ));
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include mat.all-component-themes($personalsite-theme);
+// Include theme styles for core and each component used in the app. This allows us to prune the global Material
+// stylesheet to only include styles relevant for components we actually use. Add more includes here when using
+// new components.
+@include mat.core-theme($personalsite-theme);
+@include mat.card-theme($personalsite-theme);
+@include mat.button-theme($personalsite-theme);
+@include mat.divider-theme($personalsite-theme);
+@include mat.form-field-theme($personalsite-theme);
+@include mat.input-theme($personalsite-theme);
+@include mat.progress-spinner-theme($personalsite-theme);
+@include mat.tabs-theme($personalsite-theme);
 
-/* You can add global styles to this file, and also import other style files */
+/* Custom global styles for the whole app from here and below. */
 
 html, body { height: 100%; }
 body {
@@ -45,24 +52,6 @@ body {
 *:link:not(nav *) {
   color: white;
   font: bold;
-}
-
-b {
-  color: white;
-}
-
-nav {
-  width: fit-content;
-  margin: auto;
-  text-align:center;
-  padding-bottom:1px;
-  background:
-    linear-gradient(to right, #f81d00 0%, #f9d423 100%)
-    left 
-    bottom
-    transparent    
-    no-repeat; 
-  background-size:100% 1px ;
 }
 
 // For changing the text highlighting color when selecting text.

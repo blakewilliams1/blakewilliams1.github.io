@@ -5,3 +5,17 @@
   font-weight: bold;
   color: white;
 }
+
+nav {
+  width: fit-content;
+  margin: auto;
+  text-align:center;
+  padding-bottom:1px;
+  background:
+    linear-gradient(to right, #f81d00 0%, #f9d423 100%)
+    left 
+    bottom
+    transparent    
+    no-repeat; 
+  background-size:100% 1px ;
+}
