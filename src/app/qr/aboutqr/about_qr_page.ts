@@ -16,7 +16,7 @@ import { YoutubePlaceholder } from '../../sharedcomponents/youtubeplaceholder/yo
     ],
 })
 export class AboutQrPage {
-    public constructor(private titleService: Title) {
+    public constructor(private readonly titleService: Title) {
       this.titleService.setTitle("About QR Tattoo");
     }
 

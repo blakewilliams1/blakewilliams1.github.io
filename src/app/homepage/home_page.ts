@@ -26,9 +26,9 @@ export class HomePage implements AfterViewInit {
 	allCurrentActivities: string[] = [''];
 
 	constructor(
-			private renderer: Renderer2,
+			private readonly renderer: Renderer2,
 			private readonly konamiService: KonamiCodeService,
-			private cdr: ChangeDetectorRef,
+			private readonly cdr: ChangeDetectorRef,
 			@Inject(PLATFORM_ID) private platformId: Object,
 			private readonly httpClient: HttpClient) {
 		this.isBrowser = isPlatformBrowser(this.platformId);

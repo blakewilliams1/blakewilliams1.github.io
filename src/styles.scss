@@ -54,6 +54,10 @@ body {
   font: bold;
 }
 
+p {
+  color: lightgrey;
+}
+
 // For changing the text highlighting color when selecting text.
 ::selection {
   background: #151515; /* WebKit/Blink Browsers */
