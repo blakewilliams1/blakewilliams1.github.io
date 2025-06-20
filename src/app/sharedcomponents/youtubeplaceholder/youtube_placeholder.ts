@@ -1,6 +1,5 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { AfterContentInit, ChangeDetectorRef, Component, ElementRef, Inject, Input, isDevMode, PLATFORM_ID, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { AfterContentInit, ChangeDetectorRef, Component, ElementRef, Inject, Input, PLATFORM_ID, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'youtube-placeholder',
@@ -45,7 +44,6 @@ export class YoutubePlaceholder implements AfterContentInit {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    private readonly httpClient: HttpClient,
     private readonly cdr: ChangeDetectorRef) {
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
@@ -55,12 +53,13 @@ export class YoutubePlaceholder implements AfterContentInit {
 
     // Obtain the youtube video title.
     if (this.isBrowser) {
-			this.httpClient.get(`${this.YOUTUBE_API_URL}&id=${this.videoId}`, {responseType: 'json'})
-					.subscribe((response) => {
+      fetch(`${this.YOUTUBE_API_URL}&id=${this.videoId}`)
+          .then(response => response.json())
+          .then(response => {
             const data = response as YoutubeTitleResponse;
             this.title = data.items[0]?.snippet.localized.title;
             this.cdr.detectChanges();
-					});
+          });
 		}
   }
 

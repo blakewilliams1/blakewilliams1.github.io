@@ -2,7 +2,6 @@ import { KonamiCodeService } from '../sharedcomponents/konamicodeservice/konami_
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { Component, ElementRef, Renderer2, ViewChild, AfterViewInit, Inject, PLATFORM_ID, ChangeDetectorRef } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'home-page',
@@ -29,8 +28,7 @@ export class HomePage implements AfterViewInit {
 			private readonly renderer: Renderer2,
 			private readonly konamiService: KonamiCodeService,
 			private readonly cdr: ChangeDetectorRef,
-			@Inject(PLATFORM_ID) private platformId: Object,
-			private readonly httpClient: HttpClient) {
+			@Inject(PLATFORM_ID) private platformId: Object) {
 		this.isBrowser = isPlatformBrowser(this.platformId);
 	}
 
@@ -40,8 +38,9 @@ export class HomePage implements AfterViewInit {
 			this.konamiService.registerListener();
 
 			// Load the contents of the txt file containing all the current activities, then save it as a class member.
-			this.httpClient.get(this.ACTIVITIES_LIST_URL, {responseType: 'text'})
-					.subscribe((response) => {
+			fetch(this.ACTIVITIES_LIST_URL)
+					.then(response => response.text())
+					.then(response => {
 						this.allCurrentActivities = response.split('\n').filter(str => str.trim() !== "") || [];
 
 						// Ensure that the assignment of this.allCurrentActivities propagates out to the DOM before calling

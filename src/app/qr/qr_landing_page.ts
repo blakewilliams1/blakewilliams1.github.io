@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { isDevMode } from '@angular/core';
-import { map } from 'rxjs/operators';
 
 import qrConfigz from "./qr_config.json";
 import { CommonModule } from '@angular/common';
@@ -54,20 +52,15 @@ export class QRLandingPage {
     'REDIRECTION_URL',
   ];
 
-  constructor(
-    private readonly router: Router,
-    private readonly httpClient: HttpClient) {
+  constructor(private readonly router: Router) {
     if (isDevMode()) {
       this.executeConfigSettings(this.localQrConfig);
     } else {
-      httpClient.get(this.CONFIG_FILE_URL)
-        .pipe(
-          map(response => atob(((response as ConfigResponse).content))),
-          map(content => JSON.parse(content) as QRConfig),
-        )
-        .subscribe(content => {
-          this.executeConfigSettings(content);
-        });
+      fetch(this.CONFIG_FILE_URL)
+          .then(response => response.json())
+          .then(response => {
+            this.executeConfigSettings(response as QRConfig);
+          });
     }
   }
 
@@ -75,12 +68,13 @@ export class QRLandingPage {
     if (this.redirectionActions.includes(qrConfig.actionType)) {
       this.handleRedirection(qrConfig);
     } else if (qrConfig.actionType === 'VCF_DOWNLOAD') {
-      this.httpClient.get(this.VCARD_FILE_URL, { responseType: 'blob' })
-        .subscribe(blob => {
-          const fileName =
-            this.VCARD_FILE_URL.substring(this.VCARD_FILE_URL.lastIndexOf('/') + 1);
-          this.downloadBlob(blob, fileName);
-        });
+      fetch(this.VCARD_FILE_URL)
+          .then(response => response.blob())
+          .then(blob => {
+            const fileName =
+                this.VCARD_FILE_URL.substring(this.VCARD_FILE_URL.lastIndexOf('/') + 1);
+            this.downloadBlob(blob, fileName);
+          });
     } else if (qrConfig.actionType === 'GENERIC_FILE_DOWNLOAD') {
       if (!!qrConfig.genericFileName) {
         this.downloadGenericFile(qrConfig.genericFileName);
@@ -93,12 +87,16 @@ export class QRLandingPage {
   }
 
   downloadGenericFile(fileName: string) {
-    this.httpClient.get(this.GENERIC_FILE_BASE_URL + fileName, { responseType: 'blob' })
-      .subscribe(blob => {
-        this.downloadBlob(blob, fileName);
-      }, () => {
-        this.showFileNotFoundMessage = true;
-      });
+    fetch(this.GENERIC_FILE_BASE_URL + fileName)
+        .then(response => {
+            if (!response.ok) {
+              this.showFileNotFoundMessage = true;
+            }
+            return response.blob();
+        })
+        .then(blob => {
+          this.downloadBlob(blob, fileName);
+        });
   }
 
   // Refactored helper function to download generic files.
