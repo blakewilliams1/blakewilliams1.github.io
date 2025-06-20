@@ -1,6 +1,7 @@
 :host {
   display: block;
   margin: auto;
+  padding-bottom: 1px;
   width: fit-content;
 }
 
@@ -33,6 +34,7 @@ mat-card-title {
 pre {
   background: #303030;
   border-radius: 8px;
+  color: white;
   padding-right: 16px;
   width: fit-content;
 }

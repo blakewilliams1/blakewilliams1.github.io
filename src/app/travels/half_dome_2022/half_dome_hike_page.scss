@@ -1,3 +1,10 @@
+:host {
+  display: block;
+  margin: auto;
+  padding-bottom: 1px;
+  width: fit-content;
+}
+
 img {
   border-radius: 3px;
   margin: 1em 0;
@@ -10,11 +17,6 @@ img {
   margin-bottom: 1em;
 }
 
-:host {
-  display: block;
-  margin: auto;
-  width: fit-content;
-}
 
 mat-card {
   margin: 20px 5%;

@@ -39,7 +39,7 @@ $personalsite-theme: mat.m2-define-dark-theme((
 html, body { height: 100%; }
 body {
   background-color: #303030;
-  color: white;
+  color: lightgrey;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
@@ -54,8 +54,8 @@ body {
   font: bold;
 }
 
-p {
-  color: lightgrey;
+h1, h2, h3, b {
+  color: white;
 }
 
 // For changing the text highlighting color when selecting text.

@@ -4,6 +4,11 @@ mat-card {
   max-width: 800px;
 }
 
+mat-card-title {
+  color: white;
+  font-weight: bold;
+}
+
 .page-container {
   margin: 0 auto;
   width: fit-content;
