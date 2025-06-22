@@ -30,11 +30,10 @@
             "styles": [
               "src/styles.scss"
             ],
+            "optimization": true,
             "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            "outputMode": "static",
+            "ssr": false
           },
           "configurations": {
             "production": {
@@ -51,7 +50,8 @@
                 }
               ],
               "outputHashing": "all",              
-              "sourceMap": false
+              "sourceMap": false,
+              "optimization": true
             },
             "development": {
               "optimization": false,
