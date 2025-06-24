@@ -1,0 +1,31 @@
+:host {
+  display: block;
+  margin: auto;
+  padding-bottom: 1px;
+  width: fit-content;
+}
+
+mat-card {
+  margin: 20px 5%;
+  max-width: 1400px;
+}
+
+img {
+  border-radius: 3px;
+  margin-bottom: 16px;
+  width: 100%;
+  min-height: 100px;
+}
+
+p {
+  margin-top: 0;
+}
+
+.divider {
+  border-top: 1px solid white;
+  margin: 0 -16px 1em -16px;
+}
+
+youtube-placeholder {
+  margin-bottom: 16px;
+}

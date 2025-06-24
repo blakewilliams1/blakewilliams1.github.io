@@ -75,6 +75,10 @@ export const routes: Routes = [
     loadComponent: () => import('./travels/half_dome_2022/half_dome_hike_page').then(m => m.HalfDomeHikePage)
   },
   {
+    path: 'indonesia-2019',
+    loadComponent: () => import('./travels/indonesia_2019/indonesia_2019_page').then(m => m.Indonesia2019Page)
+  },
+  {
     path: 'qr',
     loadComponent: () => import('./qr/qr_landing_page').then(m => m.QRLandingPage)
   },
