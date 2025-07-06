@@ -4,12 +4,14 @@
     flex-direction: column;
     justify-content: center;
     // Occupy the full remaining height beneath the navigation tabs
-    height: calc(100vh - 50px);
+    height: calc(100vh - 70px);
+		min-height: fit-content;
 }
 
 img {
     border-radius: 50px;
     height: 100px;
+		margin-top: 20px;
     width: 100px;
 }
 
@@ -19,7 +21,8 @@ img {
 }
 
 #actionContainer {
-	margin: 100px 20px;
+	margin: 100px 20px 0;
+	min-height: 4em;
 	text-align: center;
 	width: fit-content;
 	
