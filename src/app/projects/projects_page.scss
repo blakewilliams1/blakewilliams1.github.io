@@ -26,6 +26,5 @@ mat-card-title {
 
 /* Without this, the images will be however large they were downloaded to be and stretch the mat-cards to the right. */
 img {
-  aspect-ratio: 16 / 9;
   width: 100%;
 }

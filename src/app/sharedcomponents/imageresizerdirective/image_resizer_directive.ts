@@ -112,7 +112,7 @@ private calculateSrcAttribute() {
     const imgurUrl = `${this.imgurUrlPattern}${this.imgurId}${chosenSuffix}.jpg`;
 
     // Set attribute source so the image is loaded.
-    this.element.nativeElement.setAttribute('src', imgurUrl);
+    this.renderer.setAttribute(this.element.nativeElement, 'src', imgurUrl);
   }
 
   private chooseSuffix(longestEdge: number): string {
