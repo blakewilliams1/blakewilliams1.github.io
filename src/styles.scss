@@ -58,6 +58,12 @@ h1, h2, h3, b {
   color: white;
 }
 
+// All images that are using the Imgur resizer directive should default to 16 / 9 landscape then
+// be overrode by the directive if needed.
+img[imgurId] {
+  aspect-ratio: 16 / 9;
+}
+
 // For changing the text highlighting color when selecting text.
 ::selection {
   background: #151515; /* WebKit/Blink Browsers */

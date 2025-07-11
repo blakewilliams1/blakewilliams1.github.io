@@ -1,6 +1,6 @@
-import {AfterViewInit, Directive, ElementRef, HostBinding, HostListener, Inject, Input, PLATFORM_ID} from '@angular/core';
+import {AfterViewInit, Directive, ElementRef, HostBinding, HostListener, Input, Renderer2} from '@angular/core';
 import { ImageViewerDialogService } from '../imageviewerdialog/image_viewer_dialog_service';
-import { isPlatformBrowser } from '@angular/common';
+
 @Directive({
   selector: '[imgurId]',
   standalone: true,
@@ -8,7 +8,7 @@ import { isPlatformBrowser } from '@angular/common';
 // This Directive is used to calculate the image URL of images stored in Imgur at resolutions that help reduce bandwidth usages.
 export class ImageResizerDirective implements AfterViewInit {
   @Input('imgurId') imgurId = '';
-  @Input('isLandscape') isLandscape = false;
+  @Input('aspectRatio') aspectRatio = '';
   @Input('preventDialogOpening') preventDialogOpening = false;
   private readonly imgurUrlPattern = 'https://imgur.com/';
   private readonly minWidthToExpandModal = 1500;
@@ -37,20 +37,21 @@ export class ImageResizerDirective implements AfterViewInit {
   // will cause errors that break the application.
   private afterViewInitFinished = false;
   private windowWidth: number = 0;
-  isBrowser: boolean;
 
   constructor(
     private readonly element: ElementRef,
-    private readonly dialogImageService: ImageViewerDialogService,
-    @Inject(PLATFORM_ID) private platformId: Object) {
-      this.isBrowser = isPlatformBrowser(this.platformId);
-    }
+		private readonly renderer: Renderer2,
+    private readonly dialogImageService: ImageViewerDialogService) {}
 
   ngAfterViewInit() {
     this.calculateSrcAttribute();
     setTimeout(() => this.afterViewInitFinished = true);
-    if (this.isBrowser) {
-      this.windowWidth = window.innerWidth;
+
+    if (!!this.aspectRatio) {
+      this.renderer.setStyle(
+					this.element.nativeElement,
+					'aspect-ratio',
+					this.getAspectRatioNumber() + '');
     }
   }
 
@@ -89,26 +90,23 @@ export class ImageResizerDirective implements AfterViewInit {
 
 private calculateSrcAttribute() {
     // Determine the amount of pixels that the browser is going to allocate to this image.
+    const aspectRatioMultiplier = !!this.aspectRatio ? this.getAspectRatioNumber() : 16 / 9;
     let renderedWidth = this.element.nativeElement.width;
-    // Landscape photos will inherently take up more of the screen and be stretched larger. Here we assume
-    // that all photos are 16:9 and adjust the renderedWidth variable accordingly.
-    if (this.isLandscape) {
-      renderedWidth = (renderedWidth * 16) / 9;
-    }
+    const longestEdge = aspectRatioMultiplier > 1 ? renderedWidth : renderedWidth / aspectRatioMultiplier;
     // Don't recalculate or re-download a smaller size image if we already have a higher fidelity version on hand.
-    if(renderedWidth < this.lastCalculatedWidth) {
-      return;
-    }
+   if (longestEdge < this.lastCalculatedWidth) {
+    return;
+   }
 
     // Obtain the proper imgur suffix for correct thumbnail size.
-    const chosenSuffix = this.chooseSuffix(renderedWidth);
+    const chosenSuffix = this.chooseSuffix(longestEdge);
     // If we just recalculated the suffix to be the same as it just was, don't bother changing the
     // image src attribute.
     if (this.lastCalculatedSuffix != undefined && chosenSuffix == this.lastCalculatedSuffix) {
       return;
     }
     this.lastCalculatedSuffix = chosenSuffix;
-    this.lastCalculatedWidth = renderedWidth;
+    this.lastCalculatedWidth = longestEdge;
 
     // Construct the full URL of the image at the desired resolution.
     const imgurUrl = `${this.imgurUrlPattern}${this.imgurId}${chosenSuffix}.jpg`;
@@ -117,11 +115,11 @@ private calculateSrcAttribute() {
     this.element.nativeElement.setAttribute('src', imgurUrl);
   }
 
-  private chooseSuffix(renderedWidth: number): string {
+  private chooseSuffix(longestEdge: number): string {
     for (let pairing of this.imageSizesToImgurSuffixArray) {
       // If the current width/suffix pairing is smaller than the screen real estate provided to us
       // by the browser, skip it and check the next largest pairing.
-      if (renderedWidth > pairing.width) {
+      if (longestEdge > pairing.width) {
         continue;
       }
 
@@ -129,7 +127,10 @@ private calculateSrcAttribute() {
     }
 
     return '';
-  } 
+  }
+  private getAspectRatioNumber() {
+    return Function('"use strict"; return ' + this.aspectRatio)();
+  }
 }
 
 export interface ImageSizeToImgurSuffix {
