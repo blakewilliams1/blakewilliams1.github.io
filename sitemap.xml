@@ -8,16 +8,16 @@
   </url>
 
   <url>
-    <loc>https://blakewilliams.org/projects</loc>
+    <loc>https://blakewilliams.org/career</loc>
     <lastmod>2025-05-26</lastmod>
     <priority>0.90</priority>
   </url>
 
-    <url>
-      <loc>https://blakewilliams.org/smart-pay-watch</loc>
-      <lastmod>2025-05-26</lastmod>
-      <priority>0.80</priority>
-    </url>
+  <url>
+    <loc>https://blakewilliams.org/projects</loc>
+    <lastmod>2025-05-26</lastmod>
+    <priority>0.90</priority>
+  </url>
 
     <url>
       <loc>https://blakewilliams.org/neon-sign</loc>
@@ -27,12 +27,24 @@
 
     <url>
       <loc>https://blakewilliams.org/flip-dot-display</loc>
-      <lastmod>2025-05-26</lastmod>
+      <lastmod>2025-07-06</lastmod>
       <priority>0.80</priority>
     </url>
 
     <url>
       <loc>https://blakewilliams.org/mountainboard</loc>
+      <lastmod>2025-05-26</lastmod>
+      <priority>0.80</priority>
+    </url>
+
+    <url>
+      <loc>https://blakewilliams.org/smart-pay-watch</loc>
+      <lastmod>2025-05-26</lastmod>
+      <priority>0.80</priority>
+    </url>
+
+    <url>
+      <loc>https://blakewilliams.org/dot-matrix-watch</loc>
       <lastmod>2025-05-26</lastmod>
       <priority>0.80</priority>
     </url>
@@ -85,11 +97,17 @@
       <priority>0.80</priority>
     </url>
 
-  <url>
-    <loc>https://blakewilliams.org/career</loc>
-    <lastmod>2025-05-26</lastmod>
-    <priority>0.90</priority>
-  </url>
+    <url>
+      <loc>https://blakewilliams.org/indonesia-2019</loc>
+      <lastmod>2025-07-06</lastmod>
+      <priority>0.80</priority>
+    </url>
+
+    <url>
+      <loc>https://blakewilliams.org/euro-trip-2023</loc>
+      <lastmod>2025-07-06</lastmod>
+      <priority>0.80</priority>
+    </url>
 
   <url>
     <loc>https://blakewilliams.org/contact</loc>
