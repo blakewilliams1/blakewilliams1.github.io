@@ -1,0 +1,22 @@
+:host {
+  float: left;
+  left: 0;
+  position: fixed;
+  margin-left: 20px;
+  z-index: 9;
+}
+
+p {
+  border-left: 1px solid lightgrey;
+  margin: 0;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.bold {
+  border-left: 3px solid white;
+  color: white;
+  font-weight: bold;
+  // This is so the 3px wide indicator of current section is centered with the non-selected ones.
+  translate: -1px;
+}

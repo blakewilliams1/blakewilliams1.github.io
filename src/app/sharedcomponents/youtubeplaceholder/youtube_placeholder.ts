@@ -1,5 +1,5 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { AfterContentInit, ChangeDetectorRef, Component, ElementRef, Inject, Input, PLATFORM_ID, ViewChild } from '@angular/core';
+import { AfterContentInit, ChangeDetectorRef, Component, ElementRef, Inject, Input, PLATFORM_ID } from '@angular/core';
 
 @Component({
   selector: 'youtube-placeholder',
@@ -12,7 +12,6 @@ import { AfterContentInit, ChangeDetectorRef, Component, ElementRef, Inject, Inp
 })
 export class YoutubePlaceholder implements AfterContentInit {
   @Input('videoId') videoId = '';
-  @ViewChild('placeholder', {static: true}) placeholder!: ElementRef;
   private readonly API_KEY = "AIzaSyAgB_ANPJ3PENDu2MGFWRycAkoFfnT1Q3U";
   private readonly YOUTUBE_API_URL = `https://www.googleapis.com/youtube/v3/videos?part=snippet&key=${this.API_KEY}&`;
   // Standard thumbnail sizes associated with their file names.
@@ -43,6 +42,7 @@ export class YoutubePlaceholder implements AfterContentInit {
   title: string= "";
 
   constructor(
+    private readonly self: ElementRef,
     @Inject(PLATFORM_ID) private platformId: Object,
     private readonly cdr: ChangeDetectorRef) {
     this.isBrowser = isPlatformBrowser(this.platformId);
@@ -71,7 +71,7 @@ export class YoutubePlaceholder implements AfterContentInit {
     for (let pairing of this.imageSizesToYoutubeSuffixArray) {
       // If the current width/suffix pairing is smaller than the screen real estate provided to us
       // by the browser, skip it and check the next largest pairing.
-      if (this.placeholder.nativeElement.offsetWidth > pairing.width) {
+      if (this.self.nativeElement.offsetWidth > pairing.width) {
         continue;
       }
 
@@ -82,8 +82,7 @@ export class YoutubePlaceholder implements AfterContentInit {
   }
 
   onYoutubeClick() {
-    const el = this.placeholder.nativeElement; 
-    if (el == null) {
+    if (!this.self) {
       return;
     }
 
@@ -94,7 +93,7 @@ export class YoutubePlaceholder implements AfterContentInit {
     iframe.setAttribute("allowfullscreen", "1");
     iframe.style.width = "100%";
     iframe.style.aspectRatio = "16 / 9";
-    el.replaceWith(iframe);
+    this.self.nativeElement.replaceWith(iframe);
   }
 }
 

@@ -1,0 +1,7 @@
+<div *ngIf="!!windowReference && windowReference.innerWidth > 1600">
+  <div *ngFor="let section of sections">
+    <p (click)="onSectionSelect(section)" [ngClass]="{'bold' : section === currentViewedSection}">
+      {{getSectionTitle(section)}}
+    </p>
+  </div>
+</div>
