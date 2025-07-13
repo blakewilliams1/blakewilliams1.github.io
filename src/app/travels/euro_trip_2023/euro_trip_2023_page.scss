@@ -1,0 +1,59 @@
+:host {
+  display: block;
+  margin: auto;
+  padding-bottom: 1px;
+  width: fit-content;
+}
+
+mat-card {
+  margin: 20px 5%;
+  max-width: 1400px;
+}
+
+img {
+  border-radius: 3px;
+  margin-bottom: 16px;
+  min-height: 100px;
+  width: 100%;
+}
+
+p {
+  margin-top: 0;
+}
+
+.divider {
+  border-top: 1px solid white;
+  margin: 0 -16px 1em -16px;
+}
+
+.split-column-viewer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 1em;
+
+  container-name: split-column-container;
+  container-type: inline-size;
+
+  img {
+    flex: 1 1 0;
+  }
+}
+
+.youtube-player {
+  aspect-ratio: 16 / 9;
+  display: block;
+  margin: 1em 0;
+  width: 100%;
+}
+
+@container split-column-container (width > 600px) {
+  .split-column-viewer {
+    flex-wrap: nowrap;
+  }
+
+  .split-column-viewer img {
+    // 5% is a magic number. Anything <= to 49% is valid for 2 images in a split view for larger viewports.
+    width: 5%;
+  }
+}

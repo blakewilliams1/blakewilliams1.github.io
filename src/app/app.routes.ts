@@ -79,6 +79,10 @@ export const routes: Routes = [
     loadComponent: () => import('./travels/indonesia_2019/indonesia_2019_page').then(m => m.Indonesia2019Page)
   },
   {
+    path: 'euro-trip-2023',
+    loadComponent: () => import('./travels/euro_trip_2023/euro_trip_2023_page').then(m => m.EuroTrip2023Page)
+  },
+  {
     path: 'qr',
     loadComponent: () => import('./qr/qr_landing_page').then(m => m.QRLandingPage)
   },

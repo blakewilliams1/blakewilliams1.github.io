@@ -5,9 +5,9 @@ import { YoutubePlaceholder } from '../../sharedcomponents/youtubeplaceholder/yo
 import { ScrollspyComponent } from '../../sharedcomponents/scrollspy/scrollspy_component';
 
 @Component({
-  selector: 'indonesia-2018-page',
-  templateUrl: './indonesia_2019_page.html',
-  styleUrls: ['./indonesia_2019_page.scss'],
+  selector: 'euro-trip-2023',
+  templateUrl: './euro_trip_2023_page.html',
+  styleUrls: ['./euro_trip_2023_page.scss'],
   standalone: true,
   imports: [
       ImageResizerDirective,
@@ -16,6 +16,4 @@ import { ScrollspyComponent } from '../../sharedcomponents/scrollspy/scrollspy_c
       YoutubePlaceholder,
   ],
 })
-export class Indonesia2019Page {
-
-}
+export class EuroTrip2023Page {}

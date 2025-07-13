@@ -11,7 +11,7 @@ import { AfterContentInit, Component, ElementRef, HostListener, Inject, PLATFORM
 export class ScrollspyComponent implements AfterContentInit {
   sections: Element[] = [];
   windowReference: Window|undefined = undefined;
-  currentViewedSection: Element | undefined = undefined;
+  currentViewedSection: Element|undefined = undefined;
   minWindowWidthToDisplay = 1550;
   private isBrowser: boolean;
 
@@ -52,7 +52,8 @@ export class ScrollspyComponent implements AfterContentInit {
       return;
     }
 
-    // A fairly magic number to ensure that the header still counts even if it's NEARLY scrolled past. Makes it easier in terms of clicking the section headers.
+    // A fairly magic number to ensure that the header still counts even if it's NEARLY scrolled past. Makes it easier
+    // in terms of clicking the section headers.
     const scrollYOffset = 50;
     let smallestNegativePositionIndex = 0;
     let smallestNegativePositionValue = -Infinity;

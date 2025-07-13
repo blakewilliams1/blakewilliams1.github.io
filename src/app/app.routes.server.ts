@@ -74,6 +74,14 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Prerender,
   },
   {
+    path: 'indonesia-2019',
+    renderMode: RenderMode.Prerender,
+  },
+  {
+    path: 'euro-trip-2023',
+    renderMode: RenderMode.Prerender,
+  },
+  {
     path: 'qr',
     renderMode: RenderMode.Prerender,
   },
