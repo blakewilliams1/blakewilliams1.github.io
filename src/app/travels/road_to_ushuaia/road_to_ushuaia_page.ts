@@ -12,12 +12,13 @@ import { Router } from '@angular/router';
   ],
 })
 export class RoadToUshuaiaPage {
+  readonly advRiderURL = 'https://advrider.com/f/threads/1750647/page-1000';
   constructor(private readonly router: Router) {
     setTimeout(() => {
       setTimeout(() => {
         router.navigate(['/travels']);
       }, 100);
-      window.open('https://advrider.com/f/threads/california-to-ushuaia-2024.1750647/page-1000', '_blank', 'noopener,noreferrer');
+      window.open(this.advRiderURL, '_blank', 'noopener,noreferrer');
     }, 2000);
   }
 }
