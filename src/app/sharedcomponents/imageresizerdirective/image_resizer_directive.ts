@@ -44,6 +44,7 @@ export class ImageResizerDirective implements AfterViewInit {
     private readonly dialogImageService: ImageViewerDialogService) {}
 
   ngAfterViewInit() {
+    this.windowWidth = window.innerWidth;
     this.calculateSrcAttribute();
     setTimeout(() => this.afterViewInitFinished = true);
 
