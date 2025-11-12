@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { ImageResizerDirective } from '../../sharedcomponents/imageresizerdirective/image_resizer_directive';
+import { ScrollspyComponent } from "../../sharedcomponents/scrollspy/scrollspy_component";
 
 @Component({
   selector: 'fursuit-page',
@@ -8,6 +9,7 @@ import { ImageResizerDirective } from '../../sharedcomponents/imageresizerdirect
   styleUrls: ['./fursuit_page.scss'],
   standalone: true,
   imports: [
+      ScrollspyComponent,
       ImageResizerDirective,
       MatCardModule,
   ],
