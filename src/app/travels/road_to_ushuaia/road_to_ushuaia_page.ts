@@ -15,9 +15,6 @@ export class RoadToUshuaiaPage {
   readonly advRiderURL = 'https://advrider.com/f/threads/1750647/page-1000';
   constructor(private readonly router: Router) {
     setTimeout(() => {
-      setTimeout(() => {
-        router.navigate(['/travels']);
-      }, 100);
       window.open(this.advRiderURL, '_blank', 'noopener,noreferrer');
     }, 2000);
   }
