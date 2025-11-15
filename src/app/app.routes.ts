@@ -99,7 +99,7 @@ export const routes: Routes = [
   },
   // Invalid routes (404) should redirect back to home page.
   {
-    path: '**', pathMatch: 'full',  
+    path: '**', pathMatch: 'full',
     redirectTo: '',
-  }, 
+  },
 ];
