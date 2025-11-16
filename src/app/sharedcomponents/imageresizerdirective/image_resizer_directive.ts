@@ -30,13 +30,14 @@ export class ImageResizerDirective implements AfterViewInit {
   ];
 
   // Keeps track of the last calculated img size suffix. This helps ensure that on window size
-  // change we are not making excessive calls to change the image src attribute. 
+  // change we are not making excessive calls to change the image src attribute.
   private lastCalculatedSuffix: string | undefined = undefined;
   private lastCalculatedWidth = 0;
   // Exists to ensure that the <img> src attribute doesn't change before initial hydration is done, as DOM mismatch
   // will cause errors that break the application.
   private afterViewInitFinished = false;
   private windowWidth: number = 0;
+  private errorOccurred = false;
 
   constructor(
     private readonly element: ElementRef,
@@ -56,6 +57,11 @@ export class ImageResizerDirective implements AfterViewInit {
     }
   }
 
+  @HostListener('error')
+  onError(): void {
+    this.errorOccurred = true;
+  }
+
   // Recalculate the needed suffix for the imgur images, then apply the change if it's different than before.
   @HostListener('window:resize')
   onResize() {
@@ -70,6 +76,10 @@ export class ImageResizerDirective implements AfterViewInit {
   // at full image resolution.
   @HostListener('click')
   onClick() {
+    if (this.errorOccurred) {
+      return;
+    }
+
     // Forward the URL to a full sized image without any downscaling.
     if (!this.preventDialogOpening && this.windowWidth > this.minWidthToExpandModal) {
       this.dialogImageService.emitImageClick(`${this.imgurUrlPattern}${this.imgurId}.jpg`);
@@ -129,6 +139,7 @@ private calculateSrcAttribute() {
 
     return '';
   }
+
   private getAspectRatioNumber() {
     return Function('"use strict"; return ' + this.aspectRatio)();
   }
