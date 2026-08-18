@@ -1,4 +1,4 @@
-import {AfterViewInit, Directive, ElementRef, HostBinding, HostListener, Input, Renderer2} from '@angular/core';
+import {afterNextRender, Directive, ElementRef, HostBinding, HostListener, Input, Renderer2} from '@angular/core';
 import { ImageViewerDialogService } from '../imageviewerdialog/image_viewer_dialog_service';
 
 @Directive({
@@ -6,7 +6,7 @@ import { ImageViewerDialogService } from '../imageviewerdialog/image_viewer_dial
   standalone: true,
 })
 // This Directive is used to calculate the image URL of images stored in Imgur at resolutions that help reduce bandwidth usages.
-export class ImageResizerDirective implements AfterViewInit {
+export class ImageResizerDirective {
   @Input('imgurId') imgurId = '';
   @Input('aspectRatio') aspectRatio = '';
   @Input('preventDialogOpening') preventDialogOpening = false;
@@ -36,25 +36,25 @@ export class ImageResizerDirective implements AfterViewInit {
   // Exists to ensure that the <img> src attribute doesn't change before initial hydration is done, as DOM mismatch
   // will cause errors that break the application.
   private afterViewInitFinished = false;
-  private windowWidth: number = 0;
   private errorOccurred = false;
 
   constructor(
-    private readonly element: ElementRef,
-		private readonly renderer: Renderer2,
-    private readonly dialogImageService: ImageViewerDialogService) {}
+      private readonly element: ElementRef,
+      private readonly renderer: Renderer2,
+      private readonly dialogImageService: ImageViewerDialogService) {
+    // Running the code in afterNextRender() guarantees one pass of rendering has finished and also that this isn't
+    // ran server side (using SSR and deploying only client side).
+    afterNextRender(() => {
+      this.calculateSrcAttribute();
+      setTimeout(() => this.afterViewInitFinished = true);
 
-  ngAfterViewInit() {
-    this.windowWidth = window.innerWidth;
-    this.calculateSrcAttribute();
-    setTimeout(() => this.afterViewInitFinished = true);
-
-    if (!!this.aspectRatio) {
-      this.renderer.setStyle(
-					this.element.nativeElement,
-					'aspect-ratio',
-					this.getAspectRatioNumber() + '');
-    }
+      if (!!this.aspectRatio) {
+        this.renderer.setStyle(
+            this.element.nativeElement,
+            'aspect-ratio',
+            this.getAspectRatioNumber() + '');
+      }
+    });
   }
 
   @HostListener('error')
@@ -65,7 +65,6 @@ export class ImageResizerDirective implements AfterViewInit {
   // Recalculate the needed suffix for the imgur images, then apply the change if it's different than before.
   @HostListener('window:resize')
   onResize() {
-    this.windowWidth = window.innerWidth;
     if (!this.afterViewInitFinished) {
       return;
     }
@@ -81,7 +80,7 @@ export class ImageResizerDirective implements AfterViewInit {
     }
 
     // Forward the URL to a full sized image without any downscaling.
-    if (!this.preventDialogOpening && this.windowWidth > this.minWidthToExpandModal) {
+    if (!this.preventDialogOpening && window.innerWidth > this.minWidthToExpandModal) {
       this.dialogImageService.emitImageClick(`${this.imgurUrlPattern}${this.imgurId}.jpg`);
     }
   }
@@ -96,7 +95,7 @@ export class ImageResizerDirective implements AfterViewInit {
       return null;
     }
 
-    return this.windowWidth > this.minWidthToExpandModal ? 'pointer' : null;
+    return window.innerWidth > this.minWidthToExpandModal ? 'pointer' : null;
   }
 
 private calculateSrcAttribute() {
