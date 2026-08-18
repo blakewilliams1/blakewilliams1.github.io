@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { signal, Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   selector: 'contact-form-page',
   templateUrl: './contact_form_page.html',
   styleUrls: ['./contact_form_page.scss'],
-  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
     MatInputModule,
@@ -23,8 +23,8 @@ import { CommonModule } from '@angular/common';
   ],
 })
 export class ContactFormPage {
-  formIsSubmitting = false;
-  formSubmittedSuccessfully = false;
+  formIsSubmitting = signal(false);
+  formSubmittedSuccessfully = signal(false);
   readonly nameField = new FormControl('', [Validators.required]);
   readonly emailField = new FormControl('', [Validators.required, Validators.email]);
   readonly subjectField = new FormControl('', [Validators.required]);
@@ -53,7 +53,7 @@ export class ContactFormPage {
     const jsonBody = JSON.stringify(object);
 
     // Send the POST with contents of the form and act on the response.
-    this.formIsSubmitting = true;
+    this.formIsSubmitting.set(true);
     fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: {
@@ -63,17 +63,17 @@ export class ContactFormPage {
       body: jsonBody
   })
   .then(async (response) => {
-    this.formIsSubmitting = false;
+    this.formIsSubmitting.set(false);
       let json = await response.json();
       if (response.status == 200) {
-          this.formSubmittedSuccessfully = true;
+          this.formSubmittedSuccessfully.set(true);
       } else {
         console.log('error submitting form: ');
         console.log(response);
       }
   })
   .catch(error => {
-      this.formIsSubmitting = false;
+      this.formIsSubmitting.set(false);
       console.log('error submitting form: ');
       console.log(error);
   });

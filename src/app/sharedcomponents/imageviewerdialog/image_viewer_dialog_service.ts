@@ -9,7 +9,6 @@ export class ImageViewerDialogService {
 
   // Call this from any component to trigger the dialog to open and show the provided photo.
   emitImageClick(imageUrl: string) {
-    console.log("ran");
       this.dialog.open(ImageViewerDialog, {
         data: { imageUrl },
         maxWidth: '95vw',

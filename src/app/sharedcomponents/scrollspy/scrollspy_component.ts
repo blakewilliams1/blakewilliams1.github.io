@@ -1,11 +1,12 @@
 import { CommonModule, isPlatformBrowser, ViewportScroller } from '@angular/common';
-import { AfterContentInit, Component, ElementRef, HostListener, Inject, PLATFORM_ID } from '@angular/core';
+import { AfterContentInit, Component, ElementRef, HostListener, Inject, PLATFORM_ID, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'scroll-spy',
   templateUrl: './scrollspy_component.html',
   styleUrls: ['./scrollspy_component.scss'],
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule],
 })
 export class ScrollspyComponent implements AfterContentInit {

@@ -1,73 +1,77 @@
-import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { AfterContentInit, ChangeDetectorRef, Component, ElementRef, Inject, Input, PLATFORM_ID } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { signal, afterNextRender, Component, ElementRef, HostListener, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'youtube-placeholder',
   templateUrl: './youtube_placeholder.html',
   styleUrls: ['./youtube_placeholder.scss'],
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule, 
   ],
 })
-export class YoutubePlaceholder implements AfterContentInit {
+export class YoutubePlaceholder {
   @Input('videoId') videoId = '';
   private readonly API_KEY = "AIzaSyAgB_ANPJ3PENDu2MGFWRycAkoFfnT1Q3U";
   private readonly YOUTUBE_API_URL = `https://www.googleapis.com/youtube/v3/videos?part=snippet&key=${this.API_KEY}&`;
   // Standard thumbnail sizes associated with their file names.
   private readonly imageSizesToYoutubeSuffixArray: ImageSizeToThumbnailSuffix[] = [
-    {
-      width: 120,
-      suffix: 'default',
-    },
-    {
-      width: 320,
-      suffix: 'mqdefault',
-    },
-    {
-      width: 480,
-      suffix: 'hqdefault',
-    },
-    {
-      width: 640,
-      suffix: 'sddefault',
-    },
-    {
-      width: 1280,
-      suffix: 'maxresdefault',
-    },
+    {width: 120, suffix: 'default'},
+    {width: 320, suffix: 'mqdefault'},
+    {width: 480, suffix: 'hqdefault'},
+    {width: 640, suffix: 'sddefault'},
+    // Note: This largest thumbnail size occasionally isn't available on some vidoes.
+    {width: 1280, suffix: 'maxresdefault'},
   ];
-  private afterViewHasRan: boolean = false;
-  private isBrowser : boolean = false;
-  title: string= "";
+  title = signal("");
+  serializedThumbnail = signal("");
 
-  constructor(
-    private readonly self: ElementRef,
-    @Inject(PLATFORM_ID) private platformId: Object,
-    private readonly cdr: ChangeDetectorRef) {
-    this.isBrowser = isPlatformBrowser(this.platformId);
+  constructor(private readonly self: ElementRef) {
+    afterNextRender(() => {
+      this.loadVideoTitle();
+      this.loadVideoThumbnail();
+    });
   }
 
-  ngAfterContentInit(): void {
-    this.afterViewHasRan = true;
+  private loadVideoTitle() {
+    fetch(`${this.YOUTUBE_API_URL}&id=${this.videoId}`)
+        .then(response => response.json())
+        .then(response => {
+          const data = response as YoutubeTitleResponse;
+          this.title.set(data.items[0]?.snippet.localized.title);
+        });
+  }
 
-    // Obtain the youtube video title.
-    if (this.isBrowser) {
-      fetch(`${this.YOUTUBE_API_URL}&id=${this.videoId}`)
-          .then(response => response.json())
-          .then(response => {
-            const data = response as YoutubeTitleResponse;
-            this.title = data.items[0]?.snippet.localized.title;
-            this.cdr.detectChanges();
-          });
-		}
+  // Currently does not account for window resizing.
+  private async loadVideoThumbnail(): Promise<void> {
+    const thumbnailUrl =
+        `https://i.ytimg.com/vi/${this.videoId}/${this.getThumbnailSize()}.jpg`;
+
+    try {
+      let response = await fetch(thumbnailUrl);
+
+      // Fall back if maxresdefault fails
+      if (!response.ok && response.url.includes('maxresdefault')) {
+        response = await fetch(`https://i.ytimg.com/vi/${this.videoId}/sddefault.jpg`);
+      }
+
+      // Inline conversion to base64
+      const blob = await response.blob();
+      const base64Url = await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result as string);
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+      });
+
+      this.serializedThumbnail.set(base64Url);
+    } catch (error) {
+      console.error('Error fetching thumbnail:', error);
+    }
   }
 
   getThumbnailSize(): string {
-    if (!this.afterViewHasRan) {
-      return 'hqdefault';
-    }
-
     for (let pairing of this.imageSizesToYoutubeSuffixArray) {
       // If the current width/suffix pairing is smaller than the screen real estate provided to us
       // by the browser, skip it and check the next largest pairing.

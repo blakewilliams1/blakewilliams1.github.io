@@ -1,9 +1,8 @@
-<div>
-  <img [src]="'https://i.ytimg.com/vi/' + videoId + '/' + getThumbnailSize() + '.jpg'"
-      (click)="onYoutubeClick()"
+<div (click)="onYoutubeClick()">
+  <img [src]="serializedThumbnail()"
       alt="YouTube Video"
       loading="lazy">
-  <div class="play-button" (click)="onYoutubeClick()"></div>
-  <div class="title-shadow-background" (click)="onYoutubeClick()"></div>
-  <p (click)="onYoutubeClick()">{{title}}</p>
+  <div class="play-button"></div>
+  <div class="title-shadow-background"></div>
+  <p>{{title()}}</p>
 </div>
