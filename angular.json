@@ -97,7 +97,8 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "cname": "blakewilliams.org"
+            "cname": "blakewilliams.org",
+            "repo": "git@github.com:blakewilliams1/blakewilliams1.github.io.git"
           }
         }
       }
