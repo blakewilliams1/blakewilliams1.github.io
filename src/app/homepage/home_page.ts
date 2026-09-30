@@ -4,50 +4,50 @@ import { MatCardModule } from '@angular/material/card';
 import { Component, ElementRef, Renderer2, ViewChild, AfterViewInit, Inject, PLATFORM_ID, ChangeDetectorRef } from '@angular/core';
 
 @Component({
-    selector: 'home-page',
-    templateUrl: './home_page.html',
-    styleUrls: ['./home_page.scss'],
-    standalone: true,
-    imports: [
-        CommonModule,
-        MatCardModule,
-    ],
+	selector: 'home-page',
+	templateUrl: './home_page.html',
+	styleUrls: ['./home_page.scss'],
+	standalone: true,
+	imports: [
+		CommonModule,
+		MatCardModule,
+	],
 })
 export class HomePage implements AfterViewInit {
-  @ViewChild('actionContainer') actionContainer!: ElementRef;
-  @ViewChild('actions') actionsList!: ElementRef;
+	@ViewChild('actionContainer') actionContainer!: ElementRef;
+	@ViewChild('actions') actionsList!: ElementRef;
 	private readonly ACTION_CHANGE_INTERVAL_MS = 4000;
-  readonly ACTIVITIES_LIST_URL =
-    'https://raw.githubusercontent.com/blakewilliams1/blakewilliams1.github.io/main/src/assets/current_activities.txt';
+	readonly ACTIVITIES_LIST_URL =
+		'https://raw.githubusercontent.com/blakewilliams1/blakewilliams1.github.io/main/src/assets/current_activities.txt';
 	private activityRandomIndexOrder: number[] = [];
 	// Guards against client-side-only code from being ran server-side.
-  private isBrowser: boolean;
+	private isBrowser: boolean;
 	allCurrentActivities: string[] = [''];
 
 	constructor(
-			private readonly renderer: Renderer2,
-			private readonly konamiService: KonamiCodeService,
-			private readonly cdr: ChangeDetectorRef,
-			@Inject(PLATFORM_ID) private platformId: Object) {
+		private readonly renderer: Renderer2,
+		private readonly konamiService: KonamiCodeService,
+		private readonly cdr: ChangeDetectorRef,
+		@Inject(PLATFORM_ID) private platformId: Object) {
 		this.isBrowser = isPlatformBrowser(this.platformId);
 	}
 
-	ngAfterViewInit () {
+	ngAfterViewInit() {
 		// Prevent hydration breaking errors by only modifying the DOM if this is being ran client side in the browser.
 		if (this.isBrowser) {
 			this.konamiService.registerListener();
 
 			// Load the contents of the txt file containing all the current activities, then save it as a class member.
 			fetch(this.ACTIVITIES_LIST_URL)
-					.then(response => response.text())
-					.then(response => {
-						this.allCurrentActivities = response.split('\n').filter(str => str.trim() !== "") || [];
+				.then(response => response.text())
+				.then(response => {
+					this.allCurrentActivities = response.split('\n').filter(str => str.trim() !== "") || [];
 
-						// Ensure that the assignment of this.allCurrentActivities propagates out to the DOM before calling
-						// scrollingTask() so the template contains elements for each.
-						this.cdr.detectChanges();
-						this.scrollingTask();
-					});
+					// Ensure that the assignment of this.allCurrentActivities propagates out to the DOM before calling
+					// scrollingTask() so the template contains elements for each.
+					this.cdr.detectChanges();
+					this.scrollingTask();
+				});
 		}
 	}
 
@@ -68,7 +68,7 @@ export class HomePage implements AfterViewInit {
 			}
 		}
 
-		// The default value is never expected tyo be used, but is here to satisfy the static compiler.
+		// The default value is never expected to be used, but is here to satisfy the compiler's static analyzer.
 		const targetActionIndex: number = this.activityRandomIndexOrder.pop() || 0;
 		// Calculate the vertical distance between the top of the container for the actions and the action about to be
 		// displayed.
@@ -77,16 +77,16 @@ export class HomePage implements AfterViewInit {
 		// Ensure that the viewport into the current action is tall enough to show the entry if it wraps.
 		const height = (targetChild as HTMLElement).offsetHeight;
 		this.renderer.setStyle(
-				this.actionsList.nativeElement,
-				'height',
-				`${height}px`);
+			this.actionsList.nativeElement,
+			'height',
+			`${height}px`);
 
 		// Shift all the actions up or down based on the calculated amount to show the the current one.
 		for (const child of actions) {
 			this.renderer.setStyle(
-					child,
-					'transform',
-					`translateY(${yTranslateOffset}px)`);
+				child,
+				'transform',
+				`translateY(${yTranslateOffset}px)`);
 		}
 
 		// Re-trigger the same task again at the desired interval.

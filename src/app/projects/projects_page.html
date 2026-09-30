@@ -1,16 +1,27 @@
 <div class="page-container">
-<mat-card routerLink="/css-injection">
-  <mat-card-header>
-    <mat-card-title>CSS Injections for Websites</mat-card-title>
-    <mat-card-subtitle>The internet how it should be</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <p>
-      A nice and concise set of CSS injections I add to specific websites for better browsing experience.
-    </p>
-    <img imgurId="GVJ06OK" [preventDialogOpening]="true" alt="hackerman meme image from Kung Fury"/>
-  </mat-card-content>
-</mat-card>
+  <mat-card routerLink="/nixie-watch">
+    <mat-card-header>
+      <mat-card-title>Nixie Tube Wrist Watch</mat-card-title>
+      <mat-card-subtitle>Check the divergence!</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        This was one of my first exposures to hardware design beyond simple arduino proto boards that
+        drove small motors or read from simple sensors. I heavily based my schematic off of an existing
+        one I found online by <a href="http://www.cathodecorner.com/nixiewatch/firmware/firmware.html" target="_blank">David Forbes</a>.
+        The main difference is that mine uses four IN-17 nixie tubes instead of just two B5870L tubes.
+        I accounted for this doubling of tubes by swapping out his PIC18LF22SS with an atmega324pb, which
+        has around 30-ish GPIO pins. I directly drove every filament in use with a GPIO pin and a darlington
+        transistor. As this was my first 'major' hardware project, I didn't want to deal with extra IC
+        components like a serial to parallel shift register to complicate it any more.
+      </p>
+      <img
+          loading="lazy"
+          imgurId="dHJe2YO"
+          [preventDialogOpening]="true"
+          alt="a wrist prominently displaying a custom watch made with four nixie tubes lit up showing the current time"/>
+    </mat-card-content>
+  </mat-card>
 
   <mat-card routerLink="/flip-dot-display">
     <mat-card-header>
@@ -28,6 +39,27 @@
           imgurId="wFl4yZp"
           [preventDialogOpening]="true"
           alt="A flipdot panel with the text 'hack the planet' written in white flip dots"/>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card routerLink="/mountainboard">
+    <mat-card-header>
+      <mat-card-title>Electric Mountainboard</mat-card-title>
+      <mat-card-subtitle>very stoked</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        A road bike is to a mountain bike, as a skateboard is to a mountainboard. Their height of popularity
+        was in the early 2000's along with the X-games. Some compare it to the sensation of snowboarding,
+        but like most analogies it's a little bit of a stretch.<br>
+        This was a major project where I learned about good battery design, some machining skills, and a
+        lot of patience.
+      </p>
+      <img
+          loading="lazy"
+          imgurId="MCgCxjL"
+          [preventDialogOpening]="true"
+          alt="a mountainboard sitting in dirt pointed downhill towards a large dirt ramp"/>
     </mat-card-content>
   </mat-card>
 
@@ -107,27 +139,6 @@
     </mat-card-content>
   </mat-card>
 
-<mat-card routerLink="/mountainboard">
-  <mat-card-header>
-    <mat-card-title>Electric Mountainboard</mat-card-title>
-    <mat-card-subtitle>very stoked</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <p>
-      A road bike is to a mountain bike, as a skateboard is to a mountainboard. Their height of popularity
-      was in the early 2000's along with the X-games. Some compare it to the sensation of snowboarding,
-      but like most analogies it's a little bit of a stretch.<br>
-      This was a major project where I learned about good battery design, some machining skills, and a
-      lot of patience.
-    </p>
-    <img
-        loading="lazy"
-        imgurId="MCgCxjL"
-        [preventDialogOpening]="true"
-        alt="a mountainboard sitting in dirt pointed downhill towards a large dirt ramp"/>
-  </mat-card-content>
-</mat-card>
-
   <mat-card routerLink="/dot-matrix-watch">
     <mat-card-header>
       <mat-card-title>Dot Matrix Watch</mat-card-title>
@@ -152,27 +163,16 @@
     </mat-card-content>
   </mat-card>
 
-  <mat-card routerLink="/nixie-watch">
+  <mat-card routerLink="/css-injection">
     <mat-card-header>
-      <mat-card-title>Nixie Tube Wrist Watch</mat-card-title>
-      <mat-card-subtitle>Check the divergence!</mat-card-subtitle>
+      <mat-card-title>CSS Injections for Websites</mat-card-title>
+      <mat-card-subtitle>The internet how it should be</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <p>
-        This was one of my first exposures to hardware design beyond simple arduino proto boards that
-        drove small motors or read from simple sensors. I heavily based my schematic off of an existing
-        one I found online by <a href="http://www.cathodecorner.com/nixiewatch/firmware/firmware.html" target="_blank">David Forbes</a>.
-        The main difference is that mine uses four IN-17 nixie tubes instead of just two B5870L tubes.
-        I accounted for this doubling of tubes by swapping out his PIC18LF22SS with an atmega324pb, which
-        has around 30-ish GPIO pins. I directly drove every filament in use with a GPIO pin and a darlington
-        transistor. As this was my first 'major' hardware project, I didn't want to deal with extra IC
-        components like a serial to parallel shift register to complicate it any more.
+        A nice and concise set of CSS injections I add to specific websites for better browsing experience.
       </p>
-      <img
-          loading="lazy"
-          imgurId="dHJe2YO"
-          [preventDialogOpening]="true"
-          alt="a wrist prominently displaying a custom watch made with four nixie tubes lit up showing the current time"/>
+      <img imgurId="GVJ06OK" [preventDialogOpening]="true" alt="hackerman meme image from Kung Fury"/>
     </mat-card-content>
   </mat-card>
 </div>
